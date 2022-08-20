@@ -65,7 +65,7 @@ void printShaderSource(const char* text)
 	{
 		if (*text == '\n')
 		{
-			printf("\n(%3i) ", line);
+			printf("\n(%3i) ", ++line);
 		}
 		else if (*text == '\r')
 		{

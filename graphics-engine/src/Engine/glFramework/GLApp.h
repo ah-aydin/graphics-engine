@@ -12,6 +12,7 @@ private:
     // Initialization
     bool init();
     bool initGlfw();
+    void initGlProperties();
     void inputInit();
     // Terminate
     void quit();

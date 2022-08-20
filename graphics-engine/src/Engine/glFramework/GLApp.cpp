@@ -1,10 +1,13 @@
 #include "GLApp.h"
 
+#include <glad/glad.h>
+
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include <Engine/Input.h>
 #include <Engine/Time.h>
+#include <Engine/Settings.h>
 #include <Logging/Log.h>
 
 #include "GLWindow.h"
@@ -30,9 +33,11 @@ int GLApp::run()
 
 bool GLApp::init()
 {
-    log_reset();                                    // reset log file
+    log_reset();                       // reset log file
     if (!initGlfw() || !window.init()) // intialize all components
         return false;
+
+    this->initGlProperties();
 
     inputInit(); // create sample input axes/actions
 
@@ -49,6 +54,12 @@ bool GLApp::initGlfw()
     return true;
 }
 
+void GLApp::initGlProperties()
+{
+    glClearColor(0, 0, 0, 1);
+    glEnable(GL_DEPTH_TEST);
+}
+
 void GLApp::quit()
 {
     glfwTerminate();
@@ -60,23 +71,20 @@ void GLApp::inputInit()
     Input::createAction("QUIT", GLFW_KEY_ESCAPE);
 }
 
-#include <glad/glad.h>
-#include "Rendering/Shaders/GLProgram.h"
-#include "Rendering/Shaders/GLShader.h"
+#include "Levels/LevelRenderTirangle.h"
+#include "Levels/LevelVtxPulling.h"
 
 void GLApp::mainLoop()
 {
-    GLShader shaderVertex("res/shader.vert");
-    GLShader shaderFragment("res/shader.frag");
-    GLProgram program(shaderVertex, shaderFragment);
-    program.use();
+    //LevelRenderTriangle level;
+    LevelVtxPulling level;
+    if (!level.init())
+    {
+        return;
+    }
 
-    GLuint vao;
-    glCreateVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glViewport(0, 0, window.getWidth(), window.getHeight());
+    Settings::ratio = window.getWidth() / window.getHeight();
 
     while (running)
     {
@@ -84,14 +92,14 @@ void GLApp::mainLoop()
             running = false;
         }
 
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        level.update(Time::getDeltaTime());
 
         Input::resetMouse();
         Time::tick();
         window.tick();
     }
-    glDeleteVertexArrays(1, &vao);
 
     window.setShouldClose(true);
 }

@@ -4,12 +4,18 @@
 
 #include <Engine/Input.h>
 #include <Logging/Log.h>
+#include <Engine/Settings.h>
 
 static void error_callback(int error, const char* description)
 {
     log_error("ERROR::GLFW::CALLBACK::%s", description);
 }
 
+static void window_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+    Settings::ratio = (float) width / height;
+}
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (action == GLFW_PRESS) {
@@ -65,6 +71,7 @@ bool GLWindow::init()
     glfwSetKeyCallback(window, key_callback);
     glfwSetCursorPosCallback(window, cursor_position_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetWindowSizeCallback(window, window_size_callback);
 
     // Create context
     glfwMakeContextCurrent(window);
