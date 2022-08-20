@@ -131,7 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.cpp" />
+    <ClCompile Include="src\Common\Utils\fileUtils.cpp" />
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShader.cpp" />
     <ClCompile Include="src\Engine\glFramework\GLApp.cpp" />
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\Utils.cpp" />
     <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Logging\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -139,11 +143,20 @@
     <ClCompile Include="src\Engine\glFramework\GLWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.h" />
+    <ClInclude Include="src\Common\Utils\fileUtils.h" />
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShader.h" />
     <ClInclude Include="src\Engine\glFramework\GLApp.h" />
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\Utils.h" />
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Logging\Log.h" />
     <ClInclude Include="src\Engine\Time.h" />
     <ClInclude Include="src\Engine\glFramework\GLWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shader.frag" />
+    <None Include="res\shader.vert" />
+    <None Include="src\Logging\.gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

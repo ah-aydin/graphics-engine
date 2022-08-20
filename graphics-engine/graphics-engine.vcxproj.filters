@@ -33,6 +33,18 @@
     <ClCompile Include="src\Engine\glFramework\GLApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\Utils\fileUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -50,5 +62,22 @@
     <ClInclude Include="src\Engine\glFramework\GLApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\Utils\fileUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Logging\.gitignore" />
+    <None Include="res\shader.vert" />
+    <None Include="res\shader.frag" />
   </ItemGroup>
 </Project>
