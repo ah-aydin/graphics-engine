@@ -3,7 +3,7 @@
 #include <iostream>
 #include <math.h>
 
-#include <Logging/Log.h>
+#include "../Logging/Log.h"
 
 Mouse Input::mouse = { 0, 0 };
 bool Input::keys[KEY_ARRAY_SIZE + MOUSE_KEY_ARRAY_SIZE] = { 0 };

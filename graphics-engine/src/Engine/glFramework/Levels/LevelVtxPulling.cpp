@@ -1,6 +1,5 @@
 #include "LevelVtxPulling.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -39,8 +38,8 @@ LevelVtxPulling::~LevelVtxPulling()
 bool LevelVtxPulling::init()
 {
 	shaderVert = new GLShader("res/rubber_duck/shaders/shader.vert");
-	shaderGeom = new GLShader("res/rubber_duck/shaders/shader.frag");
-	shaderFrag = new GLShader("res/rubber_duck/shaders/shader.geom");
+	shaderGeom = new GLShader("res/rubber_duck/shaders/shader.geom");
+	shaderFrag = new GLShader("res/rubber_duck/shaders/shader.frag");
 	program = new GLProgram(*shaderVert, *shaderGeom, *shaderFrag);
 	program->use();
 
@@ -84,7 +83,7 @@ bool LevelVtxPulling::init()
 	// Verticies
 	glCreateBuffers(1, &dataVertices);
 	glNamedBufferStorage(dataVertices, kSizeVertices, vertices.data(), 0);
-	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, dataVertices);
+	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, dataVertices);
 
 	// Texture
 	int w, h, comp;

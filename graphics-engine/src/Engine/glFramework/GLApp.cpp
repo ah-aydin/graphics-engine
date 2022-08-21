@@ -58,6 +58,7 @@ void GLApp::initGlProperties()
 {
     glClearColor(0, 0, 0, 1);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 }
 
 void GLApp::quit()
@@ -73,18 +74,20 @@ void GLApp::inputInit()
 
 #include "Levels/LevelRenderTirangle.h"
 #include "Levels/LevelVtxPulling.h"
+#include "Levels/LevelCubemap.h"
 
 void GLApp::mainLoop()
 {
     //LevelRenderTriangle level;
-    LevelVtxPulling level;
+    //LevelVtxPulling level;
+    LevelCubemap level;
     if (!level.init())
     {
         return;
     }
 
     glViewport(0, 0, window.getWidth(), window.getHeight());
-    Settings::ratio = window.getWidth() / window.getHeight();
+    Settings::ratio = (float)window.getWidth() / window.getHeight();
 
     while (running)
     {

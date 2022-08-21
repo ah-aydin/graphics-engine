@@ -57,6 +57,15 @@
     <ClCompile Include="src\Engine\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\Utils\Bitmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Utils\Cubemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glFramework\Levels\LevelCubemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -98,9 +107,17 @@
     <ClInclude Include="src\Engine\Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Utils\Bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Utils\Cubemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glFramework\Levels\LevelCubemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Logging\.gitignore" />
     <None Include="res\shader.vert" />
     <None Include="res\shader.frag" />
     <None Include="res\rubber_duck\scene.bin">
@@ -110,6 +127,11 @@
     <None Include="res\rubber_duck\shaders\shader.frag" />
     <None Include="res\rubber_duck\shaders\shader.vert" />
     <None Include="res\rubber_duck\shaders\shader.geom" />
+    <None Include="res\cubemap\shader.vert" />
+    <None Include="res\cubemap\shader.frag" />
+    <None Include="res\cubemap\piazza_bologni_1k.hdr" />
+    <None Include="res\rubber_duck\shaders\cubemap.vert" />
+    <None Include="res\rubber_duck\shaders\cubemap.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png">
