@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphics-engine", "graphics-engine\graphics-engine.vcxproj", "{34163A06-FEB1-4C5D-96E4-65F4B6D5285E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vulkan-tutorial", "vulkan-tutorial\vulkan-tutorial.vcxproj", "{2DC552E7-255C-4783-BDA2-AFF18BAC6918}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{34163A06-FEB1-4C5D-96E4-65F4B6D5285E}.Debug|x64.Build.0 = Debug|x64
 		{34163A06-FEB1-4C5D-96E4-65F4B6D5285E}.Release|x64.ActiveCfg = Release|x64
 		{34163A06-FEB1-4C5D-96E4-65F4B6D5285E}.Release|x64.Build.0 = Release|x64
+		{2DC552E7-255C-4783-BDA2-AFF18BAC6918}.Debug|x64.ActiveCfg = Debug|x64
+		{2DC552E7-255C-4783-BDA2-AFF18BAC6918}.Debug|x64.Build.0 = Debug|x64
+		{2DC552E7-255C-4783-BDA2-AFF18BAC6918}.Release|x64.ActiveCfg = Release|x64
+		{2DC552E7-255C-4783-BDA2-AFF18BAC6918}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
