@@ -82,6 +82,7 @@
     <ClCompile Include="src\VKApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Vertices.h" />
     <ClInclude Include="src\VkHelpers.h" />
     <ClInclude Include="src\VKApp.h" />
   </ItemGroup>

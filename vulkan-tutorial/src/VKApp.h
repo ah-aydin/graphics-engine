@@ -135,6 +135,15 @@ private:
 	VkCommandPool commandPool;
 	void createCommandPool();
 
+	// Vertex buffer
+	void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
+	void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
+	VkBuffer vertexBuffer, indexBuffer;
+	VkDeviceMemory vertexBufferMemory, indexBufferMemory;
+	void createVertexBuffer();
+	void createIndexBuffer();
+	uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
+
 	// Command buffer
 	std::vector<VkCommandBuffer> commandBuffers;
 	void createCommandBuffers();
