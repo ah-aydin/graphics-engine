@@ -5,7 +5,7 @@
 #include <Common/Utils/fileUtils.h>
 #include <Logging/Log.h>
 
-#include "Utils.h"
+#include "GLShaderUtils.h"
 
 GLShader::GLShader(const char* fileName)
 	: GLShader(GLShaderTypeFromFileName(fileName),

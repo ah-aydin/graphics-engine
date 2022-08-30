@@ -158,7 +158,7 @@ bool LevelCubemap::init()
 #include <GLFW/glfw3.h>
 #include <Engine/Settings.h>
 
-void LevelCubemap::update(float dt)
+void LevelCubemap::update(double dt)
 {
 	Level::update(dt);
 	const glm::mat4 p = glm::perspective(45.0f, Settings::ratio, 0.1f, 1000.0f);

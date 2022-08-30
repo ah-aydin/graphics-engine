@@ -26,7 +26,7 @@ bool LevelRenderTriangle::init()
 	return true;
 }
 
-void LevelRenderTriangle::update(float dt)
+void LevelRenderTriangle::update(double dt)
 {
 	Level::update(dt);
 

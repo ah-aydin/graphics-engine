@@ -8,5 +8,5 @@ bool Level::init()
 	return true;
 }
 
-void Level::update(float dt)
+void Level::update(double dt)
 {}

@@ -2,9 +2,9 @@
 
 #include <GLFW/glfw3.h>
 
-unsigned Time::s_TimeCurrentFrame;
-unsigned Time::s_TimeLastFrame;
-float Time::deltaTime = 0;
+double Time::s_TimeCurrentFrame;
+double Time::s_TimeLastFrame;
+double Time::deltaTime = 0;
 
 // Call this function once in the main loop to calculate the time since last frame
 void Time::tick()

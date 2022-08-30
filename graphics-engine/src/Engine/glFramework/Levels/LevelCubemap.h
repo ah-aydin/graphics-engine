@@ -16,7 +16,7 @@ class LevelCubemap : public Level
 public:
 	LevelCubemap();
 	bool init() override;
-	void update(float dt) override;
+	void update(double dt) override;
 	~LevelCubemap();
 
 private:

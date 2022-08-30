@@ -108,7 +108,7 @@ bool LevelVtxPulling::init()
 #include <GLFW/glfw3.h>
 #include <Engine/Settings.h>
 
-void LevelVtxPulling::update(float dt)
+void LevelVtxPulling::update(double dt)
 {
 	Level::update(dt);
 

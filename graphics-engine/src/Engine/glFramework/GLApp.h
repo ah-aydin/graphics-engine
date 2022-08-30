@@ -1,28 +1,27 @@
 #pragma once
 
+#include <Engine/BaseApp.h>
 #include "GLWindow.h"
 
-class GLApp
+class GLApp : public BaseApp
 {
 public:
-    GLApp() {};
+    GLApp() : window("OpenGL App") {};
     ~GLApp();
 
 private:
     // Initialization
-    bool init();
-    bool initGlfw();
+    bool init() override;
     void initGlProperties();
-    void inputInit();
+    void initInput() override;
     // Terminate
-    void quit();
+    void quit() override;
 
     // Main loop
-    void mainLoop();
-    bool running = true;
+    void mainLoop() override;
 
 public:
-    int run();
+    int run() override;
 
     GLWindow window;
 };

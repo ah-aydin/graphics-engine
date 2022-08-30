@@ -10,8 +10,6 @@
 #include <Engine/Settings.h>
 #include <Logging/Log.h>
 
-#include "GLWindow.h"
-
 GLApp::~GLApp()
 {
     glfwTerminate();
@@ -33,24 +31,11 @@ int GLApp::run()
 
 bool GLApp::init()
 {
-    log_reset();                       // reset log file
-    if (!initGlfw() || !window.init()) // intialize all components
+    if (!BaseApp::init()|| !window.init()) // intialize all components
         return false;
 
-    this->initGlProperties();
+    initGlProperties();
 
-    inputInit(); // create sample input axes/actions
-
-    return true;
-}
-
-bool GLApp::initGlfw()
-{
-    if (glfwInit() == GLFW_FALSE)
-    {
-        log_error("ERROR::GLFW::INITIALIZATION");
-        return false;
-    }
     return true;
 }
 
@@ -63,10 +48,10 @@ void GLApp::initGlProperties()
 
 void GLApp::quit()
 {
-    glfwTerminate();
+    BaseApp::quit();
 }
 
-void GLApp::inputInit()
+void GLApp::initInput()
 {
     // Some inputs for testing
     Input::createAction("QUIT", GLFW_KEY_ESCAPE);

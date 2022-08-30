@@ -16,7 +16,7 @@ class LevelVtxPulling : public Level
 public:
 	LevelVtxPulling();
 	bool init() override;
-	void update(float dt) override;
+	void update(double dt) override;
 	~LevelVtxPulling();
 
 private:

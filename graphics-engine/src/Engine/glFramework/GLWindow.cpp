@@ -2,47 +2,17 @@
 
 #include <glad/glad.h>
 
-#include <Engine/Input.h>
-#include <Logging/Log.h>
 #include <Engine/Settings.h>
-
-static void error_callback(int error, const char* description)
-{
-    log_error("ERROR::GLFW::CALLBACK::%s", description);
-}
 
 static void window_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    Settings::ratio = (float) width / height;
-}
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (action == GLFW_PRESS) {
-        Input::keyPress(key);
-    }
-    if (action == GLFW_RELEASE) {
-        Input::keyRelease(key);
-    }
-}
-
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
-    Input::mouseMotion(xpos, ypos);
-}
-
-static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
-{
-    if (action == GLFW_PRESS) {
-        Input::keyPress(button, true);
-    }
-    if (action == GLFW_RELEASE) {
-        Input::keyRelease(button, true);
-    }
+    Settings::ratio = (float)width / height;
 }
 
 GLWindow::~GLWindow()
 {
-    glfwDestroyWindow(window);
+    glfwDestroyWindow(m_window);
     glfwTerminate();
 }
 
@@ -53,31 +23,16 @@ GLWindow::~GLWindow()
  */
 bool GLWindow::init()
 {
-    // Create window
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    window = glfwCreateWindow(WINDOW_SIZE, WINDOW_TITLE, WINDOW_MONITOR, NULL);
-    if (!window)
-    {
-        log_error("ERROR::GLFW::WINDOW_CREATION");
-        return false;
-    }
+    if (!BaseWindow::init()) return false;
 
     // Set callbacks
-    glfwSetErrorCallback(error_callback);
-    glfwSetKeyCallback(window, key_callback);
-    glfwSetCursorPosCallback(window, cursor_position_callback);
-    glfwSetMouseButtonCallback(window, mouse_button_callback);
-    glfwSetWindowSizeCallback(window, window_size_callback);
+    glfwSetWindowSizeCallback(m_window, window_size_callback);
 
     // Create context
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(m_window);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     glfwSwapInterval(1);
-    glfwGetFramebufferSize(window, &width, &height);
+    glfwGetFramebufferSize(m_window, &m_width, &m_height);
     return true;
 }
 
@@ -86,6 +41,13 @@ bool GLWindow::init()
  */
 void GLWindow::tick()
 {
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+    BaseWindow::tick();
+    glfwSwapBuffers(m_window);
+}
+
+void GLWindow::setWindowHints()
+{
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
