@@ -15,7 +15,7 @@ void log_reset()
 	time_t now = time(NULL);
 	char date[26];
 	ctime_s(date, sizeof(date), &now);
-	out << "OpenGl log file\n";
+	out << FILE_START;
 	out << "Date: " << date << "\n";
 }
 

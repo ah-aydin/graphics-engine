@@ -1,5 +1,7 @@
 #include "GLApp.h"
 
+#ifdef GRAPHICS_API_OPENGL
+
 #include <glad/glad.h>
 
 #define GLFW_INCLUDE_NONE
@@ -91,3 +93,5 @@ void GLApp::mainLoop()
 
     window.setShouldClose(true);
 }
+
+#endif

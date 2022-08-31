@@ -1,8 +1,6 @@
 #pragma once
 
-
 #include <Engine/BaseWindow.h>
-
 
 class VKWindow : public BaseWindow
 {
@@ -17,4 +15,3 @@ public:
 private:
 	void setWindowHints() override;
 };
-

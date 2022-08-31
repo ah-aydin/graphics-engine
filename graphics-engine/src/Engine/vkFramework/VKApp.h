@@ -1,5 +1,7 @@
 #pragma once
 
+#include "VKUtils.h"
+
 #include <Engine/BaseApp.h>
 #include "VKWindow.h"
 
@@ -15,6 +17,9 @@ private:
 	void quit() override;
 
 	void mainLoop() override;
+
+	VulkanInstance vulkanInstance;
+	VulkanDevice vulkanDevice;
 
 public:
 	int run() override;

@@ -1,5 +1,7 @@
 #include "VKApp.h"
 
+#ifdef GRAPHICS_API_VULKAN
+
 #include <GLFW/glfw3.h>
 
 #include <Engine/Input.h>
@@ -26,14 +28,18 @@ int VKApp::run()
 
 bool VKApp::init()
 {
+	VK_CALL_RET_BOOL(volkInitialize());
 	if (!BaseApp::init() || !window.init())
 		return false;
+
+	createVulkanObjects(vulkanInstance, vulkanDevice, window.getGlfwWindowPointer());
 
 	return true;
 }
 
 void VKApp::quit()
 {
+	cleanVulkanObjects(vulkanInstance, vulkanDevice);
 	BaseApp::quit();
 }
 
@@ -59,3 +65,5 @@ void VKApp::mainLoop()
 
 	window.setShouldClose(true);
 }
+
+#endif

@@ -1,6 +1,5 @@
 #pragma once
 
-#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #ifdef NDEBUG
 // Open the window in full screen mode
@@ -25,12 +24,13 @@ protected:
 	virtual void tick();
 
 public:
-	inline int getWidth() { return m_width; }
-	inline int getHeight() { return m_height; }
+	inline int getWidth() const { return m_width; }
+	inline int getHeight() const { return m_height; }
 
 public:
-	inline bool shouldClose() { return glfwWindowShouldClose(m_window); }
+	inline bool shouldClose() const { return glfwWindowShouldClose(m_window); }
 	inline void setShouldClose(bool val) { glfwSetWindowShouldClose(m_window, val); }
+	inline GLFWwindow* getGlfwWindowPointer() const { return m_window; }
 
 protected:
 	GLFWwindow* m_window = nullptr;
