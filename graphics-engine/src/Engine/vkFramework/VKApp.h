@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VKUtils.h"
+#include "VKObjects.h"
 
 #include <Engine/BaseApp.h>
 #include "VKWindow.h"

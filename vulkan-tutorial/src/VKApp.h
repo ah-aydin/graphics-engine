@@ -22,7 +22,7 @@ struct QueueFamilyIndicies
 	}
 };
 
-struct SwapChainSupportDetails
+struct SwapchainSupportDetails
 {
 	VkSurfaceCapabilitiesKHR capabilities;
 	std::vector<VkSurfaceFormatKHR> formats;
@@ -105,7 +105,7 @@ private:
 	VkFormat swapChainImageFormat;
 	VkExtent2D swapChainExtent;
 
-	SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
+	SwapchainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
 	VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
 	VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
 	VkExtent2D chooseSwapExtend(const VkSurfaceCapabilitiesKHR& capabilities);

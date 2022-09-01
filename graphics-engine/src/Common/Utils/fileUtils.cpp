@@ -1,6 +1,7 @@
 #include "fileUtils.h"
 
 #include <string.h>
+#include <fstream>
 
 #include <Logging/Log.h>
 
@@ -78,4 +79,22 @@ void printShaderSource(const char* text)
 	}
 
 	printf("\n");
+}
+
+std::vector<char> readSPIRV(const std::string& filename)
+{
+	std::ifstream file(filename, std::ios::ate | std::ios::binary);
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Could not open the bloody file");
+	}
+
+	size_t fileSize = (size_t)file.tellg();
+	std::vector<char> buffer(fileSize);
+
+	file.seekg(0);
+	file.read(buffer.data(), fileSize);
+	file.close();
+
+	return buffer;
 }

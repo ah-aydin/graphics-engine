@@ -51,13 +51,15 @@ void VKApp::initVulkan()
 	createSwapChain();
 	createImageViews();
 	createRenderPass();
-	createGraphicsPipeline();
+	createGraphicsPipeline(); 
 	createFramebuffers();
 	createCommandPool();
-	createVertexBuffer();
-	createIndexBuffer();
 	createCommandBuffers();
 	createSyncObjects();
+
+
+	createVertexBuffer();
+	createIndexBuffer();
 }
 
 void VKApp::mainLoop()
@@ -378,7 +380,7 @@ bool VKApp::isDeviceSuitable(VkPhysicalDevice device)
 	bool swapChainAdequate = false;
 	if (extensionsSupported)
 	{
-		SwapChainSupportDetails swapChainSupportDetails = querySwapChainSupport(device);
+		SwapchainSupportDetails swapChainSupportDetails = querySwapChainSupport(device);
 		swapChainAdequate = !swapChainSupportDetails.formats.empty() && !swapChainSupportDetails.presentModes.empty();
 	}
 
@@ -527,9 +529,9 @@ void VKApp::createLogicalDevice()
 	vkGetDeviceQueue(device, indicies.presentFamily.value(), 0, &presentQueue);
 }
 
-SwapChainSupportDetails VKApp::querySwapChainSupport(VkPhysicalDevice device)
+SwapchainSupportDetails VKApp::querySwapChainSupport(VkPhysicalDevice device)
 {
-	SwapChainSupportDetails details;
+	SwapchainSupportDetails details;
 
 	vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, &details.capabilities);
 
@@ -600,7 +602,7 @@ VkExtent2D VKApp::chooseSwapExtend(const VkSurfaceCapabilitiesKHR& capabilities)
 
 void VKApp::createSwapChain()
 {
-	SwapChainSupportDetails swapChainSupport = querySwapChainSupport(physicalDevice);
+	SwapchainSupportDetails swapChainSupport = querySwapChainSupport(physicalDevice);
 
 	VkSurfaceFormatKHR surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats);
 	VkPresentModeKHR presentMode = chooseSwapPresentMode(swapChainSupport.presentModes);

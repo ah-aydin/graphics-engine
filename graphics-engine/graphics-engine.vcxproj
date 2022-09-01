@@ -167,7 +167,8 @@
     <ClCompile Include="src\Engine\Utils\Bitmap.cpp" />
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp" />
     <ClCompile Include="src\Engine\vkFramework\VKApp.cpp" />
-    <ClCompile Include="src\Engine\vkFramework\VKUtils.cpp" />
+    <ClCompile Include="src\Engine\vkFramework\VKBuffer.cpp" />
+    <ClCompile Include="src\Engine\vkFramework\VKObjects.cpp" />
     <ClCompile Include="src\Logging\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Engine\Time.cpp" />
@@ -191,7 +192,8 @@
     <ClInclude Include="src\Engine\Settings.h" />
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
     <ClInclude Include="src\Engine\vkFramework\Rendering\Shaders\Shader.h" />
-    <ClInclude Include="src\Engine\vkFramework\VKUtils.h" />
+    <ClInclude Include="src\Engine\vkFramework\VKBuffer.h" />
+    <ClInclude Include="src\Engine\vkFramework\VKObjects.h" />
     <ClInclude Include="src\Logging\Log.h" />
     <ClInclude Include="src\Engine\Time.h" />
     <ClInclude Include="src\Engine\glFramework\GLWindow.h" />

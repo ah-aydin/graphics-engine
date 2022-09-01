@@ -78,7 +78,10 @@
     <ClCompile Include="src\Engine\vkFramework\VKApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\VKUtils.cpp">
+    <ClCompile Include="src\Engine\vkFramework\VKObjects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkFramework\VKBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,7 +149,10 @@
     <ClInclude Include="src\Engine\vkFramework\VKApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\VKUtils.h">
+    <ClInclude Include="src\Engine\vkFramework\VKObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkFramework\VKBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
