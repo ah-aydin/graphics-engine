@@ -84,6 +84,9 @@
     <ClCompile Include="src\Engine\vkFramework\VKBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -153,6 +156,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkFramework\VKBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

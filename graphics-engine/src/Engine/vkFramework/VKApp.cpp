@@ -48,9 +48,14 @@ void VKApp::initInput()
 	Input::createAction("QUIT", GLFW_KEY_ESCAPE);
 }
 
+#include "Levels/LevelVulkanBasics.h"
+
 void VKApp::mainLoop()
 {
 	Settings::ratio = (float)window.getWidth() / window.getHeight();
+
+	LevelVulkanBasics* level = new LevelVulkanBasics(vulkanInstance, vulkanDevice);
+	if (!level->init()) return;
 
 	while (running)
 	{
@@ -58,10 +63,14 @@ void VKApp::mainLoop()
 			running = false;
 		}
 
+		level->update(Time::getDeltaTime());
+
 		Input::resetMouse();
 		Time::tick();
 		window.tick();
 	}
+
+	delete level;
 
 	window.setShouldClose(true);
 }

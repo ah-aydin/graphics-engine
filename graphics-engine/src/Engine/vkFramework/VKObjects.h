@@ -55,8 +55,8 @@ struct VulkanVertex
 struct VulkanInstance
 {
 	VkInstance instance;
-	VkDebugUtilsMessengerEXT debugMessenger;
 	VkSurfaceKHR surface;
+	VkDebugUtilsMessengerEXT debugMessenger;
 };
 
 struct QueueFamilyIndicies

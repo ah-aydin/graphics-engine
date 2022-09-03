@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.cpp" />
     <ClCompile Include="src\Engine\BaseApp.cpp" />
     <ClCompile Include="src\Engine\BaseWindow.cpp" />
     <ClCompile Include="src\Engine\glFramework\Levels\LevelCubemap.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="src\Engine\vkFramework\VKWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.h" />
     <ClInclude Include="src\Engine\BaseApp.h" />
     <ClInclude Include="src\Engine\BaseWindow.h" />
     <ClInclude Include="src\Engine\glFramework\Levels\LevelCubemap.h" />

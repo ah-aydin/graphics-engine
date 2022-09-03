@@ -87,16 +87,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\VKApp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Vertices.h" />
-    <ClInclude Include="src\VkHelpers.h" />
-    <ClInclude Include="src\VKApp.h" />
+    <ClCompile Include="src\VulkanPipeline.cpp" />
+    <ClCompile Include="src\VulkanApp.cpp" />
+    <ClCompile Include="src\VulkanWindow.cpp" />
+    <ClCompile Include="src\VulkanDevice.cpp" />
+    <ClCompile Include="src\VulkanSwapchain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader.frag" />
     <None Include="res\shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\VulkanPipeline.h" />
+    <ClInclude Include="src\VulkanApp.h" />
+    <ClInclude Include="src\VulkanWindow.h" />
+    <ClInclude Include="src\VulkanDevice.h" />
+    <ClInclude Include="src\VulkanSwapchain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
