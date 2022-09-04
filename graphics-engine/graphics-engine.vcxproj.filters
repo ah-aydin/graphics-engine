@@ -27,31 +27,22 @@
     <ClCompile Include="src\Engine\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\GLWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\GLApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShader.cpp">
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Utils\fileUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.cpp">
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShaderUtils.cpp">
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Level.cpp">
+    <ClCompile Include="src\Engine\Common\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelRenderTriangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelVtxPulling.cpp">
+    <ClCompile Include="src\Engine\glApi\Levels\LevelRenderTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Settings.cpp">
@@ -63,28 +54,22 @@
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelCubemap.cpp">
+    <ClCompile Include="src\Engine\Common\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\BaseWindow.cpp">
+    <ClCompile Include="src\Engine\glApi\GLApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\BaseApp.cpp">
+    <ClCompile Include="src\Engine\Common\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\VKWindow.cpp">
+    <ClCompile Include="src\Engine\glApi\GLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\VKApp.cpp">
+    <ClCompile Include="src\Engine\glApi\Levels\LevelVtxPulling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\VKObjects.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\VKBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.cpp">
+    <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,31 +83,22 @@
     <ClInclude Include="src\Engine\Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\GLWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\GLApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShader.h">
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\Utils\fileUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.h">
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShaderUtils.h">
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Level.h">
+    <ClInclude Include="src\Engine\Common\Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelRenderTirangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelVtxPulling.h">
+    <ClInclude Include="src\Engine\glApi\Levels\LevelRenderTirangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Settings.h">
@@ -134,31 +110,25 @@
     <ClInclude Include="src\Engine\Utils\Cubemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelCubemap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Engine\vkFramework\Rendering\Shaders\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\BaseWindow.h">
+    <ClInclude Include="src\Engine\Common\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\BaseApp.h">
+    <ClInclude Include="src\Engine\glApi\GLApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\VKWindow.h">
+    <ClInclude Include="src\Engine\Common\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\VKApp.h">
+    <ClInclude Include="src\Engine\glApi\GLWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\VKObjects.h">
+    <ClInclude Include="src\Engine\glApi\Levels\LevelVtxPulling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\VKBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.h">
+    <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

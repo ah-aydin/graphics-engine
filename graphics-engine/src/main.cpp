@@ -1,18 +1,27 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
+#include <stdexcept>
+#include <Logging/Log.h>
+
 #ifdef GRAPHICS_API_OPENGL
-#include <Engine/glFramework/GLApp.h>
-#elif GRAPHICS_API_VULKAN
-#include <Engine/vkFramework/VKApp.h>
+#include <Engine/glApi/GLApplication.h>
 #endif
 
 int main(int argc, char** argv)
 {
 #ifdef GRAPHICS_API_OPENGL
-	GLApp application;
-#elif GRAPHICS_API_VULKAN
-	VKApp application;
+	GLApplication app;
 #endif
-	return application.run();
+    try
+    {
+        app.run();
+    }
+    catch (const std::exception& e)
+    {
+        log_error("%s", e.what());
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }

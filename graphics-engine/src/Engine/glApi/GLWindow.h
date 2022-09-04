@@ -1,0 +1,18 @@
+#pragma once
+
+#ifdef GRAPHICS_API_OPENGL
+
+#include <glad/glad.h>
+
+#include <Engine/Common/Window.h>
+
+class GLWindow : public Window
+{
+public:
+	GLWindow(std::string title);
+	~GLWindow();
+
+	inline void swapBuffer() { glfwSwapBuffers(m_window); }
+};
+
+#endif

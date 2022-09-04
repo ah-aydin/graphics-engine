@@ -151,56 +151,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.cpp" />
-    <ClCompile Include="src\Engine\BaseApp.cpp" />
-    <ClCompile Include="src\Engine\BaseWindow.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelCubemap.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelRenderTriangle.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Levels\LevelVtxPulling.cpp" />
-    <ClCompile Include="src\Engine\Level.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.cpp" />
+    <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp" />
+    <ClCompile Include="src\Engine\glApi\Levels\LevelVtxPulling.cpp" />
+    <ClCompile Include="src\Engine\glApi\GLWindow.cpp" />
+    <ClCompile Include="src\Engine\glApi\GLApplication.cpp" />
+    <ClCompile Include="src\Engine\Common\Application.cpp" />
+    <ClCompile Include="src\Engine\glApi\Levels\LevelRenderTriangle.cpp" />
+    <ClCompile Include="src\Engine\Common\Level.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLProgram.cpp" />
     <ClCompile Include="src\Common\Utils\fileUtils.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShader.cpp" />
-    <ClCompile Include="src\Engine\glFramework\GLApp.cpp" />
-    <ClCompile Include="src\Engine\glFramework\Rendering\Shaders\GLShaderUtils.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShader.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.cpp" />
     <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Engine\Settings.cpp" />
     <ClCompile Include="src\Engine\Utils\Bitmap.cpp" />
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp" />
-    <ClCompile Include="src\Engine\vkFramework\VKApp.cpp" />
-    <ClCompile Include="src\Engine\vkFramework\VKBuffer.cpp" />
-    <ClCompile Include="src\Engine\vkFramework\VKObjects.cpp" />
     <ClCompile Include="src\Logging\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Engine\Time.cpp" />
-    <ClCompile Include="src\Engine\glFramework\GLWindow.cpp" />
-    <ClCompile Include="src\Engine\vkFramework\VKWindow.cpp" />
+    <ClCompile Include="src\Engine\Common\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\vkFramework\Levels\LevelVulkanBasics.h" />
-    <ClInclude Include="src\Engine\BaseApp.h" />
-    <ClInclude Include="src\Engine\BaseWindow.h" />
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelCubemap.h" />
+    <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h" />
+    <ClInclude Include="src\Engine\glApi\Levels\LevelVtxPulling.h" />
+    <ClInclude Include="src\Engine\glApi\GLWindow.h" />
+    <ClInclude Include="src\Engine\glApi\GLApplication.h" />
+    <ClInclude Include="src\Engine\Common\Application.h" />
     <ClInclude Include="src\Engine\Utils\Bitmap.h" />
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelRenderTirangle.h" />
-    <ClInclude Include="src\Engine\glFramework\Levels\LevelVtxPulling.h" />
-    <ClInclude Include="src\Engine\Level.h" />
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLProgram.h" />
+    <ClInclude Include="src\Engine\glApi\Levels\LevelRenderTirangle.h" />
+    <ClInclude Include="src\Engine\Common\Level.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLProgram.h" />
     <ClInclude Include="src\Common\Utils\fileUtils.h" />
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShader.h" />
-    <ClInclude Include="src\Engine\glFramework\GLApp.h" />
-    <ClInclude Include="src\Engine\glFramework\Rendering\Shaders\GLShaderUtils.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLShader.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.h" />
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Settings.h" />
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
     <ClInclude Include="src\Engine\vkFramework\Rendering\Shaders\Shader.h" />
-    <ClInclude Include="src\Engine\vkFramework\VKBuffer.h" />
-    <ClInclude Include="src\Engine\vkFramework\VKObjects.h" />
     <ClInclude Include="src\Logging\Log.h" />
     <ClInclude Include="src\Engine\Time.h" />
-    <ClInclude Include="src\Engine\glFramework\GLWindow.h" />
-    <ClInclude Include="src\Engine\vkFramework\VKWindow.h" />
-    <ClInclude Include="src\Engine\vkFramework\VKApp.h" />
+    <ClInclude Include="src\Engine\Common\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />
