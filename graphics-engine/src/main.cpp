@@ -1,17 +1,22 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-#include <stdexcept>
-#include <Logging/Log.h>
-
 #ifdef GRAPHICS_API_OPENGL
-#include <Engine/glApi/GLApplication.h>
+    #include <Engine/glApi/GLApplication.h>
+#elif GRAPHICS_API_VULKAN
+    #include <Engine/vkApi/VKApplication.h>
+#else
+    error(No graphics api was specified)
 #endif
+
+#include <Logging/Log.h>
 
 int main(int argc, char** argv)
 {
 #ifdef GRAPHICS_API_OPENGL
 	GLApplication app;
+#elif GRAPHICS_API_VULKAN
+    VKApplication app;
 #endif
     try
     {

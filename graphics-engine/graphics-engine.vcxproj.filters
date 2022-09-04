@@ -66,10 +66,22 @@
     <ClCompile Include="src\Engine\glApi\GLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glApi\Levels\LevelVtxPulling.cpp">
+    <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp">
+    <ClCompile Include="src\Engine\vkApi\VKApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\VKWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanPipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,10 +137,25 @@
     <ClInclude Include="src\Engine\glApi\GLWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glApi\Levels\LevelVtxPulling.h">
+    <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h">
+    <ClInclude Include="src\Engine\vkApi\VKApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\VKWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\VKMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanPipeline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -147,6 +174,8 @@
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />
     <None Include="res\rubber_duck\shaders\cubemap.vert" />
     <None Include="res\rubber_duck\shaders\cubemap.frag" />
+    <None Include="res\vulkan\basic\shader.vert" />
+    <None Include="res\vulkan\basic\shader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png">

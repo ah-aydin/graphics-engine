@@ -10,3 +10,4 @@
 void log_reset();
 void log_info(const char* message, ...);
 void log_error(const char* message, ...);
+void log_error_exception(const char* message, ...);

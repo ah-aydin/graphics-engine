@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <GLFW/glfw3.h>
+#include <string>
 
 #ifdef NDEBUG
 // Open the window in full screen mode

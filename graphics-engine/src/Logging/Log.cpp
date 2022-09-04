@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cstdarg>
 
+#include <Windows.h>
+
 #ifndef NDEBUG
 void log_reset()
 {
@@ -34,6 +36,7 @@ void log_info(const char* message, ...)
 	va_start(args, message);
 	char buffer[4096];
 	vsprintf_s(buffer, message, args);
+	fprintf(stdout, "%s\n", buffer);
 	out << buffer << "\n";
 	va_end(args);
 }
@@ -54,12 +57,50 @@ void log_error(const char* message, ...)
 	char buffer[4096];
 	vsprintf_s(buffer, message, args);
 	out << buffer << "\n";
+	
+	HANDLE hConsoleErr = GetStdHandle(STD_ERROR_HANDLE);
+	SetConsoleTextAttribute(hConsoleErr, FOREGROUND_RED);
+
 	fprintf(stderr, "%s", buffer);
 	fprintf(stderr, "\n");
+
+	SetConsoleTextAttribute(hConsoleErr, FOREGROUND_INTENSITY);
+
 	va_end(args);
+}
+
+void log_error_exception(const char* message, ...)
+{
+	// Open the log file in append mode
+	std::ofstream out(GL_LOG_FILE, std::ios::app);
+	if (out.is_open() == false)
+	{
+		return;
+	}
+
+	// Print the log to file and stderr
+	va_list args;
+
+	va_start(args, message);
+	char buffer[4096];
+	vsprintf_s(buffer, message, args);
+	out << buffer << "\n";
+
+	HANDLE hConsoleErr = GetStdHandle(STD_ERROR_HANDLE);
+	SetConsoleTextAttribute(hConsoleErr, FOREGROUND_RED);
+
+	fprintf(stderr, "%s", buffer);
+	fprintf(stderr, "\n");
+
+	SetConsoleTextAttribute(hConsoleErr, FOREGROUND_INTENSITY);
+
+	va_end(args);
+
+	throw std::runtime_error(buffer);
 }
 #else
 void log_reset() { }
 void log_info(const char* message, ...) { }
 void log_error(const char* message, ...) { }
+void log_error_exception(const char* message, ...) { }
 #endif

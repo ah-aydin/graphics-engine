@@ -1,5 +1,8 @@
 #pragma once
 
+#ifdef GRAPHICS_API_VULKAN
+
+
 #include <string>
 #include <vector>
 
@@ -26,23 +29,25 @@ public:
 		VulkanDevice& device,
 		const std::string& vertFilepath,
 		const std::string& fragFilepath,
-		const VulkanPipelineConfigInfo& configInfo);
+		const VulkanPipelineConfigInfo* configInfo);
 	~VulkanPipeline();
 
 	VulkanPipeline(const VulkanPipeline&) = delete;
 	VulkanPipeline operator=(const VulkanPipeline&) = delete;
 
 	void bind(VkCommandBuffer commandBuffer);
-	static VulkanPipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
+	static VulkanPipelineConfigInfo* defaultPipelineConfigInfo(uint32_t width, uint32_t height);
 
 private:
 	static std::vector<char> readFile(const std::string& filepath);
-	void createGraphicsPipelien(const std::string& vertFilepath, const std::string& fragFilepath, const VulkanPipelineConfigInfo& configInfo);
+	void createGraphicsPipeline(const std::string& vertFilepath, const std::string& fragFilepath, const VulkanPipelineConfigInfo* configInfo);
 
 	void createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
 
-	VulkanDevice& vulkanDevice;
-	VkPipeline graphicsPipeline;
-	VkShaderModule vertShaderModule;
-	VkShaderModule fragShaderModule;
+	VulkanDevice& m_vulkanDevice;
+	VkPipeline m_graphicsPipeline;
+	VkShaderModule m_vertShaderModule;
+	VkShaderModule m_fragShaderModule;
 };
+
+#endif

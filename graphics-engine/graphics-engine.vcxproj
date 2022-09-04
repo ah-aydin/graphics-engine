@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp" />
-    <ClCompile Include="src\Engine\glApi\Levels\LevelVtxPulling.cpp" />
     <ClCompile Include="src\Engine\glApi\GLWindow.cpp" />
     <ClCompile Include="src\Engine\glApi\GLApplication.cpp" />
     <ClCompile Include="src\Engine\Common\Application.cpp" />
@@ -170,10 +169,14 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Engine\Time.cpp" />
     <ClCompile Include="src\Engine\Common\Window.cpp" />
+    <ClCompile Include="src\Engine\vkApi\VKApplication.cpp" />
+    <ClCompile Include="src\Engine\vkApi\VKWindow.cpp" />
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanDevice.cpp" />
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.cpp" />
+    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanPipeline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h" />
-    <ClInclude Include="src\Engine\glApi\Levels\LevelVtxPulling.h" />
     <ClInclude Include="src\Engine\glApi\GLWindow.h" />
     <ClInclude Include="src\Engine\glApi\GLApplication.h" />
     <ClInclude Include="src\Engine\Common\Application.h" />
@@ -187,10 +190,16 @@
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Settings.h" />
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
+    <ClInclude Include="src\Engine\vkApi\VKMacros.h" />
     <ClInclude Include="src\Engine\vkFramework\Rendering\Shaders\Shader.h" />
     <ClInclude Include="src\Logging\Log.h" />
     <ClInclude Include="src\Engine\Time.h" />
     <ClInclude Include="src\Engine\Common\Window.h" />
+    <ClInclude Include="src\Engine\vkApi\VKApplication.h" />
+    <ClInclude Include="src\Engine\vkApi\VKWindow.h" />
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanDevice.h" />
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.h" />
+    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanPipeline.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />
@@ -205,6 +214,8 @@
     <None Include="res\rubber_duck\shaders\shader.vert" />
     <None Include="res\shader.frag" />
     <None Include="res\shader.vert" />
+    <None Include="res\vulkan\basic\shader.frag" />
+    <None Include="res\vulkan\basic\shader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png" />
