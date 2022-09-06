@@ -13,6 +13,13 @@ public:
 
 	void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 	inline VkExtent2D getExtent() { return { static_cast<uint32_t>(m_width), static_cast<uint32_t>(m_height) }; }
+
+	bool wasResized() { return m_framebufferResized; }
+	void resetResizedFlag() { m_framebufferResized = false; }
+
+private:
+	bool m_framebufferResized = false;
+	static void window_resize_callback(GLFWwindow* window, int width, int height);
 };
 
 #endif

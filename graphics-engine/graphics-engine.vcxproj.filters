@@ -84,6 +84,9 @@
     <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanPipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\Rendering\VKModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanPipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\VKModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

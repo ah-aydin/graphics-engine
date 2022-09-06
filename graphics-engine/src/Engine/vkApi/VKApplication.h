@@ -13,6 +13,8 @@
 #include <vector>
 #include <memory>
 
+#include "Rendering/VKModel.h"
+
 class VKApplication : public Application
 {
 public:
@@ -26,15 +28,21 @@ private:
 
 	VKWindow m_window{ "Vulkan Application" };
 	VulkanDevice m_vulkanDevice{ m_window };
-	VulkanSwapchain m_vulkanSwapchain{ m_vulkanDevice, m_window.getExtent() };
+	std::unique_ptr<VulkanSwapchain> m_vulkanSwapchain;
 
 	void createPipelineLayout();
 	void createPipeline();
 	void createCommandBuffers();
-
+	void freeCommandBuffers();
 	std::unique_ptr<VulkanPipeline> m_vulkanPipeline;
 	VkPipelineLayout m_pipelineLayout;
 	std::vector<VkCommandBuffer> m_commandBuffers;
+
+	void loadModels();
+	std::unique_ptr<VKModel> m_model;
+
+	void reacreateSwapchain();
+	void recordCommandBuffer(int imageIndex);
 };
 
 #endif

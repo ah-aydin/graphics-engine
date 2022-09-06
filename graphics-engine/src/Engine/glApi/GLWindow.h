@@ -13,6 +13,9 @@ public:
 	~GLWindow();
 
 	inline void swapBuffer() { glfwSwapBuffers(m_window); }
+
+private:
+	static void window_size_callback(GLFWwindow* window, int width, int height);
 };
 
 #endif

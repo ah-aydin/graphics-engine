@@ -5,7 +5,7 @@
 #include <Engine/Settings.h>
 #include <Logging/Log.h>
 
-static void window_size_callback(GLFWwindow* window, int width, int height)
+void GLWindow::window_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
     Settings::ratio = (float)width / height;

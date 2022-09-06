@@ -19,6 +19,18 @@
 VulkanSwapchain::VulkanSwapchain(VulkanDevice& deviceRef, VkExtent2D extent)
     : m_device{ deviceRef }, m_windowExtent{ extent }
 {
+    init();
+}
+
+VulkanSwapchain::VulkanSwapchain(VulkanDevice& deviceRef, VkExtent2D extent, std::shared_ptr<VulkanSwapchain> previous)
+    : m_device{ deviceRef }, m_windowExtent{ extent }, m_oldSwapchain{ previous }
+{
+    init();
+    m_oldSwapchain = nullptr;
+}
+
+void VulkanSwapchain::init()
+{
     createSwapChain();
     createImageViews();
     createRenderPass();
@@ -179,7 +191,7 @@ void VulkanSwapchain::createSwapChain()
     createInfo.presentMode = presentMode;
     createInfo.clipped = VK_TRUE;
 
-    createInfo.oldSwapchain = VK_NULL_HANDLE;
+    createInfo.oldSwapchain = (m_oldSwapchain == nullptr ? VK_NULL_HANDLE : m_oldSwapchain->m_swapChain);
 
     VK_CALL(vkCreateSwapchainKHR(m_device.device(), &createInfo, nullptr, &m_swapChain));
 
@@ -360,7 +372,7 @@ VkSurfaceFormatKHR VulkanSwapchain::chooseSwapSurfaceFormat(const std::vector<Vk
 {
     for (const auto& availableFormat : availableFormats)
     {
-        if (availableFormat.format == VK_FORMAT_B8G8R8A8_UNORM && availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
+        if (availableFormat.format == VK_FORMAT_B8G8R8A8_SRGB && availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
         {
             return availableFormat;
         }

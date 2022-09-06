@@ -3,12 +3,12 @@
 #include <Logging/Log.h>
 #include <Engine/Input.h>
 
-static void error_callback(int error, const char* description)
+void Window::error_callback(int error, const char* description)
 {
     log_error("ERROR::GLFW::CALLBACK::%s", description);
 }
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void Window::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (action == GLFW_PRESS) {
         Input::keyPress(key);
@@ -18,11 +18,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     }
 }
 
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
+void Window::cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
     Input::mouseMotion(xpos, ypos);
 }
 
-static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+void Window::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
     if (action == GLFW_PRESS) {
         Input::keyPress(button, true);
