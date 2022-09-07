@@ -155,6 +155,7 @@ void VulkanDevice::pickPhysicalDevice()
         int score = 0;
         if (properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) score += 1000;
         score += properties.limits.maxImageDimension2D;
+        score += properties.limits.maxPushConstantsSize;
         if (!features.geometryShader) score = 0;
 
         if (score == 0) continue;

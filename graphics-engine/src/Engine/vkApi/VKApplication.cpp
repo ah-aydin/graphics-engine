@@ -7,10 +7,20 @@
 #include <Engine/Input.h>
 #include <Engine/Time.h>
 
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#include <glm/glm.hpp>
+
 #include <stdexcept>
 
 #define VK_NO_PROTOTYPES
 #include <volk.h>
+
+struct SimplePushConstantData
+{
+	glm::vec2 offset;
+	alignas(16) glm::vec3 color;
+};
 
 VKApplication::VKApplication() : Application()
 {
@@ -74,12 +84,17 @@ void VKApplication::drawFrame()
 
 void VKApplication::createPipelineLayout()
 {
+	VkPushConstantRange pushConstantRange{};
+	pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
+	pushConstantRange.offset = 0;
+	pushConstantRange.size = sizeof(SimplePushConstantData);
+
 	VkPipelineLayoutCreateInfo createInfo{};
 	createInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 	createInfo.setLayoutCount = 0;
 	createInfo.pSetLayouts = nullptr;
-	createInfo.pushConstantRangeCount = 0;
-	createInfo.pPushConstantRanges = nullptr;
+	createInfo.pushConstantRangeCount = 1;
+	createInfo.pPushConstantRanges = &pushConstantRange;
 
 	VK_CALL(vkCreatePipelineLayout(m_vulkanDevice.device(), &createInfo, nullptr, &m_pipelineLayout));
 }
@@ -144,9 +159,12 @@ void sierpinski(std::vector<VKModel::Vertex> &verticies, int depth, glm::vec2 le
 
 void VKApplication::loadModels()
 {
-	std::vector<VKModel::Vertex> verticies{};
-	sierpinski(verticies, 3, { -0.5f, 0.5f }, { 0.5f, 0.5f }, { 0.0f, -0.5f });
-	m_model = std::make_unique<VKModel>(m_vulkanDevice, verticies);
+	std::vector<VKModel::Vertex> verticiesSierpinski{};
+	sierpinski(verticiesSierpinski, 3, { -0.5f, 0.5f }, { 0.5f, 0.5f }, { 0.0f, -0.5f });
+	std::vector<VKModel::Vertex> verticiesTriangle {
+		{{ -0.5f, 0.5f }}, {{ 0.5f, 0.5f }}, {{ 0.0f, -0.5f }}
+	};
+	m_model = std::make_unique<VKModel>(m_vulkanDevice, verticiesTriangle);
 }
 
 void VKApplication::reacreateSwapchain()
@@ -180,6 +198,8 @@ void VKApplication::reacreateSwapchain()
 	log_info("Done!");
 }
 
+double speed = 50.0f;
+double xPos = 0.0f;
 void VKApplication::recordCommandBuffer(int imageIndex)
 {
 	VkCommandBufferBeginInfo beginInfo{};
@@ -219,7 +239,27 @@ void VKApplication::recordCommandBuffer(int imageIndex)
 
 	m_vulkanPipeline->bind(m_commandBuffers[imageIndex]);
 	m_model->bind(m_commandBuffers[imageIndex]);
-	m_model->draw(m_commandBuffers[imageIndex]);
+
+	for (int j = 0; j < 4; j++)
+	{
+		SimplePushConstantData push{};
+		xPos += speed * Time::getDeltaTime();
+		log_info("%lf", xPos);
+		if (xPos >= .5f) speed = -speed;
+		if (xPos <= -.5f) speed = -speed;
+		push.offset = { xPos, -0.4f + j * 0.25f};
+		push.color = { 0.0f, 0.0f, 0.2f + 0.2f * j };
+
+		vkCmdPushConstants(
+			m_commandBuffers[imageIndex],
+			m_pipelineLayout,
+			VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+			0,
+			sizeof(SimplePushConstantData),
+			&push
+		);
+		m_model->draw(m_commandBuffers[imageIndex]);
+	}
 
 	vkCmdEndRenderPass(m_commandBuffers[imageIndex]);
 
