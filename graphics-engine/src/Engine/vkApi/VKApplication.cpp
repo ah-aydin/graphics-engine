@@ -4,7 +4,7 @@
 
 #include "VKMacros.h"
 
-#include "Rendering/Systems/BasicRenderSystem2D.h"
+#include "Rendering/Systems/BasicRenderSystem.h"
 
 #include <Engine/Input.h>
 #include <Engine/Time.h>
@@ -31,7 +31,13 @@ VKApplication::~VKApplication()
 
 void VKApplication::run()
 {
-	BasicRenderSystem2D renderSystem{ m_vulkanDevice, m_vulkanRenderer.getSwapchainRenderPass() };
+	BasicRenderSystem renderSystem2D{
+		m_vulkanDevice,
+		m_vulkanRenderer.getSwapchainRenderPass(),
+		"res/vulkan/basic/shader.vert2D.spv",
+		"res/vulkan/basic/shader.frag2D.spv",
+		RENDER2D 
+	};
 
 	while (!m_window.shouldClose())
 	{
@@ -43,7 +49,7 @@ void VKApplication::run()
 		if (auto commandBuffer = m_vulkanRenderer.beginFrame())
 		{
 			m_vulkanRenderer.beginSwapchainRenderPass(commandBuffer);
-			renderSystem.renderGameObjects(commandBuffer, m_gameObjects);
+			renderSystem2D.renderGameObjects(commandBuffer, m_gameObjects);
 			m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
 			m_vulkanRenderer.endFrame(commandBuffer);
 		}

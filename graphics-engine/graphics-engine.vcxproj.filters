@@ -90,16 +90,16 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem2D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,7 +185,7 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem2D.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject3D.h">
@@ -201,6 +201,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -219,8 +225,8 @@
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />
     <None Include="res\rubber_duck\shaders\cubemap.vert" />
     <None Include="res\rubber_duck\shaders\cubemap.frag" />
-    <None Include="res\vulkan\basic\shader.vert" />
-    <None Include="res\vulkan\basic\shader.frag" />
+    <None Include="res\vulkan\basic\shader2D.vert" />
+    <None Include="res\vulkan\basic\shader2D.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png">

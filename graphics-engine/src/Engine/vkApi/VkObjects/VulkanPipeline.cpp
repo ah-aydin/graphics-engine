@@ -3,8 +3,8 @@
 #ifdef GRAPHICS_API_VULKAN
 
 #include <Engine/vkApi/VKMacros.h>
-#include <Engine/vkApi/Rendering/Models/VKModel2D.h>
-#include <Engine/vkApi/Rendering/Models/VKModel3D.h>
+#include <Engine/vkApi/Rendering/Verticies/Vertex2D.h>
+#include <Engine/vkApi/Rendering/Verticies/Vertex3D.h>
 
 #include <fstream>
 #include <stdexcept>
@@ -178,8 +178,8 @@ void VulkanPipeline::createGraphicsPipeline(
 	}
 	else if (m_renderDimention == RENDER3D)
 	{
-		//attributeDescriptions = VKModel3D::Vertex::getAttributeDescriptions();
-		//bindingDescriptions = VKModel3D::Vertex::getBindingDescriptions();
+		attributeDescriptions = Vertex3D::getAttributeDescriptions();
+		bindingDescriptions = Vertex3D::getBindingDescriptions();
 	}
 
 	VkPipelineVertexInputStateCreateInfo vertexInputInfo{};

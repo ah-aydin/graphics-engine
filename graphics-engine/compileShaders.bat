@@ -1,2 +1,2 @@
-glslc res\vulkan\basic\shader.vert -o res\vulkan\basic\shader.vert.spv
-glslc res\vulkan\basic\shader.frag -o res\vulkan\basic\shader.frag.spv
+glslc res\vulkan\basic\shader2D.vert -o res\vulkan\basic\shader.vert2D.spv
+glslc res\vulkan\basic\shader2D.frag -o res\vulkan\basic\shader.frag2D.spv

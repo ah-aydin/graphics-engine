@@ -1,4 +1,4 @@
-#include "BasicRenderSystem2D.h"
+#include "BasicRenderSystem.h"
 
 #ifdef GRAPHICS_API_VULKAN
 
@@ -20,19 +20,25 @@ struct SimplePushConstantData
 	alignas(16) glm::vec3 color;
 };
 
-BasicRenderSystem2D::BasicRenderSystem2D(VulkanDevice &device, VkRenderPass renderPass)
+BasicRenderSystem::BasicRenderSystem(
+	VulkanDevice &device,
+	VkRenderPass renderPass,
+	std::string vertFilePath,
+	std::string fragFilePath,
+	RenderDimention renderDimention
+)
 	: m_vulkanDevice(device)
 {
 	createPipelineLayout();
-	createPipeline(renderPass);
+	createPipeline(renderPass, renderDimention, vertFilePath, fragFilePath);
 }
 
-BasicRenderSystem2D::~BasicRenderSystem2D()
+BasicRenderSystem::~BasicRenderSystem()
 {
 	vkDestroyPipelineLayout(m_vulkanDevice.device(), m_pipelineLayout, nullptr);
 }
 
-void BasicRenderSystem2D::createPipelineLayout()
+void BasicRenderSystem::createPipelineLayout()
 {
 	VkPushConstantRange pushConstantRange{};
 	pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
@@ -49,7 +55,12 @@ void BasicRenderSystem2D::createPipelineLayout()
 	VK_CALL(vkCreatePipelineLayout(m_vulkanDevice.device(), &createInfo, nullptr, &m_pipelineLayout));
 }
 
-void BasicRenderSystem2D::createPipeline(VkRenderPass renderPass)
+void BasicRenderSystem::createPipeline(
+	VkRenderPass renderPass,
+	RenderDimention renderDimention,
+	std::string vertFilePath,
+	std::string fragFilePath
+)
 {
 	assert(m_pipelineLayout != nullptr && "A pipeline layout should be given to create pipeline");
 
@@ -60,14 +71,14 @@ void BasicRenderSystem2D::createPipeline(VkRenderPass renderPass)
 	pipelineConfig.pipelineLayout = m_pipelineLayout;
 	m_vulkanPipeline = std::make_unique<VulkanPipeline>(
 		m_vulkanDevice,
-		"res/vulkan/basic/shader.vert.spv",
-		"res/vulkan/basic/shader.frag.spv",
+		vertFilePath,
+		fragFilePath,
 		pipelineConfig,
-		VulkanPipeline::RENDER2D
-		);
+		renderDimention
+	);
 }
 
-void BasicRenderSystem2D::renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects)
+void BasicRenderSystem::renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects)
 {
 	m_vulkanPipeline->bind(commandBuffer);
 

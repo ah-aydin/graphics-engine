@@ -2,11 +2,12 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
+#include "VulkanDevice.h"
+#include <Engine/vkApi/Rendering/RenderDimention.h>
 
 #include <string>
 #include <vector>
 
-#include "VulkanDevice.h"
 
 struct VulkanPipelineConfigInfo {
 	VulkanPipelineConfigInfo();
@@ -30,11 +31,6 @@ struct VulkanPipelineConfigInfo {
 class VulkanPipeline
 {
 public:
-	enum RenderDimention
-	{
-		RENDER3D, RENDER2D
-	};
-
 	VulkanPipeline(
 		VulkanDevice& device,
 		const std::string& vertFilepath,
