@@ -6,9 +6,9 @@
 #include <Engine/Common/Application.h>
 
 #include "VKWindow.h"
-#include "VkObjects/VulkanPipeline.h"
 #include "VkObjects/VulkanDevice.h"
-#include "VkObjects/VulkanSwapchain.h"
+#include "Rendering/VulkanRenderer.h"
+#include "GameObject/VKGameObject2D.h"
 
 #include <vector>
 #include <memory>
@@ -24,25 +24,13 @@ public:
 	void run() override;
 
 private:
-	void drawFrame();
 
 	VKWindow m_window{ "Vulkan Application" };
 	VulkanDevice m_vulkanDevice{ m_window };
-	std::unique_ptr<VulkanSwapchain> m_vulkanSwapchain;
+	VulkanRenderer m_vulkanRenderer{ m_window, m_vulkanDevice };
 
-	void createPipelineLayout();
-	void createPipeline();
-	void createCommandBuffers();
-	void freeCommandBuffers();
-	std::unique_ptr<VulkanPipeline> m_vulkanPipeline;
-	VkPipelineLayout m_pipelineLayout;
-	std::vector<VkCommandBuffer> m_commandBuffers;
-
-	void loadModels();
-	std::unique_ptr<VKModel> m_model;
-
-	void reacreateSwapchain();
-	void recordCommandBuffer(int imageIndex);
+	void loadGameObjects();
+	std::vector<VKGameObject2D> m_gameObjects;
 };
 
 #endif
