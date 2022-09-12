@@ -2,7 +2,9 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
-#include <Engine/vkApi/Rendering/VKModel.h>
+#include <Engine/Common/GameObject.h>
+
+#include <Engine/vkApi/Rendering/Models/VKModel2D.h>
 
 #include <memory>
 
@@ -19,15 +21,17 @@ struct Transform2D
 	}
 };
 
-class VKGameObject2D
+class VKGameObject2D : public GameObject
 {
+	friend class GameObject;
+
 public:
 	using id_t = unsigned int;
 
 	static VKGameObject2D createGameObject()
 	{
-		static id_t currentId = 0;
-		return VKGameObject2D{ currentId++ };
+		VKGameObject2D gameObject = GameObject::createGameObject<VKGameObject2D>();
+		return gameObject;
 	}
 
 	VKGameObject2D(const VKGameObject2D&) = delete;
@@ -35,15 +39,12 @@ public:
 	VKGameObject2D(VKGameObject2D&&) = default;
 	VKGameObject2D& operator=(VKGameObject2D&&) = default;
 
-	id_t getId() { return m_id; }
-
-	std::shared_ptr<VKModel> m_model{};
+	std::shared_ptr<VKModel2D> m_model{};
 	glm::vec3 m_color{};
 	Transform2D m_transform{};
 
 private:
-	VKGameObject2D(id_t objId) : m_id(objId) {}
-	id_t m_id;
+	VKGameObject2D(id_t objId) : GameObject(objId) {}
 };
 
 #endif

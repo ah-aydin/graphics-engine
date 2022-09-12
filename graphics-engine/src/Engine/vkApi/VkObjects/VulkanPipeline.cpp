@@ -3,7 +3,8 @@
 #ifdef GRAPHICS_API_VULKAN
 
 #include <Engine/vkApi/VKMacros.h>
-#include <Engine/vkApi/Rendering/VKModel.h>
+#include <Engine/vkApi/Rendering/Models/VKModel2D.h>
+#include <Engine/vkApi/Rendering/Models/VKModel3D.h>
 
 #include <fstream>
 #include <stdexcept>
@@ -23,8 +24,10 @@ VulkanPipeline::VulkanPipeline(
 	VulkanDevice& device,
 	const std::string& vertFilepath,
 	const std::string& fragFilepath,
-	const VulkanPipelineConfigInfo& configInfo)
-	: m_vulkanDevice(device)
+	const VulkanPipelineConfigInfo& configInfo,
+	RenderDimention renderDimention
+)
+	: m_vulkanDevice(device), m_renderDimention(renderDimention)
 {
 	createGraphicsPipeline(vertFilepath, fragFilepath, &configInfo);
 }
@@ -165,8 +168,20 @@ void VulkanPipeline::createGraphicsPipeline(
 	stages[1].pNext = nullptr;
 	stages[1].pSpecializationInfo = nullptr;
 
-	auto attributeDescriptions = VKModel::Vertex::getAttributeDescriptions();
-	auto bindingDescriptions = VKModel::Vertex::getBindingDescriptions();
+
+	std::vector<VkVertexInputAttributeDescription> attributeDescriptions;
+	std::vector<VkVertexInputBindingDescription> bindingDescriptions;
+	if (m_renderDimention == RENDER2D)
+	{
+		attributeDescriptions = Vertex2D::getAttributeDescriptions();
+		bindingDescriptions = Vertex2D::getBindingDescriptions();
+	}
+	else if (m_renderDimention == RENDER3D)
+	{
+		//attributeDescriptions = VKModel3D::Vertex::getAttributeDescriptions();
+		//bindingDescriptions = VKModel3D::Vertex::getBindingDescriptions();
+	}
+
 	VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
 	vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 	vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributeDescriptions.size());

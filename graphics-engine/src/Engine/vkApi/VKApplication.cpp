@@ -4,7 +4,7 @@
 
 #include "VKMacros.h"
 
-#include "Rendering/Systems/BasicRenderSystem.h"
+#include "Rendering/Systems/BasicRenderSystem2D.h"
 
 #include <Engine/Input.h>
 #include <Engine/Time.h>
@@ -17,8 +17,6 @@
 
 #define VK_NO_PROTOTYPES
 #include <volk.h>
-
-
 
 VKApplication::VKApplication() : Application()
 {
@@ -33,7 +31,7 @@ VKApplication::~VKApplication()
 
 void VKApplication::run()
 {
-	BasicRenderSystem renderSystem{ m_vulkanDevice, m_vulkanRenderer.getSwapchainRenderPass() };
+	BasicRenderSystem2D renderSystem{ m_vulkanDevice, m_vulkanRenderer.getSwapchainRenderPass() };
 
 	while (!m_window.shouldClose())
 	{
@@ -60,7 +58,7 @@ void VKApplication::run()
 glm::vec3 leftColor = { 1, 0, 0 };
 glm::vec3 rightColor = { 0, 1, 0 };
 glm::vec3 centerColor = { 0, 0, 1 };
-void sierpinski(std::vector<VKModel::Vertex> &verticies, int depth, glm::vec2 left, glm::vec2 right, glm::vec2 center)
+void sierpinski(std::vector<Vertex2D> &verticies, int depth, glm::vec2 left, glm::vec2 right, glm::vec2 center)
 {
 	if (depth <= 0)
 	{
@@ -80,12 +78,12 @@ void sierpinski(std::vector<VKModel::Vertex> &verticies, int depth, glm::vec2 le
 
 void VKApplication::loadGameObjects()
 {
-	std::vector<VKModel::Vertex> verticiesSierpinski{};
+	std::vector<Vertex2D> verticiesSierpinski{};
 	sierpinski(verticiesSierpinski, 3, { -0.5f, 0.5f }, { 0.5f, 0.5f }, { 0.0f, -0.5f });
-	std::vector<VKModel::Vertex> verticiesTriangle {
+	std::vector<Vertex2D> verticiesTriangle {
 		{{ -0.5f, 0.5f }}, {{ 0.5f, 0.5f }}, {{ 0.0f, -0.5f }}
 	};
-	auto m_model = std::make_shared<VKModel>(m_vulkanDevice, verticiesTriangle);
+	auto m_model = std::make_shared<VKModel2D>(m_vulkanDevice, verticiesTriangle);
 
 	auto triangle = VKGameObject2D::createGameObject();
 	triangle.m_model = m_model;

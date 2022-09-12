@@ -84,16 +84,22 @@
     <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanPipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\VKModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\GameObject\VKGameObject2D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,7 +176,7 @@
     <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanPipeline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\VKModel.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject2D.h">
@@ -179,10 +185,22 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VKGameObject3D.h">
+    <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Common\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

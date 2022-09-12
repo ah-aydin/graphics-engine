@@ -30,11 +30,18 @@ struct VulkanPipelineConfigInfo {
 class VulkanPipeline
 {
 public:
+	enum RenderDimention
+	{
+		RENDER3D, RENDER2D
+	};
+
 	VulkanPipeline(
 		VulkanDevice& device,
 		const std::string& vertFilepath,
 		const std::string& fragFilepath,
-		const VulkanPipelineConfigInfo& configInfo);
+		const VulkanPipelineConfigInfo& configInfo,
+		RenderDimention renderDimention = RenderDimention::RENDER3D
+	);
 	~VulkanPipeline();
 
 	VulkanPipeline(const VulkanPipeline&) = delete;
@@ -53,6 +60,8 @@ private:
 	VkPipeline m_graphicsPipeline;
 	VkShaderModule m_vertShaderModule;
 	VkShaderModule m_fragShaderModule;
+
+	RenderDimention m_renderDimention;
 };
 
 #endif

@@ -13,8 +13,6 @@
 #include <vector>
 #include <memory>
 
-#include "Rendering/VKModel.h"
-
 class VKApplication : public Application
 {
 public:

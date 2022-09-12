@@ -1,4 +1,4 @@
-#include "BasicRenderSystem.h"
+#include "BasicRenderSystem2D.h"
 
 #ifdef GRAPHICS_API_VULKAN
 
@@ -20,19 +20,19 @@ struct SimplePushConstantData
 	alignas(16) glm::vec3 color;
 };
 
-BasicRenderSystem::BasicRenderSystem(VulkanDevice &device, VkRenderPass renderPass)
+BasicRenderSystem2D::BasicRenderSystem2D(VulkanDevice &device, VkRenderPass renderPass)
 	: m_vulkanDevice(device)
 {
 	createPipelineLayout();
 	createPipeline(renderPass);
 }
 
-BasicRenderSystem::~BasicRenderSystem()
+BasicRenderSystem2D::~BasicRenderSystem2D()
 {
 	vkDestroyPipelineLayout(m_vulkanDevice.device(), m_pipelineLayout, nullptr);
 }
 
-void BasicRenderSystem::createPipelineLayout()
+void BasicRenderSystem2D::createPipelineLayout()
 {
 	VkPushConstantRange pushConstantRange{};
 	pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
@@ -49,7 +49,7 @@ void BasicRenderSystem::createPipelineLayout()
 	VK_CALL(vkCreatePipelineLayout(m_vulkanDevice.device(), &createInfo, nullptr, &m_pipelineLayout));
 }
 
-void BasicRenderSystem::createPipeline(VkRenderPass renderPass)
+void BasicRenderSystem2D::createPipeline(VkRenderPass renderPass)
 {
 	assert(m_pipelineLayout != nullptr && "A pipeline layout should be given to create pipeline");
 
@@ -62,11 +62,12 @@ void BasicRenderSystem::createPipeline(VkRenderPass renderPass)
 		m_vulkanDevice,
 		"res/vulkan/basic/shader.vert.spv",
 		"res/vulkan/basic/shader.frag.spv",
-		pipelineConfig
+		pipelineConfig,
+		VulkanPipeline::RENDER2D
 		);
 }
 
-void BasicRenderSystem::renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects)
+void BasicRenderSystem2D::renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects)
 {
 	m_vulkanPipeline->bind(commandBuffer);
 

@@ -11,14 +11,14 @@
 #include <vector>
 #include <memory>
 
-class BasicRenderSystem
+class BasicRenderSystem2D
 {
 public:
-	BasicRenderSystem(VulkanDevice &device, VkRenderPass renderPass);
-	~BasicRenderSystem();
+	BasicRenderSystem2D(VulkanDevice &device, VkRenderPass renderPass);
+	~BasicRenderSystem2D();
 
-	BasicRenderSystem(const BasicRenderSystem&) = delete;
-	BasicRenderSystem& operator=(const BasicRenderSystem) = delete;
+	BasicRenderSystem2D(const BasicRenderSystem2D&) = delete;
+	BasicRenderSystem2D& operator=(const BasicRenderSystem2D) = delete;
 
 	void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects);
 private:
