@@ -7,6 +7,7 @@
 #include <Engine/vkApi/VkObjects/VulkanDevice.h>
 #include <Engine/vkApi/VkObjects/VulkanPipeline.h>
 #include <Engine/vkApi/GameObject/VKGameObject2D.h>
+#include <Engine/vkApi/GameObject/VKGameObject3D.h>
 #include <Engine/vkApi/Rendering/RenderDimention.h>
 
 #include <vector>
@@ -27,8 +28,10 @@ public:
 	BasicRenderSystem(const BasicRenderSystem&) = delete;
 	BasicRenderSystem& operator=(const BasicRenderSystem) = delete;
 
-	void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects);
+	void renderGameObjects2D(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects);
+	void renderGameObjects3D(VkCommandBuffer commandBuffer, std::vector<VKGameObject3D>& gameObjects);
 private:
+	RenderDimention m_renderDimention;
 
 	VulkanDevice &m_vulkanDevice;
 

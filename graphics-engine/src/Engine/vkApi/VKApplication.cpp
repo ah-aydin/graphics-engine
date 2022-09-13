@@ -39,6 +39,14 @@ void VKApplication::run()
 		RENDER2D 
 	};
 
+	BasicRenderSystem renderSystem3D{
+		m_vulkanDevice,
+		m_vulkanRenderer.getSwapchainRenderPass(),
+		"res/vulkan/basic/shader.vert3D.spv",
+		"res/vulkan/basic/shader.frag3D.spv",
+		RENDER3D
+	};
+
 	while (!m_window.shouldClose())
 	{
 		if (Input::getAction("QUIT"))
@@ -49,7 +57,8 @@ void VKApplication::run()
 		if (auto commandBuffer = m_vulkanRenderer.beginFrame())
 		{
 			m_vulkanRenderer.beginSwapchainRenderPass(commandBuffer);
-			renderSystem2D.renderGameObjects(commandBuffer, m_gameObjects);
+			renderSystem2D.renderGameObjects2D(commandBuffer, m_gameObjects2D);
+			renderSystem3D.renderGameObjects3D(commandBuffer, m_gameObjects3D);
 			m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
 			m_vulkanRenderer.endFrame(commandBuffer);
 		}
@@ -82,6 +91,64 @@ void sierpinski(std::vector<Vertex2D> &verticies, int depth, glm::vec2 left, glm
 	sierpinski(verticies, depth - 1, newLeft, newRight, center);
 }
 
+std::unique_ptr<VKModel3D> createCubeModel(VulkanDevice& device, glm::vec3 offset) {
+	std::vector<Vertex3D> vertices{
+
+		// left face (white)
+		{{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+		{{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+		{{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
+		{{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+		{{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
+		{{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+
+		// right face (yellow)
+		{{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+		{{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+		{{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
+		{{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+		{{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
+		{{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+
+		// top face (orange, remember y axis points down)
+		{{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+		{{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+		{{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+		{{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+		{{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+		{{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+
+		// bottom face (red)
+		{{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+		{{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+		{{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
+		{{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+		{{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+		{{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+
+		// nose face (blue)
+		{{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+		{{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+		{{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+		{{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+		{{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+		{{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+
+		// tail face (green)
+		{{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+		{{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+		{{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+		{{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+		{{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+		{{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+
+	};
+	for (auto& v : vertices) {
+		v.position += offset;
+	}
+	return std::make_unique<VKModel3D>(device, vertices);
+}
+
 void VKApplication::loadGameObjects()
 {
 	std::vector<Vertex2D> verticiesSierpinski{};
@@ -98,7 +165,14 @@ void VKApplication::loadGameObjects()
 	triangle.m_transform.scale = { 2.f, 0.75f };
 	triangle.m_transform.rotation = glm::radians(90.f);
 
-	m_gameObjects.push_back(std::move(triangle));
+	m_gameObjects2D.push_back(std::move(triangle));
+
+	std::shared_ptr<VKModel3D> cubeModel = createCubeModel(m_vulkanDevice, { 0, 0, 0 });
+	auto cube = VKGameObject3D::createGameObject();
+	cube.m_model = cubeModel;
+	cube.m_transform.translation = { 0, 0, .5f };
+	cube.m_transform.scale = { .5f, .5f, .5f };
+	m_gameObjects3D.push_back(std::move(cube));
 }
 
 #endif

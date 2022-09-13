@@ -9,6 +9,7 @@
 #include "VkObjects/VulkanDevice.h"
 #include "Rendering/VulkanRenderer.h"
 #include "GameObject/VKGameObject2D.h"
+#include "GameObject/VKGameObject3D.h"
 
 #include <vector>
 #include <memory>
@@ -28,7 +29,8 @@ private:
 	VulkanRenderer m_vulkanRenderer{ m_window, m_vulkanDevice };
 
 	void loadGameObjects();
-	std::vector<VKGameObject2D> m_gameObjects;
+	std::vector<VKGameObject2D> m_gameObjects2D;
+	std::vector<VKGameObject3D> m_gameObjects3D;
 };
 
 #endif

@@ -113,7 +113,6 @@ void VulkanPipeline::defaultPipelineConfigInfo(VulkanPipelineConfigInfo& configI
 	configInfo.dynamicStateInfo.dynamicStateCount = static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
 	configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
 	configInfo.dynamicStateInfo.flags = 0;
-	
 }
 
 std::vector<char> VulkanPipeline::readFile(const std::string& filepath)
