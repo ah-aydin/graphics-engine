@@ -57,7 +57,7 @@ void VKApplication::run()
 		if (auto commandBuffer = m_vulkanRenderer.beginFrame())
 		{
 			m_vulkanRenderer.beginSwapchainRenderPass(commandBuffer);
-			renderSystem2D.renderGameObjects2D(commandBuffer, m_gameObjects2D);
+			//renderSystem2D.renderGameObjects2D(commandBuffer, m_gameObjects2D);
 			renderSystem3D.renderGameObjects3D(commandBuffer, m_gameObjects3D);
 			m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
 			m_vulkanRenderer.endFrame(commandBuffer);
@@ -146,20 +146,53 @@ std::unique_ptr<VKModel3D> createCubeModel(VulkanDevice& device, glm::vec3 offse
 	for (auto& v : vertices) {
 		v.position += offset;
 	}
-	return std::make_unique<VKModel3D>(device, vertices);
+
+	// These will not work properly with culling on
+	// did not take into account the clockwise indexing
+	std::vector<unsigned int> indices = {
+		0, 1, 2,
+		3, 4, 5,
+
+		6,7,8,
+		9,10,11,
+
+		12,13,14,
+		15,16,17,
+
+		18,19,20,
+		21,22,23,
+
+		24,25,26,
+		27,28,29,
+
+		30,31,32,
+		33,34,35,
+	};
+
+	return std::make_unique<VKModel3D>(device, vertices, indices, INDEX_DRAW);
 }
 
 void VKApplication::loadGameObjects()
 {
 	std::vector<Vertex2D> verticiesSierpinski{};
 	sierpinski(verticiesSierpinski, 3, { -0.5f, 0.5f }, { 0.5f, 0.5f }, { 0.0f, -0.5f });
+	auto sierpinksiModel = std::make_shared<VKModel2D>(m_vulkanDevice, verticiesSierpinski);
+	auto sierpinksiGO = VKGameObject2D::createGameObject();
+	sierpinksiGO.m_model = sierpinksiModel;
+	sierpinksiGO.m_color = { 0, 1, 0 };
+	sierpinksiGO.m_transform.scale = { .5f, .5f };
+	m_gameObjects2D.push_back(std::move(sierpinksiGO));
+
 	std::vector<Vertex2D> verticiesTriangle {
 		{{ -0.5f, 0.5f }}, {{ 0.5f, 0.5f }}, {{ 0.0f, -0.5f }}
 	};
-	auto m_model = std::make_shared<VKModel2D>(m_vulkanDevice, verticiesTriangle);
+	std::vector<unsigned int> indicesTriangle{
+		0, 1, 2
+	};
+	auto triangleModel = std::make_shared<VKModel2D>(m_vulkanDevice, verticiesTriangle, indicesTriangle, INDEX_DRAW);
 
 	auto triangle = VKGameObject2D::createGameObject();
-	triangle.m_model = m_model;
+	triangle.m_model = triangleModel;
 	triangle.m_color = { 1, 0, 0 };
 	triangle.m_transform.translation.x = 0.2f;
 	triangle.m_transform.scale = { 2.f, 0.75f };

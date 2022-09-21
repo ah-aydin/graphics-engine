@@ -7,8 +7,13 @@
 
 #include <cassert>
 
-VKModel3D::VKModel3D(VulkanDevice& vulkanDevice, const std::vector<Vertex3D>& verticies)
-	: VKModel<Vertex3D>::VKModel(vulkanDevice, verticies) {}
+VKModel3D::VKModel3D(
+	VulkanDevice& vulkanDevice,
+	const std::vector<Vertex3D>& verticies,
+	const std::vector<unsigned int>& indices,
+	DrawMode drawMode
+)
+	: VKModel<Vertex3D>::VKModel(vulkanDevice, verticies, indices, drawMode) {}
 
 VKModel3D::~VKModel3D()
 {

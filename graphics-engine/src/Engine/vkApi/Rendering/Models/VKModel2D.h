@@ -17,7 +17,12 @@ class VKModel2D : public VKModel<Vertex2D>
 {
 public:
 
-	VKModel2D(VulkanDevice& vulkanDevice, const std::vector<Vertex2D>& verticies);
+	VKModel2D(
+		VulkanDevice& vulkanDevice,
+		const std::vector<Vertex2D>& verticies,
+		const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
+		DrawMode drawMode = VERTEX_DRAW
+	);
 	~VKModel2D();
 
 	VKModel2D(const VKModel2D &) = delete;
