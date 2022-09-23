@@ -165,6 +165,8 @@
     <ClCompile Include="src\Engine\Settings.cpp" />
     <ClCompile Include="src\Engine\Utils\Bitmap.cpp" />
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp" />
+    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Cube.cpp" />
+    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Triangles.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp" />
@@ -197,6 +199,8 @@
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Settings.h" />
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
+    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Cubes.h" />
+    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Triangles.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h" />

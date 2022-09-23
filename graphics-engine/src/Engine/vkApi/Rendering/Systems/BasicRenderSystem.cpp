@@ -24,8 +24,9 @@ struct SimplePushConstantData2D
 
 struct SimplePushConstantData3D
 {
-	glm::mat4 transform{ 1.0f };
-	alignas(16) glm::vec3 color;
+	alignas(16) glm::mat4 model{};
+	alignas(16) glm::mat4 view{};
+	alignas(16) glm::mat4 proj{};
 };
 
 BasicRenderSystem::BasicRenderSystem(
@@ -203,17 +204,19 @@ void BasicRenderSystem::renderGameObjects3D(
 		obj.m_transform.rotation.x = glm::mod(obj.m_transform.rotation.x + 700.f * (float) Time::getDeltaTime(), glm::two_pi<float>());
 
 		SimplePushConstantData3D push{};
-		push.color = obj.m_color;
-		push.transform = obj.m_transform.mat4();
+		push.model = obj.m_transform.mat4();
+		push.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		push.proj = glm::perspective(glm::radians(45.f), 16.f / 9.f, 0.1f, 100.f);
+		push.proj[1][1] *= -1;
 
-		/*vkCmdPushConstants(
+		vkCmdPushConstants(
 			commandBuffer,
 			m_pipelineLayout,
 			VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
 			0,
 			sizeof(SimplePushConstantData3D),
 			&push
-		);*/
+		);
 
 		UniformBufferObject3D ubo{};
 		ubo.model = obj.m_transform.mat4();

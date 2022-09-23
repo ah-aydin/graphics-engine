@@ -109,7 +109,6 @@ void VulkanRenderer::recreateSwapchain()
 
 void VulkanRenderer::beginFrame(
 	VkCommandBuffer& out_CommandBuffer,
-	VkBuffer& out_UniformBuffer,
 	VkDeviceMemory& out_UniformBufferMemory,
 	int& out_CurrentImageIndex
 )
@@ -136,7 +135,6 @@ void VulkanRenderer::beginFrame(
 	VK_CALL(vkBeginCommandBuffer(commandBuffer, &beginInfo));
 
 	out_CommandBuffer = commandBuffer;
-	out_UniformBuffer = getCurrentUniformBuffer();
 	out_UniformBufferMemory = getCurrentUniformBufferMemory();
 }
 

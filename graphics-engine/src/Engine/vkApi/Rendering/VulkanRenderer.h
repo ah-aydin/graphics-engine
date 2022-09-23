@@ -30,12 +30,6 @@ public:
 		return m_commandBuffers[m_currentFrameIndex];
 	}
 
-	VkBuffer getCurrentUniformBuffer() const
-	{
-		assert(m_isFrameStarted && "Cannot get uniform buffer when frame not in progress");
-		return m_uniformBuffers[m_currentFrameIndex];
-	}
-
 	VkDeviceMemory getCurrentUniformBufferMemory() const
 	{
 		assert(m_isFrameStarted && "Cannot get uniform buffer memory when frame is not in progress");
@@ -57,7 +51,6 @@ public:
 
 	void beginFrame(
 		VkCommandBuffer& out_CommandBuffer,
-		VkBuffer& out_UniformBuffer,
 		VkDeviceMemory& out_UniformBufferMemory,
 		int& out_CurrentImageIndex
 	);

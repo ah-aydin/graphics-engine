@@ -102,6 +102,12 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Triangles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -210,6 +216,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Cubes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Triangles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
