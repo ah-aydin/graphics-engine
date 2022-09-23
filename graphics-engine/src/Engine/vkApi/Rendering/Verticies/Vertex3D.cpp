@@ -20,7 +20,6 @@ std::vector<VkVertexInputAttributeDescription> Vertex3D::getAttributeDescription
 	return {
 		// { location, binding, format, offset }
 		{ 0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex3D, position) },
-		{ 1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex3D, color) }
 	};
 }
 

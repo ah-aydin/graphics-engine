@@ -121,7 +121,7 @@ std::vector<char> VulkanPipeline::readFile(const std::string& filepath)
 
 	if (!file.is_open())
 	{
-		throw std::runtime_error("Failed to open file " + filepath);
+		log_error_exception("Failed to load file %s", filepath);
 	}
 
 	size_t size = static_cast<size_t>(file.tellg());

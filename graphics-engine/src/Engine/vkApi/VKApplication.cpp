@@ -31,24 +31,6 @@ VKApplication::~VKApplication()
 
 void VKApplication::run()
 {
-	BasicRenderSystem renderSystem2D{
-		m_vulkanDevice,
-		m_vulkanRenderer.getSwapchainRenderPass(),
-		"res/vulkan/basic/shader.vert2D.spv",
-		"res/vulkan/basic/shader.frag2D.spv",
-		m_vulkanRenderer.getUniformBuffers(),
-		RENDER2D 
-	};
-
-	BasicRenderSystem renderSystem3D {
-		m_vulkanDevice,
-		m_vulkanRenderer.getSwapchainRenderPass(),
-		"res/vulkan/basic/shader.vert3D.spv",
-		"res/vulkan/basic/shader.frag3D.spv",
-		m_vulkanRenderer.getUniformBuffers(),
-		RENDER3D
-	};
-
 	while (!m_window.shouldClose())
 	{
 		if (Input::getAction("QUIT"))
@@ -63,14 +45,14 @@ void VKApplication::run()
 		if (commandBuffer && uniformBufferMemory)
 		{
 			m_vulkanRenderer.beginSwapchainRenderPass(commandBuffer);
-			renderSystem2D.renderGameObjects2D(commandBuffer, m_gameObjects2D);
-			renderSystem3D.renderGameObjects3D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects3D);
+			m_vulkanRenderer.render2D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects2D);
+			m_vulkanRenderer.render3D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects3D);
 			m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
 			m_vulkanRenderer.endFrame(commandBuffer);
 		}
 		else
 		{
-			throw std::runtime_error("Failed to get the buffers from begin frame");
+			log_error_exception("Failed to get the buffers from begin frame");
 		}
 
 		glfwPollEvents();
@@ -78,6 +60,7 @@ void VKApplication::run()
 	}
 
 	vkDeviceWaitIdle(m_vulkanDevice.device());
+	m_vulkanRenderer.destroyRenderSystems();
 }
 
 #include "GameObject/Templates/Cubes.h"

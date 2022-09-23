@@ -17,6 +17,7 @@ VulkanRenderer::VulkanRenderer(VKWindow &window, VulkanDevice &device)
 	recreateSwapchain();
 	createCommandBuffers();
 	createUniformBuffers();
+	createRenderSystems();
 }
 
 VulkanRenderer::~VulkanRenderer()
@@ -67,6 +68,27 @@ void VulkanRenderer::createUniformBuffers()
 			m_uniformBuffersMemory[i]
 		);
 	}
+}
+
+void VulkanRenderer::createRenderSystems()
+{
+	m_renderSystem2D = new BasicRenderSystem(
+		m_vulkanDevice,
+		m_vulkanSwapchain->getRenderPass(),
+		"res/vulkan/basic/shader.vert2D.spv",
+		"res/vulkan/basic/shader.frag2D.spv",
+		m_uniformBuffers,
+		RENDER2D
+	);
+	
+	m_renderSystem3D = new BasicRenderSystem(
+		m_vulkanDevice,
+		m_vulkanSwapchain->getRenderPass(),
+		"res/vulkan/basic/shader.vert3D.spv",
+		"res/vulkan/basic/shader.frag3D.spv",
+		m_uniformBuffers,
+		RENDER3D
+	);
 }
 
 void VulkanRenderer::recreateSwapchain()

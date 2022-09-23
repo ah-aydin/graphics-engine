@@ -7,6 +7,7 @@
 #include <Engine/vkApi/VKWindow.h>
 #include <Engine/vkApi/VkObjects/VulkanDevice.h>
 #include <Engine/vkApi/VkObjects/VulkanSwapchain.h>
+#include "Systems/BasicRenderSystem.h"
 
 #include <vector>
 #include <memory>
@@ -58,6 +59,29 @@ public:
 	void beginSwapchainRenderPass(VkCommandBuffer commandBuffer);
 	void endSwapchainRenderPass(VkCommandBuffer commandBuffer);
 
+	void render2D(
+		VkCommandBuffer commandBuffer,
+		VkDeviceMemory uniformBufferMemory,
+		int currentImageIndex,
+		std::vector<VKGameObject2D>& gameObjects
+	) {
+		m_renderSystem2D->renderGameObjects2D(commandBuffer, gameObjects);
+	}
+	void render3D(
+		VkCommandBuffer commandBuffer,
+		VkDeviceMemory uniformBufferMemory,
+		int currentImageIndex,
+		std::vector<VKGameObject3D>&  gameObjects
+	) {
+		m_renderSystem3D->renderGameObjects3D(commandBuffer, uniformBufferMemory, currentImageIndex, gameObjects);
+	}
+
+	void destroyRenderSystems()
+	{
+		delete m_renderSystem2D;
+		delete m_renderSystem3D;
+	}
+
 private:
 
 	VKWindow& m_window;
@@ -77,6 +101,11 @@ private:
 	uint32_t m_currentImageIndex;
 	int m_currentFrameIndex;
 	bool m_isFrameStarted = false;
+
+	// Render systems
+	void createRenderSystems();
+	BasicRenderSystem* m_renderSystem2D;
+	BasicRenderSystem* m_renderSystem3D;
 };
 
 #endif
