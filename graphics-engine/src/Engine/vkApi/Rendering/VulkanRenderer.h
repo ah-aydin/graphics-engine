@@ -79,7 +79,7 @@ public:
 	void destroyRenderSystems()
 	{
 		delete m_renderSystem2D;
-		delete m_renderSystem3D;
+		delete m_renderSystem3D; 
 	}
 
 private:
