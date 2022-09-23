@@ -209,6 +209,9 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader.vert" />

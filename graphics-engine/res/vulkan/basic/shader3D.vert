@@ -10,7 +10,14 @@ layout (push_constant) uniform Push {
 	vec3 color;
 } push;
 
+layout (binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+} ubo;
+
 void main() {
     outColor = inColor;
-    gl_Position = push.transform * vec4(position, 1.0);
+    //gl_Position = push.transform * vec4(position, 1.0);
+	gl_Position = ubo.proj * ubo.view * ubo.model * vec4(position, 1.0);
 }

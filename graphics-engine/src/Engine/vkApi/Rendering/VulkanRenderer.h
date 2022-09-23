@@ -15,7 +15,7 @@
 class VulkanRenderer
 {
 public:
-	VulkanRenderer(VKWindow &window, VulkanDevice& device);
+	VulkanRenderer(VKWindow& window, VulkanDevice& device);
 	~VulkanRenderer();
 
 	VulkanRenderer(const VulkanRenderer&) = delete;
@@ -30,13 +30,37 @@ public:
 		return m_commandBuffers[m_currentFrameIndex];
 	}
 
+	VkBuffer getCurrentUniformBuffer() const
+	{
+		assert(m_isFrameStarted && "Cannot get uniform buffer when frame not in progress");
+		return m_uniformBuffers[m_currentFrameIndex];
+	}
+
+	VkDeviceMemory getCurrentUniformBufferMemory() const
+	{
+		assert(m_isFrameStarted && "Cannot get uniform buffer memory when frame is not in progress");
+		return m_uniformBuffersMemory[m_currentFrameIndex];
+	}
+
+	float getSwapchainAspectRatio()
+	{
+		return m_vulkanSwapchain->width() / (float)m_vulkanSwapchain->height();
+	}
+
 	int getFrameIndex() const
-	{ 
+	{
 		assert(m_isFrameStarted && "Cannot get frame index when frame not in progress");
 		return m_currentFrameIndex;
 	}
 
-	VkCommandBuffer beginFrame();
+	const std::vector<VkBuffer>& getUniformBuffers() const { return m_uniformBuffers; }
+
+	void beginFrame(
+		VkCommandBuffer& out_CommandBuffer,
+		VkBuffer& out_UniformBuffer,
+		VkDeviceMemory& out_UniformBufferMemory,
+		int& out_CurrentImageIndex
+	);
 	void endFrame(VkCommandBuffer commandBuffer);
 	void beginSwapchainRenderPass(VkCommandBuffer commandBuffer);
 	void endSwapchainRenderPass(VkCommandBuffer commandBuffer);
@@ -50,6 +74,10 @@ private:
 	void createCommandBuffers();
 	void freeCommandBuffers();
 	std::vector<VkCommandBuffer> m_commandBuffers;
+
+	void createUniformBuffers();
+	std::vector<VkBuffer> m_uniformBuffers;
+	std::vector<VkDeviceMemory> m_uniformBuffersMemory;
 
 	void recreateSwapchain();
 

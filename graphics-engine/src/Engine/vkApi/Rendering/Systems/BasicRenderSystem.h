@@ -21,6 +21,7 @@ public:
 		VkRenderPass renderPass,
 		std::string vertFilePath,
 		std::string fragFilePath,
+		const std::vector<VkBuffer>& uniformBuffers,
 		RenderDimention renderDimention = RenderDimention::RENDER3D
 	);
 	~BasicRenderSystem();
@@ -29,7 +30,13 @@ public:
 	BasicRenderSystem& operator=(const BasicRenderSystem) = delete;
 
 	void renderGameObjects2D(VkCommandBuffer commandBuffer, std::vector<VKGameObject2D> &gameObjects);
-	void renderGameObjects3D(VkCommandBuffer commandBuffer, std::vector<VKGameObject3D>& gameObjects);
+	void renderGameObjects3D(
+		VkCommandBuffer commandBuffer,
+		VkDeviceMemory uniformBufferMemory,
+		int currentImageIndex,
+		std::vector<VKGameObject3D>& gameObjects
+	);
+
 private:
 	RenderDimention m_renderDimention;
 
@@ -44,6 +51,13 @@ private:
 	);
 	std::unique_ptr<VulkanPipeline> m_vulkanPipeline;
 	VkPipelineLayout m_pipelineLayout;
+
+	VkDescriptorSetLayout m_descriptorSetLayout;
+	void createDescriptorPool();
+	VkDescriptorPool m_descriptorPool;
+
+	void createDescriptorSets(const std::vector<VkBuffer>& uniformBuffers);
+	std::vector<VkDescriptorSet> m_descriptorSets;
 };
 
 #endif

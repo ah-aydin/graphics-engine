@@ -199,6 +199,7 @@
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.h" />
     <ClInclude Include="src\Engine\vkApi\VKMacros.h" />

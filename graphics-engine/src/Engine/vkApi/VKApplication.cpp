@@ -36,14 +36,16 @@ void VKApplication::run()
 		m_vulkanRenderer.getSwapchainRenderPass(),
 		"res/vulkan/basic/shader.vert2D.spv",
 		"res/vulkan/basic/shader.frag2D.spv",
+		m_vulkanRenderer.getUniformBuffers(),
 		RENDER2D 
 	};
 
-	BasicRenderSystem renderSystem3D{
+	BasicRenderSystem renderSystem3D {
 		m_vulkanDevice,
 		m_vulkanRenderer.getSwapchainRenderPass(),
 		"res/vulkan/basic/shader.vert3D.spv",
 		"res/vulkan/basic/shader.frag3D.spv",
+		m_vulkanRenderer.getUniformBuffers(),
 		RENDER3D
 	};
 
@@ -53,14 +55,23 @@ void VKApplication::run()
 		{
 			m_window.setShouldClose(true);
 		}
-
-		if (auto commandBuffer = m_vulkanRenderer.beginFrame())
+		
+		VkCommandBuffer commandBuffer;
+		VkBuffer uniformBuffer;
+		VkDeviceMemory uniformBufferMemory;
+		int currentImageIndex;
+		m_vulkanRenderer.beginFrame(commandBuffer, uniformBuffer, uniformBufferMemory, currentImageIndex);
+		if (commandBuffer && uniformBuffer && uniformBufferMemory)
 		{
 			m_vulkanRenderer.beginSwapchainRenderPass(commandBuffer);
 			//renderSystem2D.renderGameObjects2D(commandBuffer, m_gameObjects2D);
-			renderSystem3D.renderGameObjects3D(commandBuffer, m_gameObjects3D);
+			renderSystem3D.renderGameObjects3D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects3D);
 			m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
 			m_vulkanRenderer.endFrame(commandBuffer);
+		}
+		else
+		{
+			throw std::runtime_error("Failed to get the buffers from begin frame");
 		}
 
 		glfwPollEvents();

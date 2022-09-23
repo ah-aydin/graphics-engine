@@ -3,6 +3,7 @@
 #ifdef GRAPHICS_API_VULKAN
 
 #include <Engine/vkApi/VKMacros.h>
+#include "UniformBufferObjects/UniformBufferObject3D.h"
 
 #include <stdexcept>
 
@@ -15,10 +16,18 @@ VulkanRenderer::VulkanRenderer(VKWindow &window, VulkanDevice &device)
 {
 	recreateSwapchain();
 	createCommandBuffers();
+	createUniformBuffers();
 }
 
 VulkanRenderer::~VulkanRenderer()
 {
+	// Free uniform buffers
+	for (size_t i = 0; i < VulkanSwapchain::MAX_FRAMES_IN_FLIGHT; ++i)
+	{
+		vkDestroyBuffer(m_vulkanDevice.device(), m_uniformBuffers[i], nullptr);
+		vkFreeMemory(m_vulkanDevice.device(), m_uniformBuffersMemory[i], nullptr);
+	}
+
 	freeCommandBuffers();
 }
 
@@ -39,6 +48,25 @@ void VulkanRenderer::freeCommandBuffers()
 {
 	vkFreeCommandBuffers(m_vulkanDevice.device(), m_vulkanDevice.getCommandPool(), static_cast<uint32_t>(m_commandBuffers.size()), m_commandBuffers.data());
 	m_commandBuffers.clear();
+}
+
+void VulkanRenderer::createUniformBuffers()
+{
+	VkDeviceSize bufferSize = sizeof(UniformBufferObject3D);
+
+	m_uniformBuffers.resize(VulkanSwapchain::MAX_FRAMES_IN_FLIGHT);
+	m_uniformBuffersMemory.resize(VulkanSwapchain::MAX_FRAMES_IN_FLIGHT);
+
+	for (size_t i = 0; i < VulkanSwapchain::MAX_FRAMES_IN_FLIGHT; ++i)
+	{
+		m_vulkanDevice.createBuffer(
+			bufferSize,
+			VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+			VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+			m_uniformBuffers[i],
+			m_uniformBuffersMemory[i]
+		);
+	}
 }
 
 void VulkanRenderer::recreateSwapchain()
@@ -79,15 +107,21 @@ void VulkanRenderer::recreateSwapchain()
 	log_info("Done!");
 }
 
-VkCommandBuffer VulkanRenderer::beginFrame()
+void VulkanRenderer::beginFrame(
+	VkCommandBuffer& out_CommandBuffer,
+	VkBuffer& out_UniformBuffer,
+	VkDeviceMemory& out_UniformBufferMemory,
+	int& out_CurrentImageIndex
+)
 {
 	assert(!m_isFrameStarted && "Cannot begin frame while another frame is in progress");
 	
 	auto result = m_vulkanSwapchain->acquireNextImage(&m_currentImageIndex);
+	out_CurrentImageIndex = m_currentFrameIndex;
 	if (result == VK_ERROR_OUT_OF_DATE_KHR)
 	{
 		recreateSwapchain();
-		return nullptr;
+		return;
 	}
 	else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR)
 	{
@@ -101,7 +135,9 @@ VkCommandBuffer VulkanRenderer::beginFrame()
 	beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 	VK_CALL(vkBeginCommandBuffer(commandBuffer, &beginInfo));
 
-	return commandBuffer;
+	out_CommandBuffer = commandBuffer;
+	out_UniformBuffer = getCurrentUniformBuffer();
+	out_UniformBufferMemory = getCurrentUniformBufferMemory();
 }
 
 void VulkanRenderer::endFrame(VkCommandBuffer commandBuffer)
