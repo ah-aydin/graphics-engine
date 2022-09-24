@@ -94,6 +94,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\graphics-engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,6 +109,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\graphics-engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\graphics-engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\graphics-engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,8 +169,10 @@
     <ClCompile Include="src\Engine\Settings.cpp" />
     <ClCompile Include="src\Engine\Utils\Bitmap.cpp" />
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp" />
-    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Cube.cpp" />
-    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Triangles.cpp" />
+    <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Cube.cpp" />
+    <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Triangle.cpp" />
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Cube.cpp" />
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp" />
@@ -199,8 +205,10 @@
     <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Settings.h" />
     <ClInclude Include="src\Engine\Utils\Cubemap.h" />
-    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Cubes.h" />
-    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Triangles.h" />
+    <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Cube.h" />
+    <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Triangle.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Cubes.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h" />
@@ -227,6 +235,10 @@
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />
     <None Include="res\cubemap\shader.frag" />
     <None Include="res\cubemap\shader.vert" />
+    <None Include="res\opengl\shader2D.frag" />
+    <None Include="res\opengl\shader2D.vert" />
+    <None Include="res\opengl\shader3D.frag" />
+    <None Include="res\opengl\shader3D.vert" />
     <None Include="res\rubber_duck\scene.bin" />
     <None Include="res\rubber_duck\scene.gltf" />
     <None Include="res\rubber_duck\shaders\cubemap.frag" />
@@ -238,6 +250,8 @@
     <None Include="res\shader.vert" />
     <None Include="res\vulkan\basic\shader2D.frag" />
     <None Include="res\vulkan\basic\shader2D.vert" />
+    <None Include="res\vulkan\basic\shader3D.frag" />
+    <None Include="res\vulkan\basic\shader3D.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png" />

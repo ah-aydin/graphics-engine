@@ -12,7 +12,7 @@
 
 class VulkanDevice;
 
-namespace goModels::cubes
+namespace models::primitives::cubes
 {
 	std::shared_ptr<VKModel3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset);
 }

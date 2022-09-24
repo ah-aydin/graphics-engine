@@ -75,8 +75,8 @@ void VulkanRenderer::createRenderSystems()
 	m_renderSystem2D = new BasicRenderSystem(
 		m_vulkanDevice,
 		m_vulkanSwapchain->getRenderPass(),
-		"res/vulkan/basic/shader.vert2D.spv",
-		"res/vulkan/basic/shader.frag2D.spv",
+		"res/vulkan/basic/bin/shader.vert2D.spv",
+		"res/vulkan/basic/bin/shader.frag2D.spv",
 		m_uniformBuffers,
 		RENDER2D
 	);
@@ -84,8 +84,8 @@ void VulkanRenderer::createRenderSystems()
 	m_renderSystem3D = new BasicRenderSystem(
 		m_vulkanDevice,
 		m_vulkanSwapchain->getRenderPass(),
-		"res/vulkan/basic/shader.vert3D.spv",
-		"res/vulkan/basic/shader.frag3D.spv",
+		"res/vulkan/basic/bin/shader.vert3D.spv",
+		"res/vulkan/basic/bin/shader.frag3D.spv",
 		m_uniformBuffers,
 		RENDER3D
 	);

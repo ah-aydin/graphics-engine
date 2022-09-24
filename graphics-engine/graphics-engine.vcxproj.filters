@@ -102,10 +102,16 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Cube.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\GameObject\Templates\Triangles.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -218,10 +224,16 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\UniformBufferObjects\UniformBufferObject3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Cubes.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Cubes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\GameObject\Templates\Triangles.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -242,6 +254,12 @@
     <None Include="res\rubber_duck\shaders\cubemap.frag" />
     <None Include="res\vulkan\basic\shader2D.vert" />
     <None Include="res\vulkan\basic\shader2D.frag" />
+    <None Include="res\vulkan\basic\shader3D.frag" />
+    <None Include="res\vulkan\basic\shader3D.vert" />
+    <None Include="res\opengl\shader2D.frag" />
+    <None Include="res\opengl\shader2D.vert" />
+    <None Include="res\opengl\shader3D.frag" />
+    <None Include="res\opengl\shader3D.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\rubber_duck\textures\Duck_baseColor.png">

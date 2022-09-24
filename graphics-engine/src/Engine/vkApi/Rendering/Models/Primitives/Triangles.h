@@ -8,7 +8,7 @@
 
 class VulkanDevice;
 
-namespace goModels::triangles
+namespace models::primitives::triangles
 {
 	std::unique_ptr<VKModel2D> triangle2D(VulkanDevice& vulkanDevice);
 	std::unique_ptr<VKModel2D> triangleSierpinski2D(VulkanDevice& vulkanDevice);

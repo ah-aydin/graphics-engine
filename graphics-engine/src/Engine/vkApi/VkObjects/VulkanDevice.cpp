@@ -148,7 +148,6 @@ void VulkanDevice::pickPhysicalDevice()
         VkPhysicalDeviceProperties properties;
         vkGetPhysicalDeviceProperties(gpu, &properties);
 
-
         VkPhysicalDeviceFeatures features;
         vkGetPhysicalDeviceFeatures(gpu, &features);
 
@@ -160,7 +159,11 @@ void VulkanDevice::pickPhysicalDevice()
 
         if (score == 0) continue;
         candidates.insert(std::make_pair(score, gpu));
-        log_info("\t%s: %d ", properties.deviceName, score);
+
+        log_info("\t%s: %d (Score)", properties.deviceName, score);
+        log_info("\t\tIs discrete: %d", (properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU));
+        log_info("\t\tPush constant size: %d", properties.limits.maxPushConstantsSize);
+        log_info("\t\tMax image dimension 2D: %d", properties.limits.maxImageDimension2D);
     }
 
     if (candidates.size() == 0)

@@ -63,33 +63,27 @@ void VKApplication::run()
 	m_vulkanRenderer.destroyRenderSystems();
 }
 
-#include "GameObject/Templates/Cubes.h"
-#include "GameObject/Templates/Triangles.h"
+#include "GameObject/Primitives/Cube.h"
+#include "GameObject/Primitives/Triangle.h"
 void VKApplication::loadGameObjects()
 {
-	std::shared_ptr<VKModel2D> sierpinksiModel = goModels::triangles::triangleSierpinski2D(m_vulkanDevice);
-	auto sierpinksiGO = VKGameObject2D::createGameObject();
-	sierpinksiGO.m_model = sierpinksiModel;
-	sierpinksiGO.m_color = { 0, 1, 0 };
-	sierpinksiGO.m_transform.scale = { .5f, .5f };
-	m_gameObjects2D.push_back(std::move(sierpinksiGO));
+	m_gameObjects2D.push_back(
+		std::move(
+			gameObject::primitives::triangles::triangleSierpinski2D(m_vulkanDevice)
+		)
+	);
 
-	std::shared_ptr<VKModel2D> triangleModel = goModels::triangles::triangle2D(m_vulkanDevice);
-	auto triangle = VKGameObject2D::createGameObject();
-	triangle.m_model = triangleModel;
-	triangle.m_color = { 1, 0, 0 };
-	triangle.m_transform.translation.x = 0.2f;
-	triangle.m_transform.scale = { 2.f, 0.75f };
-	triangle.m_transform.rotation = glm::radians(90.f);
+	m_gameObjects2D.push_back(
+		std::move(
+			gameObject::primitives::triangles::triangle2D(m_vulkanDevice)
+		)
+	);
 
-	m_gameObjects2D.push_back(std::move(triangle));
-
-	std::shared_ptr<VKModel3D> cubeModel = goModels::cubes::createPosV3ColorV3(m_vulkanDevice, { 0, 0, 0 });
-	auto cube = VKGameObject3D::createGameObject();
-	cube.m_model = cubeModel;
-	cube.m_transform.translation = { 0, 0, .5f };
-	cube.m_transform.scale = { .5f, .5f, .5f };
-	m_gameObjects3D.push_back(std::move(cube));
+	m_gameObjects3D.push_back(
+		std::move(
+			gameObject::primitives::cubes::cube3D(m_vulkanDevice)
+		)
+	);
 }
 
 #endif

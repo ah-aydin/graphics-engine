@@ -23,7 +23,7 @@ void sierpinski(std::vector<Vertex2D> &verticies, int depth, glm::vec2 left, glm
 	sierpinski(verticies, depth - 1, newLeft, newRight, center);
 }
 
-namespace goModels::triangles
+namespace models::primitives::triangles
 {
 	std::unique_ptr<VKModel2D> triangle2D(VulkanDevice& vulkanDevice)
 	{
