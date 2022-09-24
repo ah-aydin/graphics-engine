@@ -4,8 +4,8 @@
 
 #include "VKModel.h"
 
-#include <Engine/vkApi/VkObjects/VulkanDevice.h>
-#include <Engine/vkApi/Rendering/Verticies/Vertex2D.h>
+#include <Engine/vkApi/VulkanDevice.h>
+#include <Engine/vkApi/Rendering/Vertex/Vertex2D.h>
 
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
@@ -13,23 +13,25 @@
 
 #include <vector>
 
-class VKModel2D : public VKModel<Vertex2D>
+namespace vkApi::rendering::models
 {
-public:
+	class VKModel2D : public VKModel<vertex::Vertex2D>
+	{
+	public:
 
-	VKModel2D(
-		VulkanDevice& vulkanDevice,
-		const std::vector<Vertex2D>& verticies,
-		const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
-		DrawMode drawMode = VERTEX_DRAW
-	);
-	~VKModel2D();
+		VKModel2D(
+			VulkanDevice& vulkanDevice,
+			const std::vector<vertex::Vertex2D>& verticies,
+			const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
+			DrawMode drawMode = VERTEX_DRAW
+		);
+		~VKModel2D();
 
-	VKModel2D(const VKModel2D &) = delete;
-	VKModel2D &operator=(const VKModel2D &) = delete;
+		VKModel2D(const VKModel2D &) = delete;
+		VKModel2D &operator=(const VKModel2D &) = delete;
 
-	void bind(VkCommandBuffer commandBuffer);
-	void draw(VkCommandBuffer commandBuffer);
-};
-
+		void bind(VkCommandBuffer commandBuffer);
+		void draw(VkCommandBuffer commandBuffer);
+	};
+}
 #endif

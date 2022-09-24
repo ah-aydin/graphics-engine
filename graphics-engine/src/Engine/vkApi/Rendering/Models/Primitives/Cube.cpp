@@ -4,8 +4,10 @@
 
 #include <memory>
 
-namespace models::primitives::cubes
+namespace vkApi::rendering::models::primitives::cubes
 {	
+	using vertex::Vertex3D;
+
 	std::shared_ptr<VKModel3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset)
 	{
 		std::vector<Vertex3D> vertices

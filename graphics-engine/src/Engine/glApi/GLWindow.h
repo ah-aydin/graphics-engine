@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-#include <Engine/Common/Window.h>
+#include <Engine/Window.h>
 
 class GLWindow : public Window
 {

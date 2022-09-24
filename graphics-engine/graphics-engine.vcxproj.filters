@@ -39,7 +39,7 @@
     <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Common\Level.cpp">
+    <ClCompile Include="src\Engine\Level\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\glApi\Levels\LevelRenderTriangle.cpp">
@@ -54,13 +54,13 @@
     <ClCompile Include="src\Engine\Utils\Cubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Common\Application.cpp">
+    <ClCompile Include="src\Engine\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\glApi\GLApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Common\Window.cpp">
+    <ClCompile Include="src\Engine\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\glApi\GLWindow.cpp">
@@ -75,13 +75,13 @@
     <ClCompile Include="src\Engine\vkApi\VKWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanDevice.cpp">
+    <ClCompile Include="src\Engine\vkApi\VulkanDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\VulkanSwapchain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\VkObjects\VulkanPipeline.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\VulkanPipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel2D.cpp">
@@ -96,10 +96,10 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Vertex\Vertex2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Vertex\Vertex3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Cube.cpp">
@@ -137,7 +137,7 @@
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Common\Level.h">
+    <ClInclude Include="src\Engine\Level\Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\glApi\Levels\LevelRenderTirangle.h">
@@ -155,13 +155,13 @@
     <ClInclude Include="src\Engine\vkFramework\Rendering\Shaders\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Common\Application.h">
+    <ClInclude Include="src\Engine\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\glApi\GLApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Common\Window.h">
+    <ClInclude Include="src\Engine\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\glApi\GLWindow.h">
@@ -179,13 +179,13 @@
     <ClInclude Include="src\Engine\vkApi\VKMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanDevice.h">
+    <ClInclude Include="src\Engine\vkApi\VulkanDevice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanSwapchain.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\VulkanSwapchain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\VkObjects\VulkanPipeline.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\VulkanPipeline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel2D.h">
@@ -203,7 +203,7 @@
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Common\GameObject.h">
+    <ClInclude Include="src\Engine\GameObject\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel3D.h">
@@ -212,10 +212,10 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex2D.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Vertex\Vertex2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Verticies\Vertex3D.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Vertex\Vertex3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\RenderDimention.h">
@@ -234,6 +234,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\PushConstants\PushConstant3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\vkApi\Rendering\PushConstants\PushConstant2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\GameObject\Transforms\Transform2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\GameObject\Transforms\Transform3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

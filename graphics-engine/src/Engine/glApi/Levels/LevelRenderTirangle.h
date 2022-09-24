@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include <Engine/Common/Level.h>
+#include <Engine/Level/Level.h>
 
 #include <Engine/glApi/Rendering/Shaders/GLShader.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>

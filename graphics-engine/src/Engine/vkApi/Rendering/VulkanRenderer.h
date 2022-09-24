@@ -5,107 +5,112 @@
 #define VK_NO_PROTOTYPES
 
 #include <Engine/vkApi/VKWindow.h>
-#include <Engine/vkApi/VkObjects/VulkanDevice.h>
-#include <Engine/vkApi/VkObjects/VulkanSwapchain.h>
+#include "VulkanPipeline.h"
+#include "VulkanSwapchain.h"
 #include "Systems/BasicRenderSystem.h"
 
 #include <vector>
 #include <memory>
 #include <cassert>
 
-class VulkanRenderer
+namespace vkApi::rendering
 {
-public:
-	VulkanRenderer(VKWindow& window, VulkanDevice& device);
-	~VulkanRenderer();
+	using gameObject::VKGameObject2D;
+	using gameObject::VKGameObject3D;
 
-	VulkanRenderer(const VulkanRenderer&) = delete;
-	VulkanRenderer& operator=(const VulkanRenderer) = delete;
-
-	VkRenderPass getSwapchainRenderPass() const { return m_vulkanSwapchain->getRenderPass(); }
-	bool isFrameInProgress() const { return m_isFrameStarted; }
-
-	VkCommandBuffer getCurrentCommandBuffer() const
+	class VulkanRenderer
 	{
-		assert(m_isFrameStarted && "Cannot get command buffer when frame not in progress");
-		return m_commandBuffers[m_currentFrameIndex];
-	}
+	public:
+		VulkanRenderer(VKWindow& window, VulkanDevice& device);
+		~VulkanRenderer();
 
-	VkDeviceMemory getCurrentUniformBufferMemory() const
-	{
-		assert(m_isFrameStarted && "Cannot get uniform buffer memory when frame is not in progress");
-		return m_uniformBuffersMemory[m_currentFrameIndex];
-	}
+		VulkanRenderer(const VulkanRenderer&) = delete;
+		VulkanRenderer& operator=(const VulkanRenderer) = delete;
 
-	float getSwapchainAspectRatio()
-	{
-		return m_vulkanSwapchain->width() / (float)m_vulkanSwapchain->height();
-	}
+		VkRenderPass getSwapchainRenderPass() const { return m_vulkanSwapchain->getRenderPass(); }
+		bool isFrameInProgress() const { return m_isFrameStarted; }
 
-	int getFrameIndex() const
-	{
-		assert(m_isFrameStarted && "Cannot get frame index when frame not in progress");
-		return m_currentFrameIndex;
-	}
+		VkCommandBuffer getCurrentCommandBuffer() const
+		{
+			assert(m_isFrameStarted && "Cannot get command buffer when frame not in progress");
+			return m_commandBuffers[m_currentFrameIndex];
+		}
 
-	const std::vector<VkBuffer>& getUniformBuffers() const { return m_uniformBuffers; }
+		VkDeviceMemory getCurrentUniformBufferMemory() const
+		{
+			assert(m_isFrameStarted && "Cannot get uniform buffer memory when frame is not in progress");
+			return m_uniformBuffersMemory[m_currentFrameIndex];
+		}
 
-	void beginFrame(
-		VkCommandBuffer& out_CommandBuffer,
-		VkDeviceMemory& out_UniformBufferMemory,
-		int& out_CurrentImageIndex
-	);
-	void endFrame(VkCommandBuffer commandBuffer);
-	void beginSwapchainRenderPass(VkCommandBuffer commandBuffer);
-	void endSwapchainRenderPass(VkCommandBuffer commandBuffer);
+		float getSwapchainAspectRatio()
+		{
+			return m_vulkanSwapchain->width() / (float)m_vulkanSwapchain->height();
+		}
 
-	void render2D(
-		VkCommandBuffer commandBuffer,
-		VkDeviceMemory uniformBufferMemory,
-		int currentImageIndex,
-		std::vector<VKGameObject2D>& gameObjects
-	) {
-		m_renderSystem2D->renderGameObjects2D(commandBuffer, gameObjects);
-	}
-	void render3D(
-		VkCommandBuffer commandBuffer,
-		VkDeviceMemory uniformBufferMemory,
-		int currentImageIndex,
-		std::vector<VKGameObject3D>&  gameObjects
-	) {
-		m_renderSystem3D->renderGameObjects3D(commandBuffer, uniformBufferMemory, currentImageIndex, gameObjects);
-	}
+		int getFrameIndex() const
+		{
+			assert(m_isFrameStarted && "Cannot get frame index when frame not in progress");
+			return m_currentFrameIndex;
+		}
 
-	void destroyRenderSystems()
-	{
-		delete m_renderSystem2D;
-		delete m_renderSystem3D; 
-	}
+		const std::vector<VkBuffer>& getUniformBuffers() const { return m_uniformBuffers; }
 
-private:
+		void beginFrame(
+			VkCommandBuffer& out_CommandBuffer,
+			VkDeviceMemory& out_UniformBufferMemory,
+			int& out_CurrentImageIndex
+		);
+		void endFrame(VkCommandBuffer commandBuffer);
+		void beginSwapchainRenderPass(VkCommandBuffer commandBuffer);
+		void endSwapchainRenderPass(VkCommandBuffer commandBuffer);
 
-	VKWindow& m_window;
-	VulkanDevice& m_vulkanDevice;
-	std::unique_ptr<VulkanSwapchain> m_vulkanSwapchain;
+		void render2D(
+			VkCommandBuffer commandBuffer,
+			VkDeviceMemory uniformBufferMemory,
+			int currentImageIndex,
+			std::vector<VKGameObject2D>& gameObjects
+		) {
+			m_renderSystem2D->renderGameObjects2D(commandBuffer, gameObjects);
+		}
+		void render3D(
+			VkCommandBuffer commandBuffer,
+			VkDeviceMemory uniformBufferMemory,
+			int currentImageIndex,
+			std::vector<VKGameObject3D>& gameObjects
+		) {
+			m_renderSystem3D->renderGameObjects3D(commandBuffer, uniformBufferMemory, currentImageIndex, gameObjects);
+		}
 
-	void createCommandBuffers();
-	void freeCommandBuffers();
-	std::vector<VkCommandBuffer> m_commandBuffers;
+		void destroyRenderSystems()
+		{
+			delete m_renderSystem2D;
+			delete m_renderSystem3D;
+		}
 
-	void createUniformBuffers();
-	std::vector<VkBuffer> m_uniformBuffers;
-	std::vector<VkDeviceMemory> m_uniformBuffersMemory;
+	private:
 
-	void recreateSwapchain();
+		VKWindow& m_window;
+		VulkanDevice& m_vulkanDevice;
+		std::unique_ptr<VulkanSwapchain> m_vulkanSwapchain;
 
-	uint32_t m_currentImageIndex;
-	int m_currentFrameIndex;
-	bool m_isFrameStarted = false;
+		void createCommandBuffers();
+		void freeCommandBuffers();
+		std::vector<VkCommandBuffer> m_commandBuffers;
 
-	// Render systems
-	void createRenderSystems();
-	BasicRenderSystem* m_renderSystem2D;
-	BasicRenderSystem* m_renderSystem3D;
-};
+		void createUniformBuffers();
+		std::vector<VkBuffer> m_uniformBuffers;
+		std::vector<VkDeviceMemory> m_uniformBuffersMemory;
 
+		void recreateSwapchain();
+
+		uint32_t m_currentImageIndex;
+		int m_currentFrameIndex;
+		bool m_isFrameStarted = false;
+
+		// Render systems
+		void createRenderSystems();
+		systems::BasicRenderSystem* m_renderSystem2D;
+		systems::BasicRenderSystem* m_renderSystem3D;
+	};
+}
 #endif

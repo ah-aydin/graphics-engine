@@ -2,7 +2,7 @@
 
 #ifdef GRAPHICS_API_OPENGL
 
-#include <Engine/Common/Application.h>
+#include <Engine/Application.h>
 
 #include "GLWindow.h"
 

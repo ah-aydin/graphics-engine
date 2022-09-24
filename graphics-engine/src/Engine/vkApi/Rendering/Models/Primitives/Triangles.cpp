@@ -5,7 +5,7 @@
 glm::vec3 leftColor = { 1, 0, 0 };
 glm::vec3 rightColor = { 0, 1, 0 };
 glm::vec3 centerColor = { 0, 0, 1 };
-void sierpinski(std::vector<Vertex2D> &verticies, int depth, glm::vec2 left, glm::vec2 right, glm::vec2 center)
+void sierpinski(std::vector<vkApi::rendering::vertex::Vertex2D> &verticies, int depth, glm::vec2 left, glm::vec2 right, glm::vec2 center)
 {
 	if (depth <= 0)
 	{
@@ -23,8 +23,10 @@ void sierpinski(std::vector<Vertex2D> &verticies, int depth, glm::vec2 left, glm
 	sierpinski(verticies, depth - 1, newLeft, newRight, center);
 }
 
-namespace models::primitives::triangles
+namespace vkApi::rendering::models::primitives::triangles
 {
+	using vertex::Vertex2D;
+	
 	std::unique_ptr<VKModel2D> triangle2D(VulkanDevice& vulkanDevice)
 	{
 		std::vector<Vertex2D> verticiesTriangle{

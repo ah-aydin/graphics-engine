@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 #ifdef GRAPHICS_API_OPENGL
 	GLApplication app;
 #elif GRAPHICS_API_VULKAN
-    VKApplication app;
+    vkApi::VKApplication app;
 #endif
     try
     {
