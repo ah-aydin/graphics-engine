@@ -4,7 +4,7 @@
 
 #include <Engine/vkApi/Rendering/Models/Primitives/Triangles.h>
 
-namespace vkApi::gameObject::primitives::triangles
+namespace kbb::vkApi::gameObject::primitives::triangles
 {	
 	VKGameObject2D triangleSierpinski2D(VulkanDevice& vulkanDevice)
 	{

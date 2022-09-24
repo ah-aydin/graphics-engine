@@ -60,7 +60,7 @@ void DestroyDebugUtilsMessengerEXT(
     }
 }
 
-namespace vkApi
+namespace kbb::vkApi
 {
     // class member functions
     VulkanDevice::VulkanDevice(VKWindow& window) : m_window{ window }

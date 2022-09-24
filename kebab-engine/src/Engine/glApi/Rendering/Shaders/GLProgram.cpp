@@ -18,7 +18,7 @@ void printProgramInfoLog(GLuint handle)
 	}
 }
 
-namespace glApi::rendering::shaders
+namespace kbb::glApi::rendering::shaders
 {
 	GLProgram::GLProgram(const GLShader& s1)
 		: m_handle(glCreateProgram())

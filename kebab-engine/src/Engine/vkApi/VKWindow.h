@@ -5,7 +5,7 @@
 #define GLFW_INCLUDE_VULKAN
 #include <Engine/Window.h>
 
-namespace vkApi
+namespace kbb::vkApi
 {
 	class VKWindow : public Window
 	{

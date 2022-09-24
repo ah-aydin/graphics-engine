@@ -2,11 +2,14 @@
 
 #include <Logging/Log.h>
 
-Application::Application()
+namespace kbb
 {
-	log_reset();
-}
+	Application::Application()
+	{
+		log_reset();
+	}
 
-Application::~Application()
-{
+	Application::~Application()
+	{
+	}
 }

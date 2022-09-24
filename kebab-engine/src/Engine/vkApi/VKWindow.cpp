@@ -7,7 +7,7 @@
 
 #include "VKMacros.h"
 
-namespace vkApi
+namespace kbb::vkApi
 {
     void VKWindow::window_resize_callback(GLFWwindow* window, int width, int height)
     {

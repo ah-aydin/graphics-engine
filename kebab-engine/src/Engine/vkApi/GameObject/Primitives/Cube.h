@@ -6,7 +6,7 @@
 
 class VulkanDevice;
 
-namespace vkApi::gameObject::primitives::cubes
+namespace kbb::vkApi::gameObject::primitives::cubes
 {
 	VKGameObject3D cube3D(VulkanDevice& vulkanDevice);
 }

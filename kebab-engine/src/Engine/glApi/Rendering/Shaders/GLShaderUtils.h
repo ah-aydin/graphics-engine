@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-namespace glApi::rendering::shaders
+namespace kbb::glApi::rendering::shaders
 {
 	GLenum GLShaderTypeFromFileName(const char* fileName);
 }

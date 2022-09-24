@@ -6,7 +6,7 @@
 
 #include "GLWindow.h"
 
-namespace glApi
+namespace kbb::glApi
 {
 	class GLApplication : public Application
 	{

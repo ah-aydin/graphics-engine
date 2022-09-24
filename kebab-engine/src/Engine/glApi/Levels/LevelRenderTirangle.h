@@ -9,7 +9,7 @@
 #include <Engine/glApi/Rendering/Shaders/GLShader.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>
 
-namespace glApi::levels
+namespace kbb::glApi::levels
 {
 	using rendering::shaders::GLShader;
 	using rendering::shaders::GLProgram;

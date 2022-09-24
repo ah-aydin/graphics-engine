@@ -20,7 +20,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace vkApi::rendering::systems
+namespace kbb::vkApi::rendering::systems
 {
 	BasicRenderSystem::BasicRenderSystem(
 		VulkanDevice& device,

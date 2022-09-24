@@ -13,7 +13,7 @@
 #include <vector>
 #include <memory>
 
-namespace vkApi::rendering::systems
+namespace kbb::vkApi::rendering::systems
 {
 	using gameObject::VKGameObject2D;
 	using gameObject::VKGameObject3D;

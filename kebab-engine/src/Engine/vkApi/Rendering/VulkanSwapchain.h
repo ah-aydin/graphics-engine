@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace vkApi::rendering
+namespace kbb::vkApi::rendering
 {
     class VulkanSwapchain
     {

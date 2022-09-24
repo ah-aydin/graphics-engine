@@ -13,7 +13,7 @@
 #include <memory>
 #include <cassert>
 
-namespace vkApi::rendering
+namespace kbb::vkApi::rendering
 {
 	using gameObject::VKGameObject2D;
 	using gameObject::VKGameObject3D;

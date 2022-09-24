@@ -13,7 +13,7 @@
 
 #include <vector>
 
-namespace vkApi::rendering::models
+namespace kbb::vkApi::rendering::models
 {
 	class VKModel3D : public VKModel<vertex::Vertex3D>
 	{

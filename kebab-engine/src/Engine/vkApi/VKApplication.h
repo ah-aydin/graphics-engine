@@ -14,7 +14,7 @@
 #include <vector>
 #include <memory>
 
-namespace vkApi
+namespace kbb::vkApi
 {
 	class VKApplication : public Application
 	{

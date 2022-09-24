@@ -11,7 +11,7 @@
 
 #include <vector>
 
-namespace vkApi::rendering::vertex
+namespace kbb::vkApi::rendering::vertex
 {
 	struct Vertex3D
 	{

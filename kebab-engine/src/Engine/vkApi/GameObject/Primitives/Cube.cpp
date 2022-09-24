@@ -4,7 +4,7 @@
 
 #include <Engine/vkApi/Rendering/Models/Primitives/Cubes.h>
 
-namespace vkApi::gameObject::primitives::cubes
+namespace kbb::vkApi::gameObject::primitives::cubes
 {
 	using namespace vkApi::rendering::models::primitives::cubes;
 	

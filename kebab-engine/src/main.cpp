@@ -14,9 +14,9 @@
 int main(int argc, char** argv)
 {
 #ifdef GRAPHICS_API_OPENGL
-	glApi::GLApplication app;
+	kbb::glApi::GLApplication app;
 #elif GRAPHICS_API_VULKAN
-    vkApi::VKApplication app;
+    kbb::vkApi::VKApplication app;
 #endif
     try
     {

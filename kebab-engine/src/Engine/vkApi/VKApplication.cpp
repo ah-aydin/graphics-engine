@@ -10,7 +10,7 @@
 #include "GameObject/Primitives/Cube.h"
 #include "GameObject/Primitives/Triangle.h"
 
-namespace vkApi
+namespace kbb::vkApi
 {
 	VKApplication::VKApplication() : Application()
 	{

@@ -9,7 +9,7 @@
 
 #include "GLShaderUtils.h"
 
-namespace glApi::rendering::shaders
+namespace kbb::glApi::rendering::shaders
 {
 	GLShader::GLShader(const char* fileName)
 		: GLShader(GLShaderTypeFromFileName(fileName),

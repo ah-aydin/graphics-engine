@@ -2,5 +2,8 @@
 
 #include "Bitmap.h"
 
-Bitmap convertEquirectangularMapToVerticalCross(const Bitmap& b);
-Bitmap convertVerticalCrossToCubeMapFaces(const Bitmap& b);
+namespace kbb
+{
+	Bitmap convertEquirectangularMapToVerticalCross(const Bitmap& b);
+	Bitmap convertVerticalCrossToCubeMapFaces(const Bitmap& b);
+}

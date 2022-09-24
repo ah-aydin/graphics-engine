@@ -4,7 +4,7 @@
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm/glm.hpp>
 
-namespace vkApi::rendering::ubo
+namespace kbb::vkApi::rendering::ubo
 {
 	struct UniformBufferObject3D
 	{

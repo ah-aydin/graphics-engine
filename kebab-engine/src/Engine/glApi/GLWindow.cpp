@@ -5,7 +5,7 @@
 #include <Engine/Settings.h>
 #include <Logging/Log.h>
 
-namespace glApi
+namespace kbb::glApi
 {
     void GLWindow::window_size_callback(GLFWwindow* window, int width, int height)
     {

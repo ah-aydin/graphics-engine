@@ -36,7 +36,7 @@ struct PerFrameData
 
 const GLsizeiptr kUniformBufferSize = sizeof(PerFrameData);
 
-namespace glApi::levels
+namespace kbb::glApi::levels
 {
 	LevelCubemap::LevelCubemap()
 	{

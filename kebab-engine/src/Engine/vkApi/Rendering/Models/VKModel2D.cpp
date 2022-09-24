@@ -7,7 +7,7 @@
 
 #include <cassert>
 
-namespace vkApi::rendering::models
+namespace kbb::vkApi::rendering::models
 {
 	VKModel2D::VKModel2D(
 		VulkanDevice& vulkanDevice,

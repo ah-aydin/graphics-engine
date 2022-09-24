@@ -13,33 +13,35 @@
 #define WINDOW_SIZE 1280, 720
 #endif
 
-class Window
+namespace kbb
 {
-public:
-	inline bool shouldClose() { return glfwWindowShouldClose(m_window); }
-	inline void setShouldClose(bool val) { glfwSetWindowShouldClose(m_window, val); }
+	class Window
+	{
+	public:
+		inline bool shouldClose() { return glfwWindowShouldClose(m_window); }
+		inline void setShouldClose(bool val) { glfwSetWindowShouldClose(m_window, val); }
 
-protected:
-	Window(std::string title);
-	virtual ~Window();
+	protected:
+		Window(std::string title);
+		virtual ~Window();
 
-	Window(const Window&) = delete;
-	Window& operator=(const Window&) = delete;
+		Window(const Window&) = delete;
+		Window& operator=(const Window&) = delete;
 
-protected:
-	std::string m_title;
+	protected:
+		std::string m_title;
 
-	GLFWwindow* m_window = nullptr;
-	int m_width = 800;
-	int m_height = 600;
+		GLFWwindow* m_window = nullptr;
+		int m_width = 800;
+		int m_height = 600;
 
-	void setCallbacks();
+		void setCallbacks();
 
-private:
-	// Callbacks
-	static void error_callback(int error, const char* description);
-	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-    static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
-    static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
-};
-
+	private:
+		// Callbacks
+		static void error_callback(int error, const char* description);
+		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+		static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
+		static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+	};
+}

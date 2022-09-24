@@ -12,7 +12,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace vkApi::rendering
+namespace kbb::vkApi::rendering
 {
 	VulkanRenderer::VulkanRenderer(VKWindow& window, VulkanDevice& device)
 		: m_window(window), m_vulkanDevice(device)

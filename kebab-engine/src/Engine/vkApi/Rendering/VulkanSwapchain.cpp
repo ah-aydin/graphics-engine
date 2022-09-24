@@ -16,7 +16,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace vkApi::rendering
+namespace kbb::vkApi::rendering
 {
     VulkanSwapchain::VulkanSwapchain(VulkanDevice& deviceRef, VkExtent2D extent)
         : m_device{ deviceRef }, m_windowExtent{ extent }

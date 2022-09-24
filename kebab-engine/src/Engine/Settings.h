@@ -1,7 +1,10 @@
 #pragma once
 
-class Settings
+namespace kbb
 {
-public:
-	static float ratio;
-};
+	class Settings
+	{
+	public:
+		static float ratio;
+	};
+}

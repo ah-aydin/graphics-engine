@@ -4,7 +4,7 @@
 
 #include <memory>
 
-namespace vkApi::rendering::models::primitives::cubes
+namespace kbb::vkApi::rendering::models::primitives::cubes
 {	
 	using vertex::Vertex3D;
 

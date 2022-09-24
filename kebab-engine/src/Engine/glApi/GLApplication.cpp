@@ -12,7 +12,7 @@
 #include "Levels/LevelRenderTirangle.h"
 #include "Levels/LevelCubemap.h"
 
-namespace glApi
+namespace kbb::glApi
 {
 	GLApplication::GLApplication() : Application()
 	{

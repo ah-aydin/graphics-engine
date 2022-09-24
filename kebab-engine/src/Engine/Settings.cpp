@@ -1,3 +1,6 @@
 #include "Settings.h"
 
-float Settings::ratio = 0;
+namespace kbb
+{
+	float Settings::ratio = 0;
+}

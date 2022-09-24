@@ -14,7 +14,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace vkApi::rendering
+namespace kbb::vkApi::rendering
 {
 	VulkanPipelineConfigInfo::VulkanPipelineConfigInfo()
 		: viewportInfo({}), inputAssemblyInfo({}), rasterizationInfo({}),

@@ -11,7 +11,7 @@
 
 #include <memory>
 
-namespace vkApi::gameObject
+namespace kbb::vkApi::gameObject
 {
     using rendering::models::VKModel3D;
 
