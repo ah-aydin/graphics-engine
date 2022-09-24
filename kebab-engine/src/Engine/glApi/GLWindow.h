@@ -6,16 +6,18 @@
 
 #include <Engine/Window.h>
 
-class GLWindow : public Window
+namespace glApi
 {
-public:
-	GLWindow(std::string title);
-	~GLWindow();
+	class GLWindow : public Window
+	{
+	public:
+		GLWindow(std::string title);
+		~GLWindow();
 
-	inline void swapBuffer() { glfwSwapBuffers(m_window); }
+		inline void swapBuffer() { glfwSwapBuffers(m_window); }
 
-private:
-	static void window_size_callback(GLFWwindow* window, int width, int height);
-};
-
+	private:
+		static void window_size_callback(GLFWwindow* window, int width, int height);
+	};
+}
 #endif

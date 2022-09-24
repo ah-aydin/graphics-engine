@@ -9,19 +9,24 @@
 #include <Engine/glApi/Rendering/Shaders/GLShader.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>
 
-class LevelRenderTriangle : public Level
+namespace glApi::levels
 {
-public:
-	LevelRenderTriangle();
-	void update(double dt) override;
-	~LevelRenderTriangle();
+	using rendering::shaders::GLShader;
+	using rendering::shaders::GLProgram;
 
-private:
-	GLShader* shaderVertex;
-	GLShader* shaderFragment;
-	GLProgram* program;
+	class LevelRenderTriangle : public Level
+	{
+	public:
+		LevelRenderTriangle();
+		void update(double dt) override;
+		~LevelRenderTriangle();
 
-	GLuint vao = 0;
-};
+	private:
+		GLShader* shaderVertex;
+		GLShader* shaderFragment;
+		GLProgram* program;
 
+		GLuint vao = 0;
+	};
+}
 #endif

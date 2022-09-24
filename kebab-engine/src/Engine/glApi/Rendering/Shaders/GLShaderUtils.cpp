@@ -6,18 +6,21 @@
 
 #include <Common/Utils/fileUtils.h>
 
-GLenum GLShaderTypeFromFileName(const char* fileName)
+namespace glApi::rendering::shaders
 {
-	if (endsWith(fileName, ".vert")) return GL_VERTEX_SHADER;
-	if (endsWith(fileName, ".frag")) return GL_FRAGMENT_SHADER;
-	if (endsWith(fileName, ".geom")) return GL_GEOMETRY_SHADER;
-	if (endsWith(fileName, ".tesc")) return GL_TESS_CONTROL_SHADER;
-	if (endsWith(fileName, ".tese")) return GL_TESS_EVALUATION_SHADER;
-	if (endsWith(fileName, ".comp")) return GL_COMPUTE_SHADER;
+	GLenum GLShaderTypeFromFileName(const char* fileName)
+	{
+		if (endsWith(fileName, ".vert")) return GL_VERTEX_SHADER;
+		if (endsWith(fileName, ".frag")) return GL_FRAGMENT_SHADER;
+		if (endsWith(fileName, ".geom")) return GL_GEOMETRY_SHADER;
+		if (endsWith(fileName, ".tesc")) return GL_TESS_CONTROL_SHADER;
+		if (endsWith(fileName, ".tese")) return GL_TESS_EVALUATION_SHADER;
+		if (endsWith(fileName, ".comp")) return GL_COMPUTE_SHADER;
 
-	assert(false);
+		assert(false);
 
-	return 0;
+		return 0;
+	}
 }
 
 #endif

@@ -8,20 +8,25 @@
 
 #include <vector>
 
-class LevelCubemap : public Level
+namespace glApi::levels
 {
-public:
-	LevelCubemap();
-	void update(double dt) override;
-	~LevelCubemap();
-private:
-	GLuint vao = 0, dataVertices = 0, dataIndices = 0, txDuck = 0, perFrameDataBuffer = 0, txCubemap = 0;
+	using rendering::shaders::GLShader;
+	using rendering::shaders::GLProgram;
 
-	GLShader* shaderDuckVert, *shaderDuckGeom, *shaderDuckFrag;
-	GLShader* shaderCubeVert, *shaderCubeFrag;
-	GLProgram* programDuck, *programCube;;
+	class LevelCubemap : public Level
+	{
+	public:
+		LevelCubemap();
+		void update(double dt) override;
+		~LevelCubemap();
+	private:
+		GLuint vao = 0, dataVertices = 0, dataIndices = 0, txDuck = 0, perFrameDataBuffer = 0, txCubemap = 0;
 
-	std::vector<unsigned int> indices;
-};
+		GLShader* shaderDuckVert = nullptr, * shaderDuckGeom = nullptr, * shaderDuckFrag = nullptr;
+		GLShader* shaderCubeVert = nullptr, * shaderCubeFrag = nullptr;
+		GLProgram* programDuck = nullptr, * programCube = nullptr;
 
+		std::vector<unsigned int> indices;
+	};
+}
 #endif
