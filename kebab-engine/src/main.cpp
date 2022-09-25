@@ -24,7 +24,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-        log_error("%s", e.what());
+        kbb::log_error("%s", e.what());
         return EXIT_FAILURE;
     }
 

@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-namespace kbb::glApi::rendering::shaders
+namespace kbb::glApi
 {
 	class GLShader
 	{

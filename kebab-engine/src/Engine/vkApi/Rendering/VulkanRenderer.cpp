@@ -12,7 +12,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace kbb::vkApi::rendering
+namespace kbb::vkApi
 {
 	VulkanRenderer::VulkanRenderer(VKWindow& window, VulkanDevice& device)
 		: m_window(window), m_vulkanDevice(device)
@@ -56,7 +56,7 @@ namespace kbb::vkApi::rendering
 
 	void VulkanRenderer::createUniformBuffers()
 	{
-		VkDeviceSize bufferSize = sizeof(ubo::UniformBufferObject3D);
+		VkDeviceSize bufferSize = sizeof(UniformBufferObject3D);
 
 		m_uniformBuffers.resize(VulkanSwapchain::MAX_FRAMES_IN_FLIGHT);
 		m_uniformBuffersMemory.resize(VulkanSwapchain::MAX_FRAMES_IN_FLIGHT);
@@ -75,7 +75,7 @@ namespace kbb::vkApi::rendering
 
 	void VulkanRenderer::createRenderSystems()
 	{
-		m_renderSystem2D = new systems::BasicRenderSystem(
+		m_renderSystem2D = new BasicRenderSystem(
 			m_vulkanDevice,
 			m_vulkanSwapchain->getRenderPass(),
 			"res/vulkan/basic/bin/shader.vert2D.spv",
@@ -84,7 +84,7 @@ namespace kbb::vkApi::rendering
 			RENDER2D
 		);
 
-		m_renderSystem3D = new systems::BasicRenderSystem(
+		m_renderSystem3D = new BasicRenderSystem(
 			m_vulkanDevice,
 			m_vulkanSwapchain->getRenderPass(),
 			"res/vulkan/basic/bin/shader.vert3D.spv",

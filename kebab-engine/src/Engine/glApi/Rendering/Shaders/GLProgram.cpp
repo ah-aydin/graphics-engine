@@ -6,20 +6,21 @@
 
 #include <Logging/Log.h>
 
-void printProgramInfoLog(GLuint handle)
-{
-	char buffer[8192];
-	GLsizei length = 0;
-	glGetProgramInfoLog(handle, sizeof(buffer), &length, buffer);
-	if (length)
-	{
-		log_error("ERROR::SHADER_PROGRAM::LINKING::%s\n", buffer);
-		assert(false);
-	}
-}
 
-namespace kbb::glApi::rendering::shaders
+namespace kbb::glApi
 {
+	void printProgramInfoLog(GLuint handle)
+	{
+		char buffer[8192];
+		GLsizei length = 0;
+		glGetProgramInfoLog(handle, sizeof(buffer), &length, buffer);
+		if (length)
+		{
+			log_error("ERROR::SHADER_PROGRAM::LINKING::%s\n", buffer);
+			assert(false);
+		}
+	}
+
 	GLProgram::GLProgram(const GLShader& s1)
 		: m_handle(glCreateProgram())
 	{

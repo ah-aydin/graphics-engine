@@ -4,13 +4,11 @@
 
 #include <Engine/vkApi/Rendering/Models/Primitives/Cubes.h>
 
-namespace kbb::vkApi::gameObject::primitives::cubes
+namespace kbb::vkApi::primitives::gameObjects
 {
-	using namespace vkApi::rendering::models::primitives::cubes;
-	
 	VKGameObject3D cube3D(VulkanDevice& vulkanDevice)
 	{
-		std::shared_ptr<VKModel3D> cubeModel = vkApi::rendering::models::primitives::cubes::createPosV3ColorV3(vulkanDevice, { 0, 0, 0 });
+		std::shared_ptr<VKModel3D> cubeModel = models::createPosV3ColorV3(vulkanDevice, { 0, 0, 0 });
 
 		auto cube = VKGameObject3D::createGameObject();
 		cube.m_model = cubeModel;

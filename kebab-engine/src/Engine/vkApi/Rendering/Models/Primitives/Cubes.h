@@ -12,7 +12,7 @@
 
 class VulkanDevice;
 
-namespace kbb::vkApi::rendering::models::primitives::cubes
+namespace kbb::vkApi::primitives::models
 {
 	std::shared_ptr<VKModel3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset);
 }

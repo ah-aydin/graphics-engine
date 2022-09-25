@@ -11,11 +11,11 @@
 
 #include <vector>
 
-namespace kbb::vkApi::rendering::vertex
+namespace kbb::vkApi
 {
 	struct Vertex3D
 	{
-		glm::vec3 position;
+		glm::vec3 position{};
 
 		static std::vector<VkVertexInputBindingDescription> getBindingDescriptions();
 		static std::vector<VkVertexInputAttributeDescription> getAttributeDescriptions();

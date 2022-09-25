@@ -14,7 +14,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace kbb::vkApi::rendering
+namespace kbb::vkApi
 {
 	VulkanPipelineConfigInfo::VulkanPipelineConfigInfo()
 		: viewportInfo({}), inputAssemblyInfo({}), rasterizationInfo({}),
@@ -174,13 +174,13 @@ namespace kbb::vkApi::rendering
 		std::vector<VkVertexInputBindingDescription> bindingDescriptions;
 		if (m_renderDimention == RENDER2D)
 		{
-			attributeDescriptions = vertex::Vertex2D::getAttributeDescriptions();
-			bindingDescriptions = vertex::Vertex2D::getBindingDescriptions();
+			attributeDescriptions = Vertex2D::getAttributeDescriptions();
+			bindingDescriptions = Vertex2D::getBindingDescriptions();
 		}
 		else if (m_renderDimention == RENDER3D)
 		{
-			attributeDescriptions = vertex::Vertex3D::getAttributeDescriptions();
-			bindingDescriptions = vertex::Vertex3D::getBindingDescriptions();
+			attributeDescriptions = Vertex3D::getAttributeDescriptions();
+			bindingDescriptions = Vertex3D::getBindingDescriptions();
 		}
 
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};

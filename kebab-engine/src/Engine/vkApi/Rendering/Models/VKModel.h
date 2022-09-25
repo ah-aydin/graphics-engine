@@ -10,7 +10,7 @@
 #include <cassert>
 #include <vector>
 
-namespace kbb::vkApi::rendering::models
+namespace kbb::vkApi
 {
 	enum DrawMode {
 		VERTEX_DRAW, INDEX_DRAW

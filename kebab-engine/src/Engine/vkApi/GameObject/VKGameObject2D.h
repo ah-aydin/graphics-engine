@@ -9,10 +9,8 @@
 
 #include <memory>
 
-namespace kbb::vkApi::gameObject
+namespace kbb::vkApi
 {
-	using rendering::models::VKModel2D;
-
 	class VKGameObject2D : public GameObject
 	{
 		friend class GameObject;

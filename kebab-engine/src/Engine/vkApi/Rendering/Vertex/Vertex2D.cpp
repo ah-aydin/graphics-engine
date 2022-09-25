@@ -4,7 +4,7 @@
 
 #include <cassert>
 
-namespace kbb::vkApi::rendering::vertex
+namespace kbb::vkApi
 {
 	std::vector<VkVertexInputBindingDescription> Vertex2D::getBindingDescriptions()
 	{

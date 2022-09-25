@@ -20,7 +20,7 @@
 #define VK_NO_PROTOTYPES
 #include <volk.h>
 
-namespace kbb::vkApi::rendering::systems
+namespace kbb::vkApi
 {
 	BasicRenderSystem::BasicRenderSystem(
 		VulkanDevice& device,
@@ -51,8 +51,8 @@ namespace kbb::vkApi::rendering::systems
 		VkPushConstantRange pushConstantRange{};
 		pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
 		pushConstantRange.offset = 0;
-		if (m_renderDimention == RENDER2D)		pushConstantRange.size = sizeof(pushConstants::PushConstant2D);
-		else if (m_renderDimention == RENDER3D) pushConstantRange.size = sizeof(pushConstants::PushConstant3D);
+		if (m_renderDimention == RENDER2D)		pushConstantRange.size = sizeof(PushConstant2D);
+		else if (m_renderDimention == RENDER3D) pushConstantRange.size = sizeof(PushConstant3D);
 
 		// Uniform buffers
 		VkDescriptorSetLayoutBinding uboLayoutBinding{};
@@ -138,7 +138,7 @@ namespace kbb::vkApi::rendering::systems
 			VkDescriptorBufferInfo bufferInfo{};
 			bufferInfo.buffer = uniformBuffers[i];
 			bufferInfo.offset = 0;
-			bufferInfo.range = sizeof(ubo::UniformBufferObject3D);
+			bufferInfo.range = sizeof(UniformBufferObject3D);
 
 			VkWriteDescriptorSet descriptorWrite{};
 			descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -163,7 +163,7 @@ namespace kbb::vkApi::rendering::systems
 		{
 			obj.m_transform.rotation += 1000.f * (float)Time::getDeltaTime();
 
-			pushConstants::PushConstant2D push{};
+			PushConstant2D push{};
 			push.offset = obj.m_transform.translation;
 			push.color = obj.m_color;
 			push.transform = obj.m_transform.mat2();
@@ -173,7 +173,7 @@ namespace kbb::vkApi::rendering::systems
 				m_pipelineLayout,
 				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
 				0,
-				sizeof(pushConstants::PushConstant2D),
+				sizeof(PushConstant2D),
 				&push
 			);
 			obj.m_model->bind(commandBuffer);
@@ -195,7 +195,7 @@ namespace kbb::vkApi::rendering::systems
 			obj.m_transform.rotation.y = glm::mod(obj.m_transform.rotation.y + 1000.f * (float)Time::getDeltaTime(), glm::two_pi<float>());
 			obj.m_transform.rotation.x = glm::mod(obj.m_transform.rotation.x + 700.f * (float)Time::getDeltaTime(), glm::two_pi<float>());
 
-			pushConstants::PushConstant3D push{};
+			PushConstant3D push{};
 			push.model = obj.m_transform.mat4();
 			push.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 			push.proj = glm::perspective(glm::radians(45.f), Settings::ratio, 0.1f, 100.f);
@@ -206,11 +206,11 @@ namespace kbb::vkApi::rendering::systems
 				m_pipelineLayout,
 				VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
 				0,
-				sizeof(pushConstants::PushConstant3D),
+				sizeof(PushConstant3D),
 				&push
 			);
 
-			ubo::UniformBufferObject3D ubo{};
+			UniformBufferObject3D ubo{};
 			ubo.model = obj.m_transform.mat4();
 			ubo.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 			ubo.proj = glm::perspective(glm::radians(45.f), 16.f / 9.f, 0.1f, 100.f);

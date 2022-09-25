@@ -3,7 +3,7 @@
 
 #ifdef GRAPHICS_API_OPENGL
 
-namespace kbb::glApi::rendering::shaders
+namespace kbb::glApi
 {
 	class GLProgram
 	{

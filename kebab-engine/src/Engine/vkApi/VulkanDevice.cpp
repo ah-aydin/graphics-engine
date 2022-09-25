@@ -24,10 +24,10 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
 {
     if (messageSeverity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT)
     {
-        log_error("Validation layer: %s", pCallbackData->pMessage);
+        kbb::log_error("Validation layer: %s", pCallbackData->pMessage);
         return VK_FALSE;
     }
-    log_info("Validation layer: %s", pCallbackData->pMessage);
+    kbb::log_info("Validation layer: %s", pCallbackData->pMessage);
     return VK_SUCCESS;
 }
 

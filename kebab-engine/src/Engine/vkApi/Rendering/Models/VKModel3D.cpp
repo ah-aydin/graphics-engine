@@ -7,15 +7,15 @@
 
 #include <cassert>
 
-namespace kbb::vkApi::rendering::models
+namespace kbb::vkApi
 {
 	VKModel3D::VKModel3D(
 		VulkanDevice& vulkanDevice,
-		const std::vector<vertex::Vertex3D>& verticies,
+		const std::vector<Vertex3D>& verticies,
 		const std::vector<unsigned int>& indices,
 		DrawMode drawMode
 	)
-		: VKModel<vertex::Vertex3D>::VKModel(vulkanDevice, verticies, indices, drawMode) {}
+		: VKModel<Vertex3D>::VKModel(vulkanDevice, verticies, indices, drawMode) {}
 
 	VKModel3D::~VKModel3D()
 	{
@@ -23,12 +23,12 @@ namespace kbb::vkApi::rendering::models
 
 	void VKModel3D::bind(VkCommandBuffer commandBuffer)
 	{
-		VKModel<vertex::Vertex3D>::bind(commandBuffer);
+		VKModel<Vertex3D>::bind(commandBuffer);
 	}
 
 	void VKModel3D::draw(VkCommandBuffer commandBuffer)
 	{
-		VKModel<vertex::Vertex3D>::draw(commandBuffer);
+		VKModel<Vertex3D>::draw(commandBuffer);
 	}
 }
 #endif

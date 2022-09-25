@@ -9,11 +9,8 @@
 #include <Engine/glApi/Rendering/Shaders/GLShader.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>
 
-namespace kbb::glApi::levels
+namespace kbb::glApi
 {
-	using rendering::shaders::GLShader;
-	using rendering::shaders::GLProgram;
-
 	class LevelRenderTriangle : public Level
 	{
 	public:

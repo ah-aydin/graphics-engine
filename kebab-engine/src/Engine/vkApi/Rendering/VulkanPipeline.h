@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace kbb::vkApi::rendering
+namespace kbb::vkApi
 {
 	struct VulkanPipelineConfigInfo {
 		VulkanPipelineConfigInfo();

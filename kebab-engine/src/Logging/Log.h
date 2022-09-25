@@ -7,7 +7,11 @@
 #define GL_LOG_FILE "vk.log"
 #define FILE_START "Vulkan log file\n"
 #endif
-void log_reset();
-void log_info(const char* message, ...);
-void log_error(const char* message, ...);
-void log_error_exception(const char* message, ...);
+
+namespace kbb
+{
+	void log_reset();
+	void log_info(const char* message, ...);
+	void log_error(const char* message, ...);
+	void log_error_exception(const char* message, ...);
+}

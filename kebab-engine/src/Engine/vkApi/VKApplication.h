@@ -28,11 +28,11 @@ namespace kbb::vkApi
 
 		VKWindow m_window{ "Vulkan Application" };
 		VulkanDevice m_vulkanDevice{ m_window };
-		rendering::VulkanRenderer m_vulkanRenderer{ m_window, m_vulkanDevice };
+		VulkanRenderer m_vulkanRenderer{ m_window, m_vulkanDevice };
 
 		void loadGameObjects();
-		std::vector<gameObject::VKGameObject2D> m_gameObjects2D;
-		std::vector<gameObject::VKGameObject3D> m_gameObjects3D;
+		std::vector<VKGameObject2D> m_gameObjects2D;
+		std::vector<VKGameObject3D> m_gameObjects3D;
 	};
 }
 #endif

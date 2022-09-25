@@ -8,11 +8,8 @@
 
 #include <vector>
 
-namespace kbb::glApi::levels
+namespace kbb::glApi
 {
-	using rendering::shaders::GLShader;
-	using rendering::shaders::GLProgram;
-
 	class LevelCubemap : public Level
 	{
 	public:

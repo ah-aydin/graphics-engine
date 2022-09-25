@@ -2,7 +2,7 @@
 
 #ifdef GRAPHICS_API_OPENGL
 
-namespace kbb::glApi::levels
+namespace kbb::glApi
 {
 	LevelRenderTriangle::LevelRenderTriangle()
 	{

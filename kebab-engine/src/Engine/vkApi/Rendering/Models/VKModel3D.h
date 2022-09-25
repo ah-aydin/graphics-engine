@@ -13,15 +13,15 @@
 
 #include <vector>
 
-namespace kbb::vkApi::rendering::models
+namespace kbb::vkApi
 {
-	class VKModel3D : public VKModel<vertex::Vertex3D>
+	class VKModel3D : public VKModel<Vertex3D>
 	{
 	public:
 
 		VKModel3D(
 			VulkanDevice& vulkanDevice,
-			const std::vector<vertex::Vertex3D>& verticies,
+			const std::vector<Vertex3D>& verticies,
 			const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
 			DrawMode drawMode = VERTEX_DRAW
 		);

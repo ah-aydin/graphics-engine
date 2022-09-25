@@ -13,11 +13,8 @@
 #include <memory>
 #include <cassert>
 
-namespace kbb::vkApi::rendering
+namespace kbb::vkApi
 {
-	using gameObject::VKGameObject2D;
-	using gameObject::VKGameObject3D;
-
 	class VulkanRenderer
 	{
 	public:
@@ -109,8 +106,8 @@ namespace kbb::vkApi::rendering
 
 		// Render systems
 		void createRenderSystems();
-		systems::BasicRenderSystem* m_renderSystem2D;
-		systems::BasicRenderSystem* m_renderSystem3D;
+		BasicRenderSystem* m_renderSystem2D;
+		BasicRenderSystem* m_renderSystem3D;
 	};
 }
 #endif

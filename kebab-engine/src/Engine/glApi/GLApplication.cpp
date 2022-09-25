@@ -32,7 +32,7 @@ namespace kbb::glApi
 	void GLApplication::run()
 	{
 		int levelIndex = 1;
-		Level* level = new levels::LevelRenderTriangle();
+		Level* level = new LevelRenderTriangle();
 
 		while (!m_window.shouldClose())
 		{
@@ -43,11 +43,11 @@ namespace kbb::glApi
 
 			if (Input::getAction("LEVEL 1"))
 			{
-				if (levelIndex != 1) { delete level; level = new levels::LevelRenderTriangle(); levelIndex = 1; }
+				if (levelIndex != 1) { delete level; level = new LevelRenderTriangle(); levelIndex = 1; }
 			}
 			if (Input::getAction("LEVEL 2"))
 			{
-				if (levelIndex != 2) { delete level; level = new levels::LevelCubemap(); levelIndex = 2; }
+				if (levelIndex != 2) { delete level; level = new LevelCubemap(); levelIndex = 2; }
 			}
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

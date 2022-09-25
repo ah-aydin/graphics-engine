@@ -6,7 +6,7 @@
 
 #include <Common/Utils/fileUtils.h>
 
-namespace kbb::glApi::rendering::shaders
+namespace kbb::glApi
 {
 	GLenum GLShaderTypeFromFileName(const char* fileName)
 	{

@@ -61,19 +61,19 @@ namespace kbb::vkApi
 	{
 		m_gameObjects2D.push_back(
 			std::move(
-				vkApi::gameObject::primitives::triangles::triangleSierpinski2D(m_vulkanDevice)
+				primitives::gameObjects::triangleSierpinski2D(m_vulkanDevice)
 			)
 		);
 
 		m_gameObjects2D.push_back(
 			std::move(
-				vkApi::gameObject::primitives::triangles::triangle2D(m_vulkanDevice)
+				primitives::gameObjects::triangle2D(m_vulkanDevice)
 			)
 		);
 
 		m_gameObjects3D.push_back(
 			std::move(
-				vkApi::gameObject::primitives::cubes::cube3D(m_vulkanDevice)
+				primitives::gameObjects::cube3D(m_vulkanDevice)
 			)
 		);
 	}
