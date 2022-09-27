@@ -12,6 +12,10 @@ namespace kbb::glApi
 		explicit GLShader(const char* fileName);
 		GLShader(GLenum type, const char* text, const char* debugFileName = "");
 		~GLShader();
+
+		GLShader(const GLShader&) = delete;
+		GLShader& operator=(const GLShader&) = delete;
+
 		GLenum getType() const { return m_type; }
 		GLuint getHandle() const { return m_handle; }
 

@@ -6,7 +6,7 @@
 
 namespace kbb::vkApi::primitives::models
 {	
-	std::shared_ptr<VKModel3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset)
+	std::shared_ptr<VKMesh3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset)
 	{
 		std::vector<Vertex3D> vertices
 		{
@@ -87,7 +87,7 @@ namespace kbb::vkApi::primitives::models
 			33,34,35,
 		};
 
-		return std::make_shared<VKModel3D>(device, vertices, indices, INDEX_DRAW);
+		return std::make_shared<VKMesh3D>(device, vertices, indices, INDEX_DRAW);
 	} 
 }
 

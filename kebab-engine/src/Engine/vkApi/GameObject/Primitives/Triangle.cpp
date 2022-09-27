@@ -8,7 +8,7 @@ namespace kbb::vkApi::primitives::gameObjects
 {	
 	VKGameObject2D triangleSierpinski2D(VulkanDevice& vulkanDevice)
 	{
-		std::shared_ptr<VKModel2D> sierpinksiModel = models::triangleSierpinski2D(vulkanDevice);
+		std::shared_ptr<VKMesh2D> sierpinksiModel = models::triangleSierpinski2D(vulkanDevice);
 
 		auto sierpinksiGO = VKGameObject2D::createGameObject();
 		sierpinksiGO.m_model = sierpinksiModel;
@@ -20,7 +20,7 @@ namespace kbb::vkApi::primitives::gameObjects
 
 	VKGameObject2D triangle2D(VulkanDevice& vulkanDevice)
 	{
-		std::shared_ptr<VKModel2D> triangleModel = models::triangle2D(vulkanDevice);
+		std::shared_ptr<VKMesh2D> triangleModel = models::triangle2D(vulkanDevice);
 
 		auto triangle = VKGameObject2D::createGameObject();
 		triangle.m_model = triangleModel;

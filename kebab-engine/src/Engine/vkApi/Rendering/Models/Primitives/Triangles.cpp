@@ -25,7 +25,7 @@ void sierpinski(std::vector<kbb::vkApi::Vertex2D> &verticies, int depth, glm::ve
 
 namespace kbb::vkApi::primitives::models
 {
-	std::unique_ptr<VKModel2D> triangle2D(VulkanDevice& vulkanDevice)
+	std::unique_ptr<VKMesh2D> triangle2D(VulkanDevice& vulkanDevice)
 	{
 		std::vector<Vertex2D> verticiesTriangle{
 			{{ -0.5f, 0.5f }}, {{ 0.5f, 0.5f }}, {{ 0.0f, -0.5f }}
@@ -34,14 +34,14 @@ namespace kbb::vkApi::primitives::models
 			0, 1, 2
 		};
 
-		return std::make_unique<VKModel2D>(vulkanDevice, verticiesTriangle, indicesTriangle, INDEX_DRAW);
+		return std::make_unique<VKMesh2D>(vulkanDevice, verticiesTriangle, indicesTriangle, INDEX_DRAW);
 	}
 		
-	std::unique_ptr<VKModel2D> triangleSierpinski2D(VulkanDevice& vulkanDevice)
+	std::unique_ptr<VKMesh2D> triangleSierpinski2D(VulkanDevice& vulkanDevice)
 	{
 		std::vector<Vertex2D> verticiesSierpinski{};
 		sierpinski(verticiesSierpinski, 3, { -0.5f, 0.5f }, { 0.5f, 0.5f }, { 0.0f, -0.5f });
-		return std::make_unique<VKModel2D>(vulkanDevice, verticiesSierpinski);	
+		return std::make_unique<VKMesh2D>(vulkanDevice, verticiesSierpinski);	
 	}
 }
 

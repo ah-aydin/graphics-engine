@@ -8,7 +8,7 @@ namespace kbb::vkApi::primitives::gameObjects
 {
 	VKGameObject3D cube3D(VulkanDevice& vulkanDevice)
 	{
-		std::shared_ptr<VKModel3D> cubeModel = models::createPosV3ColorV3(vulkanDevice, { 0, 0, 0 });
+		std::shared_ptr<VKMesh3D> cubeModel = models::createPosV3ColorV3(vulkanDevice, { 0, 0, 0 });
 
 		auto cube = VKGameObject3D::createGameObject();
 		cube.m_model = cubeModel;

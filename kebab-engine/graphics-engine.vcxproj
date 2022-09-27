@@ -161,6 +161,11 @@
     <ClCompile Include="src\Engine\glApi\GLApplication.cpp" />
     <ClCompile Include="src\Engine\Application.cpp" />
     <ClCompile Include="src\Engine\glApi\Levels\LevelRenderTriangle.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\GLRenderer.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh2D.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh3D.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.cpp" />
     <ClCompile Include="src\Engine\Level\Level.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLProgram.cpp" />
     <ClCompile Include="src\Common\Utils\fileUtils.cpp" />
@@ -186,18 +191,28 @@
     <ClCompile Include="src\Engine\vkApi\VulkanDevice.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanSwapchain.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanPipeline.cpp" />
-    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel2D.cpp" />
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKMesh2D.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanRenderer.cpp" />
-    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel3D.cpp" />
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKMesh3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\GameObject\GameObject.h" />
     <ClInclude Include="src\Engine\GameObject\Transforms\Transform2D.h" />
     <ClInclude Include="src\Engine\GameObject\Transforms\Transform3D.h" />
+    <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject2D.h" />
+    <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject3D.h" />
     <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h" />
     <ClInclude Include="src\Engine\glApi\GLWindow.h" />
     <ClInclude Include="src\Engine\glApi\GLApplication.h" />
     <ClInclude Include="src\Engine\Application.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\GLRenderer.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh2D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh3D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h" />
+    <ClInclude Include="src\Engine\Rendering\DrawMode.h" />
     <ClInclude Include="src\Engine\Utils\Bitmap.h" />
     <ClInclude Include="src\Engine\glApi\Levels\LevelRenderTirangle.h" />
     <ClInclude Include="src\Engine\Level\Level.h" />
@@ -229,12 +244,12 @@
     <ClInclude Include="src\Engine\vkApi\VulkanDevice.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanSwapchain.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanPipeline.h" />
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel2D.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh2D.h" />
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject2D.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanRenderer.h" />
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject3D.h" />
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel3D.h" />
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh3D.h" />
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\cubemap\piazza_bologni_1k.hdr" />

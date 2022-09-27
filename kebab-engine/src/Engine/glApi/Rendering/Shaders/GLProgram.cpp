@@ -27,6 +27,7 @@ namespace kbb::glApi
 		glAttachShader(m_handle, s1.getHandle());
 		glLinkProgram(m_handle);
 		printProgramInfoLog(m_handle);
+		glDetachShader(m_handle, s1.getHandle());
 	}
 
 	GLProgram::GLProgram(const GLShader& s1, const GLShader& s2)
@@ -36,6 +37,8 @@ namespace kbb::glApi
 		glAttachShader(m_handle, s2.getHandle());
 		glLinkProgram(m_handle);
 		printProgramInfoLog(m_handle);
+		glDetachShader(m_handle, s1.getHandle());
+		glDetachShader(m_handle, s2.getHandle());
 	}
 
 	GLProgram::GLProgram(const GLShader& s1, const GLShader& s2, const GLShader& s3)
@@ -46,6 +49,23 @@ namespace kbb::glApi
 		glAttachShader(m_handle, s3.getHandle());
 		glLinkProgram(m_handle);
 		printProgramInfoLog(m_handle);
+		glDetachShader(m_handle, s1.getHandle());
+		glDetachShader(m_handle, s2.getHandle());
+		glDetachShader(m_handle, s3.getHandle());
+	}
+
+	GLProgram::GLProgram(const GLShader& s1, const GLShader& s2, const GLShader& s3, const GLShader& s4)
+		: m_handle(glCreateProgram())
+	{
+		glAttachShader(m_handle, s1.getHandle());
+		glAttachShader(m_handle, s2.getHandle());
+		glAttachShader(m_handle, s3.getHandle());
+		glAttachShader(m_handle, s4.getHandle());
+		printProgramInfoLog(m_handle);
+		glDetachShader(m_handle, s1.getHandle());
+		glDetachShader(m_handle, s2.getHandle());
+		glDetachShader(m_handle, s3.getHandle());
+		glDetachShader(m_handle, s4.getHandle());
 	}
 
 	GLProgram::GLProgram(const GLShader& s1, const GLShader& s2, const GLShader& s3, const GLShader& s4, const GLShader& s5)
@@ -58,6 +78,11 @@ namespace kbb::glApi
 		glAttachShader(m_handle, s5.getHandle());
 		glLinkProgram(m_handle);
 		printProgramInfoLog(m_handle);
+		glDetachShader(m_handle, s1.getHandle());
+		glDetachShader(m_handle, s2.getHandle());
+		glDetachShader(m_handle, s3.getHandle());
+		glDetachShader(m_handle, s4.getHandle());
+		glDetachShader(m_handle, s5.getHandle());
 	}
 
 	GLProgram::~GLProgram()

@@ -5,7 +5,7 @@
 #include <Engine/GameObject/GameObject.h>
 #include <Engine/GameObject/Transforms/Transform3D.h>
 
-#include <Engine/vkApi/Rendering/Models/VKModel3D.h>
+#include <Engine/vkApi/Rendering/Models/VKMesh3D.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -31,7 +31,7 @@ namespace kbb::vkApi
         VKGameObject3D(VKGameObject3D&&) = default;
         VKGameObject3D& operator=(VKGameObject3D&&) = default;
 
-        std::shared_ptr<VKModel3D> m_model{};
+        std::shared_ptr<VKMesh3D> m_model{};
         glm::vec3 m_color{};
         Transform3D m_transform{};
 

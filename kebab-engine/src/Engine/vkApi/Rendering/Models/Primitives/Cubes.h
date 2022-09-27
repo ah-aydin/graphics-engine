@@ -2,7 +2,7 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
-#include <Engine/vkApi/Rendering/Models/VKModel3D.h>
+#include <Engine/vkApi/Rendering/Models/VKMesh3D.h>
 
 #include <memory>
 
@@ -14,7 +14,7 @@ class VulkanDevice;
 
 namespace kbb::vkApi::primitives::models
 {
-	std::shared_ptr<VKModel3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset);
+	std::shared_ptr<VKMesh3D> createPosV3ColorV3(VulkanDevice& device, glm::vec3 offset);
 }
 
 #endif

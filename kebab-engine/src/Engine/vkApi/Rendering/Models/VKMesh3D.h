@@ -2,7 +2,7 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
-#include "VKModel.h"
+#include "VKMesh.h"
 
 #include <Engine/vkApi/VulkanDevice.h>
 #include <Engine/vkApi/Rendering/Vertex/Vertex3D.h>
@@ -15,20 +15,20 @@
 
 namespace kbb::vkApi
 {
-	class VKModel3D : public VKModel<Vertex3D>
+	class VKMesh3D : public VKMesh<Vertex3D>
 	{
 	public:
 
-		VKModel3D(
+		VKMesh3D(
 			VulkanDevice& vulkanDevice,
 			const std::vector<Vertex3D>& verticies,
-			const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
+			const std::vector<uint32_t>& indices = std::vector<uint32_t>{},
 			DrawMode drawMode = VERTEX_DRAW
 		);
-		~VKModel3D();
+		~VKMesh3D();
 
-		VKModel3D(const VKModel3D&) = delete;
-		VKModel3D& operator=(const VKModel3D&) = delete;
+		VKMesh3D(const VKMesh3D&) = delete;
+		VKMesh3D& operator=(const VKMesh3D&) = delete;
 
 		void bind(VkCommandBuffer commandBuffer);
 		void draw(VkCommandBuffer commandBuffer);

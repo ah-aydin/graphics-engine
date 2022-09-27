@@ -6,7 +6,6 @@
 
 #include <Engine/Level/Level.h>
 
-#include <Engine/glApi/Rendering/Shaders/GLShader.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>
 
 namespace kbb::glApi
@@ -19,8 +18,6 @@ namespace kbb::glApi
 		~LevelRenderTriangle();
 
 	private:
-		GLShader* shaderVertex;
-		GLShader* shaderFragment;
 		GLProgram* program;
 
 		GLuint vao = 0;

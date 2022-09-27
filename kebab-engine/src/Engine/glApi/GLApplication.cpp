@@ -12,6 +12,9 @@
 #include "Levels/LevelRenderTirangle.h"
 #include "Levels/LevelCubemap.h"
 
+#include "Rendering/Models/GLMesh2D.h"
+#include "GameObject/GLGameObject2D.h"
+
 namespace kbb::glApi
 {
 	GLApplication::GLApplication() : Application()
@@ -34,6 +37,18 @@ namespace kbb::glApi
 		int levelIndex = 1;
 		Level* level = new LevelRenderTriangle();
 
+		std::vector<Vertex2D> verticies = {
+			{{0.0f, 0.5f}, {0.0f, 0.0f}},
+			{{0.5f, 0.0f}, {0.0f, 0.0f}},
+			{{-0.5f, 0.0f}, {0.0f, 0.0f}}
+		};
+		std::shared_ptr<GLMesh2D> mesh = std::make_shared<GLMesh2D>(verticies);
+		GLGameObject2D gameObject = GLGameObject2D::createGameObject();
+		gameObject.m_model = mesh;
+
+		std::vector<GLGameObject2D> gameObjects2D;
+		gameObjects2D.push_back(std::move(gameObject));
+
 		while (!m_window.shouldClose())
 		{
 			if (Input::getAction("QUIT"))
@@ -52,7 +67,8 @@ namespace kbb::glApi
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			level->update(Time::getDeltaTime());
+			//level->update(Time::getDeltaTime());
+			m_renderer.render2D(gameObjects2D);
 
 			glfwPollEvents();
 			m_window.swapBuffer();

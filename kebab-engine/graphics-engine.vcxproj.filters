@@ -84,7 +84,7 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanPipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel2D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKMesh2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\VulkanRenderer.cpp">
@@ -93,7 +93,7 @@
     <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKModel3D.cpp">
+    <ClCompile Include="src\Engine\vkApi\Rendering\Models\VKMesh3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\Rendering\Vertex\Vertex2D.cpp">
@@ -112,6 +112,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\GLRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,7 +203,7 @@
     <ClInclude Include="src\Engine\vkApi\Rendering\VulkanPipeline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel2D.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\GameObject\VKGameObject2D.h">
@@ -206,10 +221,10 @@
     <ClInclude Include="src\Engine\GameObject\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel3D.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKModel.h">
+    <ClInclude Include="src\Engine\vkApi\Rendering\Models\VKMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\vkApi\Rendering\Vertex\Vertex2D.h">
@@ -246,6 +261,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\GameObject\Transforms\Transform3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\GLRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Rendering\DrawMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

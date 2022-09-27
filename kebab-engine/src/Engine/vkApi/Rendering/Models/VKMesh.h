@@ -2,6 +2,7 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
+#include <Engine/Rendering/DrawMode.h>
 #include <Engine/vkApi/VulkanDevice.h>
 
 #define VK_NO_PROTOTYPES
@@ -12,18 +13,14 @@
 
 namespace kbb::vkApi
 {
-	enum DrawMode {
-		VERTEX_DRAW, INDEX_DRAW
-	};
-
 	template <typename VertexType>
-	class VKModel
+	class VKMesh
 	{
 	protected:
-		VKModel(
+		VKMesh(
 			VulkanDevice& vulkanDevice,
 			const std::vector<VertexType>& verticies,
-			const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
+			const std::vector<uint32_t>& indices = std::vector<uint32_t>{},
 			DrawMode drawMode = VERTEX_DRAW
 		)
 			: m_vulkanDevice(vulkanDevice), m_drawMode(drawMode)
@@ -35,7 +32,7 @@ namespace kbb::vkApi
 			}
 		}
 
-		virtual ~VKModel()
+		virtual ~VKMesh()
 		{
 			vkDestroyBuffer(m_vulkanDevice.device(), m_vertexBuffer, nullptr);
 			vkFreeMemory(m_vulkanDevice.device(), m_vertexBufferMemory, nullptr);
@@ -47,8 +44,8 @@ namespace kbb::vkApi
 			}
 		};
 
-		VKModel(const VKModel&) = delete;
-		VKModel& operator=(const VKModel&) = delete;
+		VKMesh(const VKMesh&) = delete;
+		VKMesh& operator=(const VKMesh&) = delete;
 
 	protected:
 		void bind(VkCommandBuffer commandBuffer)
@@ -96,7 +93,7 @@ namespace kbb::vkApi
 			vkUnmapMemory(m_vulkanDevice.device(), m_vertexBufferMemory);
 		}
 
-		void createIndexBuffers(const std::vector<unsigned int>& indices)
+		void createIndexBuffers(const std::vector<uint32_t>& indices)
 		{
 			m_indexCount = static_cast<uint32_t>(indices.size());
 			assert(m_indexCount >= 3 && "Index count must be at least 3");

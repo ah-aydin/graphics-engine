@@ -2,7 +2,7 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
-#include <Engine/vkApi/Rendering/Models/VKModel2D.h>
+#include <Engine/vkApi/Rendering/Models/VKMesh2D.h>
 
 #include <memory>
 
@@ -10,8 +10,8 @@ class VulkanDevice;
 
 namespace kbb::vkApi::primitives::models
 {
-	std::unique_ptr<VKModel2D> triangle2D(VulkanDevice& vulkanDevice);
-	std::unique_ptr<VKModel2D> triangleSierpinski2D(VulkanDevice& vulkanDevice);
+	std::unique_ptr<VKMesh2D> triangle2D(VulkanDevice& vulkanDevice);
+	std::unique_ptr<VKMesh2D> triangleSierpinski2D(VulkanDevice& vulkanDevice);
 }
 
 #endif

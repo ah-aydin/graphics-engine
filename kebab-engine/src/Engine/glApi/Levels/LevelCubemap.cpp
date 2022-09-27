@@ -20,6 +20,8 @@
 #include <GLFW/glfw3.h>
 #include <Engine/Settings.h>
 
+#include <Engine/glApi/Rendering/Shaders/GLShader.h>
+
 struct VertexData
 {
 	glm::vec3 pos;
@@ -40,14 +42,14 @@ namespace kbb::glApi
 {
 	LevelCubemap::LevelCubemap()
 	{
-		shaderDuckVert = new GLShader("res/rubber_duck/shaders/cubemap.vert");
-		shaderDuckFrag = new GLShader("res/rubber_duck/shaders/cubemap.frag");
-		programDuck = new GLProgram(*shaderDuckVert, *shaderDuckFrag);
+		GLShader shaderDuckVert("res/rubber_duck/shaders/cubemap.vert");
+		GLShader shaderDuckFrag("res/rubber_duck/shaders/cubemap.frag");
+		programDuck = new GLProgram(shaderDuckVert, shaderDuckFrag);
 		programDuck->use();
 
-		shaderCubeVert = new GLShader("res/cubemap/shader.vert");
-		shaderCubeFrag = new GLShader("res/cubemap/shader.frag");
-		programCube = new GLProgram(*shaderCubeVert, *shaderCubeFrag);
+		GLShader shaderCubeVert("res/cubemap/shader.vert");
+		GLShader shaderCubeFrag("res/cubemap/shader.frag");
+		programCube = new GLProgram(shaderCubeVert, shaderCubeFrag);
 
 		glCreateBuffers(1, &perFrameDataBuffer);
 		glNamedBufferStorage(perFrameDataBuffer, kUniformBufferSize, nullptr, GL_DYNAMIC_STORAGE_BIT);
@@ -158,9 +160,8 @@ namespace kbb::glApi
 		glDeleteTextures(1, &txDuck);
 		glDeleteTextures(1, &txCubemap);
 
-		delete shaderDuckVert, shaderDuckGeom, shaderDuckFrag, programDuck, programCube, shaderCubeVert, shaderCubeFrag;
+		delete programCube, programDuck;
 	}
-
 
 	void LevelCubemap::update(double dt)
 	{

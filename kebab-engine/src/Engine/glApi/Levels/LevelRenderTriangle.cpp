@@ -2,6 +2,8 @@
 
 #ifdef GRAPHICS_API_OPENGL
 
+#include <Engine/glApi/Rendering/Shaders/GLShader.h>
+
 namespace kbb::glApi
 {
 	LevelRenderTriangle::LevelRenderTriangle()
@@ -9,17 +11,15 @@ namespace kbb::glApi
 		glCreateVertexArrays(1, &vao);
 		glBindVertexArray(vao);
 
-		shaderVertex = new GLShader("res/shader.vert");
-		shaderFragment = new GLShader("res/shader.frag");
-		program = new GLProgram(*shaderVertex, *shaderFragment);
+		GLShader shaderVertex("res/shader.vert");
+		GLShader shaderFragment("res/shader.frag");
+		program = new GLProgram(shaderVertex, shaderFragment);
 		program->use();
 	}
 
 	LevelRenderTriangle::~LevelRenderTriangle()
 	{
 		glDeleteVertexArrays(1, &vao);
-		delete shaderVertex;
-		delete shaderFragment;
 		delete program;
 	}
 

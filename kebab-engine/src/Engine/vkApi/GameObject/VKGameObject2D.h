@@ -5,7 +5,7 @@
 #include <Engine/GameObject/GameObject.h>
 #include <Engine/GameObject/Transforms/Transform2D.h>
 
-#include <Engine/vkApi/Rendering/Models/VKModel2D.h>
+#include <Engine/vkApi/Rendering/Models/VKMesh2D.h>
 
 #include <memory>
 
@@ -29,7 +29,7 @@ namespace kbb::vkApi
 		VKGameObject2D(VKGameObject2D&&) = default;
 		VKGameObject2D& operator=(VKGameObject2D&&) = default;
 
-		std::shared_ptr<VKModel2D> m_model{};
+		std::shared_ptr<VKMesh2D> m_model{};
 		glm::vec3 m_color{};
 		Transform2D m_transform{};
 

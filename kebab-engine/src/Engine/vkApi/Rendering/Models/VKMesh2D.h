@@ -2,33 +2,29 @@
 
 #ifdef GRAPHICS_API_VULKAN
 
-#include "VKModel.h"
+#include "VKMesh.h"
 
 #include <Engine/vkApi/VulkanDevice.h>
 #include <Engine/vkApi/Rendering/Vertex/Vertex2D.h>
-
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#include <glm/glm.hpp>
 
 #include <vector>
 
 namespace kbb::vkApi
 {
-	class VKModel2D : public VKModel<Vertex2D>
+	class VKMesh2D : public VKMesh<Vertex2D>
 	{
 	public:
 
-		VKModel2D(
+		VKMesh2D(
 			VulkanDevice& vulkanDevice,
 			const std::vector<Vertex2D>& verticies,
-			const std::vector<unsigned int>& indices = std::vector<unsigned int>{},
+			const std::vector<uint32_t>& indices = std::vector<unsigned int>{},
 			DrawMode drawMode = VERTEX_DRAW
 		);
-		~VKModel2D();
+		~VKMesh2D();
 
-		VKModel2D(const VKModel2D &) = delete;
-		VKModel2D &operator=(const VKModel2D &) = delete;
+		VKMesh2D(const VKMesh2D &) = delete;
+		VKMesh2D &operator=(const VKMesh2D &) = delete;
 
 		void bind(VkCommandBuffer commandBuffer);
 		void draw(VkCommandBuffer commandBuffer);
