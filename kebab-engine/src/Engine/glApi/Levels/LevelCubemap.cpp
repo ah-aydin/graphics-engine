@@ -4,8 +4,6 @@
 
 #include <stb_image.h>
 #include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <assimp/cimport.h>
@@ -29,14 +27,7 @@ struct VertexData
 	glm::vec2 tc;
 };
 
-struct PerFrameData
-{
-	glm::mat4 model;
-	glm::mat4 mvp;
-	glm::vec4 cameraPos;
-};
-
-const GLsizeiptr kUniformBufferSize = sizeof(PerFrameData);
+const GLsizeiptr kUniformBufferSize = sizeof(kbb::glApi::PerFrameData);
 
 namespace kbb::glApi
 {
@@ -44,12 +35,11 @@ namespace kbb::glApi
 	{
 		GLShader shaderDuckVert("res/rubber_duck/shaders/cubemap.vert");
 		GLShader shaderDuckFrag("res/rubber_duck/shaders/cubemap.frag");
-		programDuck = new GLProgram(shaderDuckVert, shaderDuckFrag);
-		programDuck->use();
-
+		programDuck = new GLProgram<PerFrameData>(shaderDuckVert, shaderDuckFrag);
+		
 		GLShader shaderCubeVert("res/cubemap/shader.vert");
 		GLShader shaderCubeFrag("res/cubemap/shader.frag");
-		programCube = new GLProgram(shaderCubeVert, shaderCubeFrag);
+		programCube = new GLProgram<PerFrameData>(shaderCubeVert, shaderCubeFrag);
 
 		glCreateBuffers(1, &perFrameDataBuffer);
 		glNamedBufferStorage(perFrameDataBuffer, kUniformBufferSize, nullptr, GL_DYNAMIC_STORAGE_BIT);
@@ -172,15 +162,15 @@ namespace kbb::glApi
 
 			programDuck->use();
 			const PerFrameData perFrameData = { m, p * m, glm::vec4(0.0f) };
-			glNamedBufferSubData(perFrameDataBuffer, 0, kUniformBufferSize, &perFrameData);
+			programDuck->setPerFrameData(perFrameData);
 			glDrawElements(GL_TRIANGLES, static_cast<unsigned>(indices.size()), GL_UNSIGNED_INT, nullptr);
 		}
 
 		{
+			programCube->use();
 			const glm::mat4 m = glm::scale(glm::mat4(1.0f), glm::vec3(2.0f));
 			const PerFrameData perFrameData = { m, p * m, glm::vec4(0.0f) };
-			glNamedBufferSubData(perFrameDataBuffer, 0, kUniformBufferSize, &perFrameData);
-			programCube->use();
+			programCube->setPerFrameData(perFrameData);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 	}

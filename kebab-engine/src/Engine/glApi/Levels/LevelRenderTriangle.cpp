@@ -1,6 +1,6 @@
 #include "LevelRenderTirangle.h"
 
-#ifdef GRAPHICS_API_OPENGL
+#ifdef GRAPHICS_API_OPENGLL
 
 #include <Engine/glApi/Rendering/Shaders/GLShader.h>
 

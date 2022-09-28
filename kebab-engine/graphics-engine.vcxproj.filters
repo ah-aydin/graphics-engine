@@ -33,9 +33,6 @@
     <ClCompile Include="src\Common\Utils\fileUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -127,6 +124,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Quadrilaterals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\GameObject\Primitives\Quadrilaterals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\glApi\GameObject\Primitives\Triangles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -291,6 +300,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Quadrilaterlas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\GameObject\Primitives\Quadrilaterlas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\GameObject\Primitives\Triangles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

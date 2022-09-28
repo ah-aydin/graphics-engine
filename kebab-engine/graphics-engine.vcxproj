@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\glApi\GameObject\Primitives\Quadrilaterals.cpp" />
+    <ClCompile Include="src\Engine\glApi\GameObject\Primitives\Triangles.cpp" />
     <ClCompile Include="src\Engine\glApi\Levels\LevelCubemap.cpp" />
     <ClCompile Include="src\Engine\glApi\GLWindow.cpp" />
     <ClCompile Include="src\Engine\glApi\GLApplication.cpp" />
@@ -164,10 +166,10 @@
     <ClCompile Include="src\Engine\glApi\Rendering\GLRenderer.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh2D.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh3D.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.cpp" />
     <ClCompile Include="src\Engine\Level\Level.cpp" />
-    <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLProgram.cpp" />
     <ClCompile Include="src\Common\Utils\fileUtils.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShader.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Shaders\GLShaderUtils.cpp" />
@@ -178,6 +180,7 @@
     <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Cube.cpp" />
     <ClCompile Include="src\Engine\vkApi\GameObject\Primitives\Triangle.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Cube.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Quadrilaterals.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Systems\BasicRenderSystem.cpp" />
     <ClCompile Include="src\Engine\vkApi\Rendering\Vertex\Vertex2D.cpp" />
@@ -201,6 +204,8 @@
     <ClInclude Include="src\Engine\GameObject\Transforms\Transform3D.h" />
     <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject2D.h" />
     <ClInclude Include="src\Engine\glApi\GameObject\GLGameObject3D.h" />
+    <ClInclude Include="src\Engine\glApi\GameObject\Primitives\Quadrilaterlas.h" />
+    <ClInclude Include="src\Engine\glApi\GameObject\Primitives\Triangles.h" />
     <ClInclude Include="src\Engine\glApi\Levels\LevelCubemap.h" />
     <ClInclude Include="src\Engine\glApi\GLWindow.h" />
     <ClInclude Include="src\Engine\glApi\GLApplication.h" />
@@ -209,6 +214,9 @@
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh3D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData2D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData3D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h" />
@@ -226,6 +234,7 @@
     <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Cube.h" />
     <ClInclude Include="src\Engine\vkApi\GameObject\Primitives\Triangle.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Cubes.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Quadrilaterlas.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\Models\Primitives\Triangles.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\PushConstants\PushConstant2D.h" />
     <ClInclude Include="src\Engine\vkApi\Rendering\PushConstants\PushConstant3D.h" />

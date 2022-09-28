@@ -42,12 +42,12 @@ namespace kbb::vkApi
 				m_vulkanRenderer.render2D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects2D);
 				m_vulkanRenderer.render3D(commandBuffer, uniformBufferMemory, currentImageIndex, m_gameObjects3D);
 				m_vulkanRenderer.endSwapchainRenderPass(commandBuffer);
-				m_vulkanRenderer.endFrame(commandBuffer);
 			}
 			else
 			{
 				log_error_exception("Failed to get the buffers from begin frame");
 			}
+			m_vulkanRenderer.endFrame(commandBuffer);
 
 			glfwPollEvents();
 			Time::tick();
@@ -61,19 +61,19 @@ namespace kbb::vkApi
 	{
 		m_gameObjects2D.push_back(
 			std::move(
-				primitives::gameObjects::triangleSierpinski2D(m_vulkanDevice)
+				primitives::gameObject::triangleSierpinski2D(m_vulkanDevice)
 			)
 		);
 
 		m_gameObjects2D.push_back(
 			std::move(
-				primitives::gameObjects::triangle2D(m_vulkanDevice)
+				primitives::gameObject::triangle2D(m_vulkanDevice)
 			)
 		);
 
 		m_gameObjects3D.push_back(
 			std::move(
-				primitives::gameObjects::cube3D(m_vulkanDevice)
+				primitives::gameObject::cube3D(m_vulkanDevice)
 			)
 		);
 	}

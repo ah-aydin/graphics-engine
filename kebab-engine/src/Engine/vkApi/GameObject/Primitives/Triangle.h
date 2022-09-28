@@ -6,7 +6,7 @@
 
 class VulkanDevice;
 
-namespace kbb::vkApi::primitives::gameObjects
+namespace kbb::vkApi::primitives::gameObject
 {	
 	VKGameObject2D triangleSierpinski2D(VulkanDevice& vulkanDevice);
 	VKGameObject2D triangle2D(VulkanDevice& vulkanDevice);

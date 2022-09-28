@@ -87,6 +87,7 @@ namespace kbb::glApi
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(uint32_t), indices.data(), GL_STATIC_DRAW);
 		}
 		
+	protected:
 		GLuint m_vao = 0;
 		GLuint m_vbo = 0;
 		GLuint m_ibo = 0;

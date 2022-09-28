@@ -23,7 +23,7 @@ void sierpinski(std::vector<kbb::vkApi::Vertex2D> &verticies, int depth, glm::ve
 	sierpinski(verticies, depth - 1, newLeft, newRight, center);
 }
 
-namespace kbb::vkApi::primitives::models
+namespace kbb::vkApi::primitives::mesh
 {
 	std::unique_ptr<VKMesh2D> triangle2D(VulkanDevice& vulkanDevice)
 	{

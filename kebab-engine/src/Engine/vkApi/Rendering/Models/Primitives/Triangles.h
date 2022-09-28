@@ -8,7 +8,7 @@
 
 class VulkanDevice;
 
-namespace kbb::vkApi::primitives::models
+namespace kbb::vkApi::primitives::mesh
 {
 	std::unique_ptr<VKMesh2D> triangle2D(VulkanDevice& vulkanDevice);
 	std::unique_ptr<VKMesh2D> triangleSierpinski2D(VulkanDevice& vulkanDevice);

@@ -7,6 +7,8 @@
 
 #include <memory>
 
+#ifdef GRAPHICS_API_OPENGL
+
 namespace kbb::glApi
 {
 	class GLGameObject3D : public GameObject
@@ -34,3 +36,5 @@ namespace kbb::glApi
 		GLGameObject3D(id_t objId) : GameObject(objId) {}
 	};
 }
+
+#endif
