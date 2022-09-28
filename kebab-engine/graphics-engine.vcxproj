@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug-OpenGl|x64">
@@ -217,6 +217,8 @@
     <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData3D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerFrameDataObjects.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerObjectDataObjects.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h" />

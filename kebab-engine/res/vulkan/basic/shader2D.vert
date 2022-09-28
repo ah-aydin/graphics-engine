@@ -1,15 +1,21 @@
 #version 450
 
-layout (location = 0) in vec2 position;
+layout (location = 0) in vec2 inPosition;
+layout (location = 1) in vec2 inTexCoords;
 
-//layout (location = 0) out vec3 outColor;
+layout (location = 0) out vec2 outTexCoords;
+
+layout (binding = 0) uniform UniformBufferObject {
+	mat4 view;
+	mat4 proj;
+} perFrameData;
 
 layout (push_constant) uniform Push {
 	mat2 transform;
-	vec2 offset;
-	vec3 color;
-} push;
+} perObjectData;
 
 void main() {
-	gl_Position = vec4(push.transform * position + push.offset, 0.0, 1.0);
+	gl_Position = perFrameData.proj * perFrameData.view * vec4(perObjectData.transform * inPosition, 0.0, 1.0);
+
+	outTexCoords = inTexCoords;
 }

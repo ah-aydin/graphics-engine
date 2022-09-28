@@ -1,6 +1,6 @@
 #include "LevelCubemap.h"
 
-#ifdef GRAPHICS_API_OPENGL
+#ifdef GRAPHICS_API_OPENGLL
 
 #include <stb_image.h>
 #include <glad/glad.h>

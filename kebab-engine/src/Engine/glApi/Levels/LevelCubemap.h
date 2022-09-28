@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef GRAPHICS_API_OPENGL
+#ifdef GRAPHICS_API_OPENGLL
 
 #include <Engine/Level/Level.h>
 #include <Engine/glApi/Rendering/Shaders/GLProgram.h>

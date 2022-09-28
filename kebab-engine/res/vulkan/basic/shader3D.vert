@@ -1,23 +1,22 @@
 #version 450
 
-layout (location = 0) in vec3 position;
+layout (location = 0) in vec3 inposition;
+layout (location = 1) in vec3 inNormal;
+layout (location = 2) in vec2 inTexCoords;
 
-layout (location = 0) out vec3 outColor;
+layout (location = 0) out vec2 outTexCoords;
+
+layout (binding = 0) uniform UniformBufferObject {
+	mat4 view;
+	mat4 proj;
+} perFrameData;
 
 layout (push_constant) uniform Push {
 	mat4 model;
-	mat4 view;
-	mat4 proj;
-} push;
-
-layout (binding = 0) uniform UniformBufferObject {
-	mat4 model;
-	mat4 view;
-	mat4 proj;
-} ubo;
+} perObjectData;
 
 void main() {
-    outColor = vec3(0.2, 0.6, 0.9);
-    gl_Position = push.proj * push.view * push.model * vec4(position, 1.0);
-	//gl_Position = ubo.proj * ubo.view * ubo.model * vec4(position, 1.0);
+    gl_Position = perFrameData.proj * perFrameData.view * perObjectData.model * vec4(inPosition, 1.0);
+
+	outTexCoords = inTexCoords;
 }

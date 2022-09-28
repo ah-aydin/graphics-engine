@@ -2,8 +2,7 @@
 
 #include <Engine/Settings.h>
 
-#include "Shaders/PerFrameData/PerFrameData2D.h"
-#include "Shaders/PerFrameData/PerFrameData3D.h"
+#include "Shaders/UniformBufferObjects/ubo.h"
 
 #ifdef GRAPHICS_API_OPENGL
 
@@ -25,25 +24,31 @@ namespace kbb::glApi
 		// 2D program
 		GLShader vertex2D("res/opengl/shader2D.vert");
 		GLShader fragment2D("res/opengl/shader2D.frag");
-		m_program2D = new GLProgram<PerFrameData2D>(vertex2D, fragment2D);
+		m_program2D = new GLProgram<PerFrameDataObject2D, PerObjectDataObject2D>(vertex2D, fragment2D);
 
 		// 3D program
 		GLShader vertex3D("res/opengl/shader3D.vert");
 		GLShader fragment3D("res/opengl/shader3D.frag");
-		m_program3D = new GLProgram<PerFrameData3D>(vertex3D, fragment3D);
+		m_program3D = new GLProgram<PerFrameDataObject3D, PerObjectDataObject3D>(vertex3D, fragment3D);
 	}
 
 	void GLRenderer::render2D(std::vector<GLGameObject2D>& gameObjects)
 	{
 		m_program2D->use();
 		
+		PerFrameDataObject2D perFrameData;
+		perFrameData.proj = glm::ortho(0.f, 800.f, 0.f, 600.f, 0.1f, 100.f);
+		perFrameData.view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		
+		m_program2D->setPerFrameData(perFrameData);
+
 		for (auto& obj : gameObjects)
 		{
-			PerFrameData2D perFrameData;
-			perFrameData.offset = obj.m_transform.translation;
-			perFrameData.transform = obj.m_transform.mat2();
-
-			m_program2D->setPerFrameData(perFrameData);
+			PerObjectDataObject2D perObjectData;
+			perObjectData.model = obj.m_transform.mat2();
+			perObjectData.offset = obj.m_transform.translation;
+			
+			m_program2D->setPerObjectData(perObjectData);
 
 			obj.m_model->draw();
 		}
@@ -55,13 +60,6 @@ namespace kbb::glApi
 
 		for (auto& obj : gameObjects)
 		{
-			PerFrameData3D perFrameData;
-			perFrameData.model = obj.m_transform.mat4();
-			perFrameData.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-			perFrameData.proj = glm::perspective(glm::radians(45.f), Settings::ratio, 0.1f, 100.f);
-
-			m_program3D->setPerFrameData(perFrameData);
-
 			obj.m_model->draw();
 		}
 	}

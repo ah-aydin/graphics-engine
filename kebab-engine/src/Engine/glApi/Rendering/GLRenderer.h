@@ -2,8 +2,7 @@
 
 #include "Shaders/GLShader.h"
 #include "Shaders/GLProgram.h"
-#include "Shaders/PerFrameData/PerFrameData2D.h"
-#include "Shaders/PerFrameData/PerFrameData3D.h"
+#include "Shaders/UniformBufferObjects/ubo.h"
 
 #include <Engine/glApi/GameObject/GLGameObject2D.h>
 #include <Engine/glApi/GameObject/GLGameObject3D.h>
@@ -27,8 +26,8 @@ namespace kbb::glApi
 	private:
 		void createShaderPrograms();
 
-		GLProgram<PerFrameData2D>* m_program2D;
-		GLProgram<PerFrameData3D>* m_program3D;
+		GLProgram<PerFrameDataObject2D, PerObjectDataObject2D>* m_program2D;
+		GLProgram<PerFrameDataObject3D, PerObjectDataObject3D>* m_program3D;
 	};
 }
 

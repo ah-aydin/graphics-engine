@@ -35,17 +35,17 @@ namespace kbb::glApi
 
 	void GLApplication::run()
 	{
+		GLGameObject2D square = primitives::gameObject::square();
+		square.m_transform.translation = { 300.0f, 300.0f };
+		square.m_transform.scale = { 100.0f, 100.0f };
+
+		GLGameObject2D triangle = primitives::gameObject::triangle();
+		triangle.m_transform.translation = { 200.0f, 500.0f };
+		triangle.m_transform.scale = { 50.0f, 50.0f };
+
 		std::vector<GLGameObject2D> gameObjects2D;
-		gameObjects2D.push_back(
-			std::move(
-				primitives::gameObject::square()
-			)
-		);
-		gameObjects2D.push_back(
-			std::move(
-				primitives::gameObject::triangle()
-			)
-		);
+		gameObjects2D.push_back(std::move(square));
+		gameObjects2D.push_back(std::move(triangle));
 		
 		while (!m_window.shouldClose())
 		{
