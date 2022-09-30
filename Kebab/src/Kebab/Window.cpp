@@ -20,6 +20,7 @@ namespace kbb
 	{
 		Window::s_WindowCount--;
 		glfwSetWindowShouldClose(window->m_window, GLFW_TRUE);
+		glfwDestroyWindow(window->m_window);
 		if (s_WindowCount == 0)
 		{
 			glfwTerminate();
