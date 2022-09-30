@@ -166,6 +166,7 @@
     <ClCompile Include="src\Engine\glApi\Rendering\GLRenderer.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh2D.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Models\GLMesh3D.cpp" />
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Pyramids.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.cpp" />
     <ClCompile Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.cpp" />
@@ -214,11 +215,13 @@
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Models\GLMesh3D.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Pyramids.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Triangles.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\PerFrameData\PerFrameData3D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerFrameDataObjects.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerObjectDataObjects.h" />
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\ubo.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex2D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\Vertex3D.h" />
     <ClInclude Include="src\Engine\glApi\Rendering\Vertex\VertexAttribPointer.h" />

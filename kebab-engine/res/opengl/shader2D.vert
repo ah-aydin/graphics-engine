@@ -5,7 +5,7 @@ layout (location = 1) in vec2 inTexCoords;
 
 layout (location = 0) out vec2 outTextCoords;
 
-layout (binding = 0) uniform PerFrameData
+layout (std140, binding = 0) uniform PerFrameData
 {
 	uniform mat4 proj;
 	uniform mat4 view;
@@ -18,7 +18,6 @@ layout (binding = 1) uniform PerObjectData
 };
 
 void main() {
-	gl_Position = proj * view * vec4(model * inPos + offset, 0.0, 1.0);
 	gl_Position = proj * view * vec4(model * inPos + offset , 0.0 , 1.0); 
 	outTextCoords = inTexCoords;
 }

@@ -138,6 +138,9 @@
     <ClCompile Include="src\Engine\glApi\GameObject\Primitives\Triangles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\glApi\Rendering\Models\Primitives\Pyramids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Input.h">
@@ -318,6 +321,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\glApi\GameObject\Primitives\Triangles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerFrameDataObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\PerObjectDataObjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Shaders\UniformBufferObjects\ubo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\glApi\Rendering\Models\Primitives\Pyramids.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

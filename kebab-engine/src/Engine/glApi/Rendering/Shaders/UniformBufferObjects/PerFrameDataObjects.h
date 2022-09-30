@@ -8,8 +8,8 @@ namespace kbb::glApi
 {
 	struct PerFrameDataObject2D
 	{
-		glm::mat4 proj;
-		glm::mat4 view;
+		alignas(16) glm::mat4 proj;
+		alignas(16) glm::mat4 view;
 	};
 
 	struct PerFrameDataObject3D
