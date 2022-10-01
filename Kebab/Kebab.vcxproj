@@ -61,7 +61,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GRAPHICS_API_OPENGL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GRAPHICS_API_OPENGL;GLFW_INCLUDE_NONE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>kbbpch.h</PrecompiledHeaderFile>
@@ -86,7 +86,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GRAPHICS_API_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GRAPHICS_API_OPENGL;GLFW_INCLUDE_NONE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>kbbpch.h</PrecompiledHeaderFile>
@@ -106,7 +106,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Kebab\Renderer\RendererContext.cpp" />
+    <ClCompile Include="src\OpenGl\OpenGlContext.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="src\Kebab\Application.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\VertexBuffer.cpp" />
     <ClCompile Include="src\Kebab\Input.cpp" />
     <ClCompile Include="src\Kebab\Log.cpp" />
     <ClCompile Include="src\kbbpch.cpp">
@@ -116,6 +120,10 @@
     <ClCompile Include="src\Kebab\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\OpenGl\OpenGlContext.h" />
+    <ClInclude Include="src\Kebab\Renderer\RendererContext.h" />
+    <ClInclude Include="src\Kebab\Renderer\IndexBuffer.h" />
+    <ClInclude Include="src\Kebab\Renderer\VertexBuffer.h" />
     <ClInclude Include="src\Kebab\Input.h" />
     <ClInclude Include="src\Kebab\Application.h" />
     <ClInclude Include="src\Kebab\Events\Event.h" />

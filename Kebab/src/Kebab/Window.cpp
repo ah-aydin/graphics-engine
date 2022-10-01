@@ -5,6 +5,8 @@
 #include <Kebab/Events/MouseEvent.h>
 #include <Kebab/Events/WindowEvent.h>
 
+#include <Kebab/Renderer/RendererContext.h>
+
 namespace kbb
 {
 	uint32_t Window::s_WindowCount = 0;
@@ -53,9 +55,11 @@ namespace kbb
 
 		KBB_CORE_INFO("Creating window {0} ({1}, {2})", m_data.title, m_data.width, m_data.height);
 		// TODO adapt to rendering API, this setup is for OpenGl 4.6 only
+#ifdef GRAPHICS_API_OPENGL
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
 
 #ifdef NDEBUG
 		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -72,8 +76,12 @@ namespace kbb
 			throw std::exception("Failed to create windows window");
 		}
 
+		RendererContext::Create(this);
+		RendererContext::Init();
+
 		glfwSetWindowUserPointer(m_window, &m_data);
-		glfwMakeContextCurrent(m_window);
+		
+
 		// TODO handle VSync via WindowProps
 		glfwSwapInterval(1);
 		glfwGetFramebufferSize(m_window, &m_data.framebufferWidth, &m_data.framebufferHeight);
@@ -165,6 +173,5 @@ namespace kbb
 	void Window::update()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_window);
 	}
 }

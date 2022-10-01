@@ -41,6 +41,7 @@ namespace kbb
 		static Window* create(const WindowProps& props = WindowProps());
 		static void closeWindow(const Window* window);
 
+		GLFWwindow* getHandle() { return m_window; }
 	private:
 		struct WindowData
 		{

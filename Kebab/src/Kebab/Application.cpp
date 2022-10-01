@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Input.h"
+#include "Renderer/RendererContext.h"
 
 namespace kbb
 {
@@ -10,7 +11,6 @@ namespace kbb
 	{
 		m_window = std::unique_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
-
 	}
 
 	Application::~Application()
@@ -25,8 +25,15 @@ namespace kbb
 			{
 				shutdown();
 			}
+
+			RendererContext::BeginFrame();
+
 			m_window->update();
+
+			RendererContext::EndFrame();
 		}
+
+		RendererContext::CleanUp();
 		Window::closeWindow(m_window.get());
 	}
 
