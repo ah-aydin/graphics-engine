@@ -12,11 +12,14 @@
 
 namespace kbb
 {
+#ifdef _DEBUG
 	spdlog::logger Log::s_CoreLogger("DUMMY");
 	spdlog::logger Log::s_ClientLogger("DUMMY");
+#endif
 
 	void Log::Init()
 	{
+#ifdef _DEBUG
 		time_t now = time(NULL);
 		char date[26];
 		ctime_s(date, sizeof(date), &now);
@@ -51,5 +54,6 @@ namespace kbb
 			s_ClientLogger.info(LOG_FILE_START);
 			s_ClientLogger.info(date);
 		}
+#endif
 	}
 }

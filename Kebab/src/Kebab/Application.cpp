@@ -27,11 +27,11 @@ namespace kbb
 			}
 			m_window->update();
 		}
+		Window::closeWindow(m_window.get());
 	}
 
 	void Application::shutdown()
 	{
-		Window::closeWindow(m_window.get());
 		m_running = false;
 	}
 

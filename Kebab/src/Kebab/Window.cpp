@@ -52,7 +52,7 @@ namespace kbb
 		);
 
 		KBB_CORE_INFO("Creating window {0} ({1}, {2})", m_data.title, m_data.width, m_data.height);
-		// TODO adapt to rendering API
+		// TODO adapt to rendering API, this setup is for OpenGl 4.6 only
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -155,7 +155,6 @@ namespace kbb
 
 	Window::~Window()
 	{
-		glfwDestroyWindow(m_window);
 	}
 
 	void Window::setEventCallback(const EventCallbackFn& callbackFn)
