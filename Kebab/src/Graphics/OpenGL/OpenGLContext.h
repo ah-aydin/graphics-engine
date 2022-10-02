@@ -11,8 +11,9 @@ namespace kbb::renderer
 	public:
 		OpenGLContext(GLFWwindow* windowHandle);
 		
-		void init() const override;
+		void init() override;
 		void swapBuffers() const override;
+		void terminate() override;
 
 		void setClearColor(float r, float g, float b, float a) const override;
 

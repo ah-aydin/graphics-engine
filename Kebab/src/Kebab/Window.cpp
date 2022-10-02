@@ -25,6 +25,8 @@ namespace kbb
 		glfwDestroyWindow(window->m_window);
 		if (s_WindowCount == 0)
 		{
+			renderer::GraphicsContext::Terminate();
+			KBB_CORE_INFO("Terminating GLFW");
 			glfwTerminate();
 		}
 	}
@@ -43,7 +45,6 @@ namespace kbb
 				KBB_CORE_ERROR("Failed to initialize GLFW");
 				throw std::exception("Failed to initialize GLFW");
 			}
-			Window::s_WindowCount += 1;
 		}
 
 		glfwSetErrorCallback([](int error, const char* description)
@@ -89,7 +90,10 @@ namespace kbb
 		glfwSetWindowUserPointer(m_window, &m_data);
 
 		// TODO handle VSync via WindowProps
+		// TODO handle VSync for Vulkan as well
+#ifdef GRAPHICS_API_OPENGL
 		glfwSwapInterval(1);
+#endif
 		glfwGetFramebufferSize(m_window, &m_data.framebufferWidth, &m_data.framebufferHeight);
 
 		// Window events

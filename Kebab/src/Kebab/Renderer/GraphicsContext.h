@@ -8,8 +8,9 @@ namespace kbb::renderer
 	{
 	public:
 		// Implementation of the active graphics context
-		virtual void init() const = 0;
+		virtual void init() = 0;
 		virtual void swapBuffers() const = 0;
+		virtual void terminate() = 0;
 		
 		virtual void setClearColor(float r, float g, float b, float a) const = 0;
 
@@ -20,6 +21,7 @@ namespace kbb::renderer
 		// Interface to the active graphics context
 		static void Init() { s_context->init(); }
 		static void SwapBuffers() { s_context->swapBuffers(); }
+		static void Terminate() { s_context->terminate(); }
 
 		static void SetClearColor(float r, float g, float b, float a) { s_context->setClearColor(r, g, b, a); }
 

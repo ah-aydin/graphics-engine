@@ -8,6 +8,12 @@
 #define CORE_LOG_FILE_NAME "gl.core.log"
 #define CLIENT_LOG_FILE_NAME "gl.client.log"
 #define LOG_FILE_START "OpenGl log file"
+#elif GRAPHICS_API_VULKAN
+#define CORE_LOG_FILE_NAME "vk.core.log"
+#define CLIENT_LOG_FILE_NAME "vk.client.log"
+#define LOG_FILE_START "Vulkan log file"
+#else
+error (No graphics api was specified)
 #endif
 
 namespace kbb

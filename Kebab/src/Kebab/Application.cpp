@@ -26,25 +26,6 @@ namespace kbb
 
 	void Application::run()
 	{
-		auto program = renderer::OpenGLProgram("res/opengl/shader.vert", "res/opengl/shader.frag");
-
-		auto layout = renderer::VertexBufferLayout({
-			{ renderer::VertexBufferType::Float3, "aPos"},
-			{ renderer::VertexBufferType::Float3, "aColor"}
-		});
-		std::vector<float> vertices = {
-			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f
-		};
-		std::vector<uint32_t> indices{ 0, 1, 2 };
-
-		std::shared_ptr<renderer::VertexArray> vertexArray = renderer::VertexArray::Create(
-			vertices,
-			std::make_optional<renderer::VertexBufferLayout>(layout),
-			indices
-		);
-
 		while (m_running)
 		{
 			if (Input::getAction("QUIT"))
@@ -53,10 +34,6 @@ namespace kbb
 			}
 
 			renderer::GraphicsContext::BeginFrame();
-
-			program.use();
-			vertexArray->bind();
-			glDrawElements(GL_TRIANGLES, (GLsizei) vertexArray->getIndexCount(), GL_UNSIGNED_INT, 0);
 			
 			renderer::GraphicsContext::EndFrame();
 

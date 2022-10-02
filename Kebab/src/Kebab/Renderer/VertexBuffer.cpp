@@ -3,6 +3,10 @@
 
 #ifdef GRAPHICS_API_OPENGL
 #include <Graphics/OpenGL/Buffers/OpenGLVertexBuffer.h>
+#elif GRAPHICS_API_VULKAN
+#include <Graphics/Vulkan/Buffers/VulkanVertexBuffer.h>
+#else
+error (No graphics api has been specified)
 #endif
 
 namespace kbb::renderer
@@ -11,6 +15,8 @@ namespace kbb::renderer
 	{
 #ifdef GRAPHICS_API_OPENGL
 		return std::make_shared<OpenGLVertexBuffer>(vertices, layout);
+#elif GRAPHICS_API_VULKAN
+		return std::make_shared<VulkanVertexBuffer>(vertices);
 #endif
 	}
 

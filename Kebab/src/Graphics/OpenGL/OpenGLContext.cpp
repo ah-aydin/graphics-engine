@@ -10,9 +10,10 @@ namespace kbb::renderer
 		: m_windowHandle(windowHandle)
 	{}
 
-	void OpenGLContext::init() const
+	void OpenGLContext::init()
 	{
-		KBB_CORE_INFO("Initializing GLAD");
+		KBB_CORE_INFO("Initializing OpenGL context");
+		KBB_CORE_INFO("\tInitializing GLAD");
 		glfwMakeContextCurrent(m_windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		if (!status)
@@ -27,6 +28,11 @@ namespace kbb::renderer
 	void OpenGLContext::swapBuffers() const
 	{
 		glfwSwapBuffers(m_windowHandle);
+	}
+
+	void OpenGLContext::terminate()
+	{
+
 	}
 
 	void OpenGLContext::setClearColor(float r, float g, float b, float a) const

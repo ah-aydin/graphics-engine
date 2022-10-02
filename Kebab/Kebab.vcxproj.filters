@@ -63,6 +63,15 @@
     <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanIndexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanVertexBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanVertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\kbbpch.h">
@@ -132,6 +141,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanIndexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanVertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanVertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\Vulkan\VulkanCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
