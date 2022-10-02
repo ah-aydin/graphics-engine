@@ -76,7 +76,6 @@ namespace kbb::renderer
 
 	private:
 		// Helpers
-		bool isDeviceSuitable(VkPhysicalDevice device);
 		std::vector<const char*> getRequiredExtensions();
 		bool checkValidationLayerSupport();
 		QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);

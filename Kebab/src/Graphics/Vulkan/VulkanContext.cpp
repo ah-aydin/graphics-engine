@@ -457,11 +457,6 @@ namespace kbb::renderer
 
 	}
 
-	bool VulkanContext::isDeviceSuitable(VkPhysicalDevice device)
-	{
-		return false;
-	}
-
 	std::vector<const char*> VulkanContext::getRequiredExtensions()
 	{
 		uint32_t glfwExtensionCount = 0;
