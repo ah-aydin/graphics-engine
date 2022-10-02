@@ -91,6 +91,10 @@
       <Project>{425dcf56-3234-4fcf-9f0f-bee210c09431}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\opengl\shader.frag" />
+    <None Include="res\opengl\shader.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

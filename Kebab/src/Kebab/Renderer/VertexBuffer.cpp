@@ -1,24 +1,35 @@
 #include "kbbpch.h"
 #include "VertexBuffer.h"
 
-namespace kbb
+#ifdef GRAPHICS_API_OPENGL
+#include <Graphics/OpenGL/OpenGLVertexBuffer.h>
+#endif
+
+namespace kbb::renderer
 {
-	VertexBuffer* VertexBuffer::create(std::vector<float> vertices, std::optional<VertexBufferLayout> layout)
+	std::shared_ptr<VertexBuffer> VertexBuffer::Create(std::vector<float>& vertices, VertexBufferLayout& layout)
 	{
-		// TODO create vertex buffer for the given api
-		return nullptr;
+#ifdef GRAPHICS_API_OPENGL
+		return std::make_shared<OpenGLVertexBuffer>(vertices, layout);
+#endif
 	}
 
-	VertexBufferLayout::VertexBufferLayout(std::initializer_list<VertexBufferElement> elements)
-		: m_elements(elements)
+	VertexBuffer::VertexBuffer(uint32_t vertexCount)
+		: m_vertexCount(vertexCount)
+	{}
+
+	VertexBufferLayout::VertexBufferLayout(std::vector<VertexBufferElement> elements)
+		: m_elements{elements}, m_size(0)
 	{
-		uint32_t offset = 0;
-		m_stride = 0;
 		for (VertexBufferElement& element : m_elements)
 		{
-			element.offset = offset;
-			offset += element.getSize();
-			m_stride += element.getSize();
+			element.offset = m_size;
+			m_size += element.size;
 		}
+	}
+
+	const VertexBufferElement& VertexBufferLayout::getElement(size_t index) const
+	{
+		return m_elements.at(index);
 	}
 }

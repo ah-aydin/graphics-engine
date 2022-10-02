@@ -104,7 +104,7 @@ namespace kbb
 	
 	bool Input::createAction(const std::string& name, uint32_t keyCode)
 	{
-		KBB_CORE_INFO("Creaing action {0} - KeyCode {1}", name, keyCode);
+		KBB_CORE_INFO("Creating action {0} - KeyCode {1}", name, keyCode);
 		s_actions.insert(
 			ActionMapPair(name, Action(keyCode))
 		);

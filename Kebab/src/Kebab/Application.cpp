@@ -2,14 +2,23 @@
 #include "Application.h"
 
 #include "Input.h"
-#include "Renderer/RendererContext.h"
+
+#include "Renderer/GraphicsContext.h"
+#include "Renderer/IndexBuffer.h"
+#include "Renderer/VertexBuffer.h"
+#include "Renderer/VertexArray.h"
+#include <Graphics/OpenGL/Shaders/OpenGLProgram.h>
 
 namespace kbb
 {
 	Application::Application()
 		: m_running(true)
 	{
-		m_window = std::unique_ptr<Window>(Window::create());
+		WindowProps windowProps{};
+#ifdef _DEBUG
+		windowProps.debug = true;
+#endif
+		m_window = std::unique_ptr<Window>(Window::create(windowProps));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
 
@@ -19,6 +28,25 @@ namespace kbb
 
 	void Application::run()
 	{
+		auto program = renderer::OpenGLProgram("res/opengl/shader.vert", "res/opengl/shader.frag");
+
+		auto layout = renderer::VertexBufferLayout({
+			{ renderer::VertexBufferType::Float3, "aPos"},
+			{ renderer::VertexBufferType::Float3, "aColor"}
+		});
+		std::vector<float> vertices = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+			0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+			0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+		};
+		std::vector<uint32_t> indices{ 0, 1, 2 };
+
+		std::shared_ptr<renderer::VertexArray> vertexArray = renderer::VertexArray::Create(
+			vertices,
+			std::make_optional<renderer::VertexBufferLayout>(layout),
+			indices
+		);
+
 		while (m_running)
 		{
 			if (Input::getAction("QUIT"))
@@ -26,14 +54,17 @@ namespace kbb
 				shutdown();
 			}
 
-			RendererContext::BeginFrame();
+			renderer::GraphicsContext::BeginFrame();
+
+			program.use();
+			vertexArray->bind();
+			glDrawElements(GL_TRIANGLES, (GLsizei) vertexArray->getIndexCount(), GL_UNSIGNED_INT, 0);
+			
+			renderer::GraphicsContext::EndFrame();
 
 			m_window->update();
-
-			RendererContext::EndFrame();
 		}
 
-		RendererContext::CleanUp();
 		Window::closeWindow(m_window.get());
 	}
 

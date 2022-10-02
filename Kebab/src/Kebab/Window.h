@@ -12,9 +12,10 @@ namespace kbb
 		std::string title;
 		uint32_t width;
 		uint32_t height;
+		bool debug;
 
-		explicit WindowProps(const std::string title = "Kebab Engine", uint32_t width = 1280, uint32_t height = 800)
-			: title(title), width(width), height(height)
+		explicit WindowProps(const std::string title = "Kebab Engine", uint32_t width = 1280, uint32_t height = 800, bool debug = false)
+			: title(title), width(width), height(height), debug(debug)
 		{
 		}
 	};

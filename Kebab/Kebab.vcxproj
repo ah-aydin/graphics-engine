@@ -106,24 +106,33 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Kebab\Renderer\RendererContext.cpp" />
-    <ClCompile Include="src\OpenGl\OpenGlContext.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\OpenGLIndexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\OpenGLVertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLShader.cpp" />
     <ClCompile Include="src\Kebab\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="src\Kebab\Application.cpp" />
-    <ClCompile Include="src\Kebab\Renderer\VertexBuffer.cpp" />
     <ClCompile Include="src\Kebab\Input.cpp" />
     <ClCompile Include="src\Kebab\Log.cpp" />
     <ClCompile Include="src\kbbpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='GL-Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='GL-Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Kebab\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Kebab\Window.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Graphics\Vulkan\VulkanContext.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\OpenGl\OpenGlContext.h" />
-    <ClInclude Include="src\Kebab\Renderer\RendererContext.h" />
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLVertexBuffer.h" />
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLIndexBuffer.h" />
+    <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.h" />
+    <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLShader.h" />
     <ClInclude Include="src\Kebab\Renderer\IndexBuffer.h" />
-    <ClInclude Include="src\Kebab\Renderer\VertexBuffer.h" />
     <ClInclude Include="src\Kebab\Input.h" />
     <ClInclude Include="src\Kebab\Application.h" />
     <ClInclude Include="src\Kebab\Events\Event.h" />
@@ -135,7 +144,12 @@
     <ClInclude Include="src\Kebab.h" />
     <ClInclude Include="src\Kebab\Core.h" />
     <ClInclude Include="src\Kebab\EntryPoint.h" />
+    <ClInclude Include="src\Kebab\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Kebab\Window.h" />
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Graphics\Vulkan\VulkanContext.h" />
+    <ClInclude Include="src\Kebab\Renderer\VertexBuffer.h" />
+    <ClInclude Include="src\Kebab\Renderer\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

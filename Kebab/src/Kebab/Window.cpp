@@ -5,7 +5,7 @@
 #include <Kebab/Events/MouseEvent.h>
 #include <Kebab/Events/WindowEvent.h>
 
-#include <Kebab/Renderer/RendererContext.h>
+#include "Renderer/GraphicsContext.h"
 
 namespace kbb
 {
@@ -35,7 +35,6 @@ namespace kbb
 		m_data.width = props.width;
 		m_data.height = props.height;
 
-
 		if (Window::s_WindowCount == 0)
 		{
 			KBB_CORE_INFO("Initializing GLFW");
@@ -54,33 +53,40 @@ namespace kbb
 		);
 
 		KBB_CORE_INFO("Creating window {0} ({1}, {2})", m_data.title, m_data.width, m_data.height);
-		// TODO adapt to rendering API, this setup is for OpenGl 4.6 only
+
 #ifdef GRAPHICS_API_OPENGL
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#elif GRAPHICS_API_VULKAN
+		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 #endif
 
-#ifdef NDEBUG
-		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-		m_data.width = mode->width;
-		m_data.height = mode->height;
-		m_window = glfwCreateWindow(mode->width, mode->height, m_data.title.c_str(), glfwGetPrimaryMonitor(), NULL);
-#elif _DEBUG
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-		m_window = glfwCreateWindow((int)m_data.width, (int)m_data.height, m_data.title.c_str(), NULL, NULL);
-#endif
-		if (!m_window)
+		// Create window
+		if (props.debug)
 		{
-			KBB_CORE_ERROR("Failed to create windows window");
-			throw std::exception("Failed to create windows window");
+			glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+			m_window = glfwCreateWindow((int)m_data.width, (int)m_data.height, m_data.title.c_str(), NULL, NULL);
+		}
+		else
+		{
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+			m_data.width = mode->width;
+			m_data.height = mode->height;
+			m_window = glfwCreateWindow(mode->width, mode->height, m_data.title.c_str(), glfwGetPrimaryMonitor(), NULL);
 		}
 
-		RendererContext::Create(this);
-		RendererContext::Init();
+		if (!m_window)
+		{
+			KBB_CORE_ERROR("Failed to create window");
+			throw std::exception("Failed to create window");
+		}
+
+		renderer::GraphicsContext::Create(m_window);
+		renderer::GraphicsContext::Init();
+		renderer::GraphicsContext::SetClearColor(0.1f, 0.1f, 0.1f, 1);
 
 		glfwSetWindowUserPointer(m_window, &m_data);
-		
 
 		// TODO handle VSync via WindowProps
 		glfwSwapInterval(1);
@@ -173,5 +179,6 @@ namespace kbb
 	void Window::update()
 	{
 		glfwPollEvents();
+		renderer::GraphicsContext::SwapBuffers();
 	}
 }

@@ -19,4 +19,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\opengl\shader.vert" />
+    <None Include="res\opengl\shader.frag" />
+  </ItemGroup>
 </Project>

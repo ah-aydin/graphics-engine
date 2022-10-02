@@ -1,15 +1,21 @@
 #include "kbbpch.h"
 #include "IndexBuffer.h"
 
-namespace kbb
+#ifdef GRAPHICS_API_OPENGL
+#include <Graphics/OpenGL/OpenGLIndexBuffer.h>
+#endif
+
+namespace kbb::renderer
 {
-	IndexBuffer* IndexBuffer::create(std::vector<uint32_t> indices)
+	std::shared_ptr<IndexBuffer> IndexBuffer::Create(std::vector<uint32_t>& indices)
 	{
-		// TODO create index buffer for the given rendering api
-		return nullptr;
+#ifdef GRAPHICS_API_OPENGL
+		return std::make_shared<OpenGLIndexBuffer>(indices);
+#endif
 	}
 
-	IndexBuffer::IndexBuffer(size_t indexCount)
-		: m_indexCount(static_cast<uint32_t>(indexCount))
+	IndexBuffer::IndexBuffer(uint32_t indexCount)
+		: m_indexCount(indexCount)
 	{}
 }
+
