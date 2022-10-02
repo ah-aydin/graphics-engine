@@ -2,7 +2,7 @@
 #include "VertexBuffer.h"
 
 #ifdef GRAPHICS_API_OPENGL
-#include <Graphics/OpenGL/OpenGLVertexBuffer.h>
+#include <Graphics/OpenGL/Buffers/OpenGLVertexBuffer.h>
 #endif
 
 namespace kbb::renderer

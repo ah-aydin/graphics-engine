@@ -106,9 +106,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Graphics\OpenGL\OpenGLIndexBuffer.cpp" />
-    <ClCompile Include="src\Graphics\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Graphics\OpenGL\OpenGLVertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLIndexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLShader.cpp" />
     <ClCompile Include="src\Kebab\Renderer\IndexBuffer.cpp" />
@@ -127,9 +127,9 @@
     <ClCompile Include="src\Kebab\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Graphics\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Graphics\OpenGL\OpenGLVertexBuffer.h" />
-    <ClInclude Include="src\Graphics\OpenGL\OpenGLIndexBuffer.h" />
+    <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexBuffer.h" />
+    <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLIndexBuffer.h" />
     <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.h" />
     <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLShader.h" />
     <ClInclude Include="src\Kebab\Renderer\IndexBuffer.h" />

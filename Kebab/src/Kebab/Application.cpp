@@ -4,8 +4,6 @@
 #include "Input.h"
 
 #include "Renderer/GraphicsContext.h"
-#include "Renderer/IndexBuffer.h"
-#include "Renderer/VertexBuffer.h"
 #include "Renderer/VertexArray.h"
 #include <Graphics/OpenGL/Shaders/OpenGLProgram.h>
 

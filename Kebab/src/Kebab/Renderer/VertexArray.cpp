@@ -2,7 +2,7 @@
 #include "VertexArray.h"
 
 #ifdef GRAPHICS_API_OPENGL
-#include <Graphics/OpenGL/OpenGLVertexArray.h>
+#include <Graphics/OpenGL/Buffers/OpenGLVertexArray.h>
 #endif
 
 namespace kbb::renderer

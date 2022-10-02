@@ -2,7 +2,7 @@
 #include "IndexBuffer.h"
 
 #ifdef GRAPHICS_API_OPENGL
-#include <Graphics/OpenGL/OpenGLIndexBuffer.h>
+#include <Graphics/OpenGL/Buffers/OpenGLIndexBuffer.h>
 #endif
 
 namespace kbb::renderer
