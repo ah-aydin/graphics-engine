@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Kebab/Renderer/VertexArray.h>
+#include <Kebab/Renderer/Buffers/VertexArray.h>
 
 #include <glad/glad.h>
 

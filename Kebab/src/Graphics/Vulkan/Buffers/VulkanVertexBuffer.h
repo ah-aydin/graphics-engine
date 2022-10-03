@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Kebab/Renderer/VertexBuffer.h>
+#include <Kebab/Renderer/Buffers/VertexBuffer.h>
 
 namespace kbb::renderer
 {

@@ -27,17 +27,14 @@ namespace kbb::renderer
 	class VulkanContext : public GraphicsContext
 	{
 	public:
+		VulkanContext(const VulkanContext&) = delete;
+		VulkanContext& operator=(const VulkanContext&) = delete;
+
 		VulkanContext(GLFWwindow* windowHandle);
 		
 		void init() override;
 		void swapBuffers() const override;
 		void terminate() override;
-
-		void setClearColor(float r, float g, float b, float a) const override;
-
-		void beginFrame() const override;
-		void endFrame() const override;
-
 	private:
 		GLFWwindow* m_windowHandle;
 
@@ -98,3 +95,4 @@ namespace kbb::renderer
 		const std::vector<const char*> m_deviceExtensions = { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
 	};
 }
+		bool isDeviceSuitable(VkPhysicalDevice device);

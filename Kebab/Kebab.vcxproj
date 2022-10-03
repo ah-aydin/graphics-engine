@@ -195,12 +195,14 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\OpenGL\OpenGLRenderer.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLIndexBuffer.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Buffers\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\Shaders\OpenGLShader.cpp" />
-    <ClCompile Include="src\Kebab\Renderer\IndexBuffer.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\Buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\Kebab\Application.cpp" />
     <ClCompile Include="src\Kebab\Input.cpp" />
     <ClCompile Include="src\Kebab\Log.cpp" />
@@ -214,20 +216,23 @@
     <ClCompile Include="src\Kebab\Window.cpp" />
     <ClCompile Include="src\Graphics\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Graphics\Vulkan\VulkanContext.cpp" />
-    <ClCompile Include="src\Kebab\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="src\Kebab\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\Buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\Kebab\Renderer\Buffers\VertexArray.cpp" />
     <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanIndexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanVertexArray.cpp" />
     <ClCompile Include="src\Graphics\Vulkan\Buffers\VulkanVertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\Vulkan\VulkanRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLRenderer.h" />
+    <ClInclude Include="src\Kebab\Renderer\Renderer.h" />
     <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.h" />
     <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexBuffer.h" />
     <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLIndexBuffer.h" />
     <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLProgram.h" />
     <ClInclude Include="src\Graphics\OpenGL\Shaders\OpenGLShader.h" />
     <ClInclude Include="src\Graphics\Vulkan\VulkanCore.h" />
-    <ClInclude Include="src\Kebab\Renderer\IndexBuffer.h" />
+    <ClInclude Include="src\Kebab\Renderer\Buffers\IndexBuffer.h" />
     <ClInclude Include="src\Kebab\Input.h" />
     <ClInclude Include="src\Kebab\Application.h" />
     <ClInclude Include="src\Kebab\Events\Event.h" />
@@ -243,11 +248,12 @@
     <ClInclude Include="src\Kebab\Window.h" />
     <ClInclude Include="src\Graphics\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Graphics\Vulkan\VulkanContext.h" />
-    <ClInclude Include="src\Kebab\Renderer\VertexBuffer.h" />
-    <ClInclude Include="src\Kebab\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Kebab\Renderer\Buffers\VertexBuffer.h" />
+    <ClInclude Include="src\Kebab\Renderer\Buffers\VertexArray.h" />
     <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanIndexBuffer.h" />
     <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanVertexArray.h" />
     <ClInclude Include="src\Graphics\Vulkan\Buffers\VulkanVertexBuffer.h" />
+    <ClInclude Include="src\Graphics\Vulkan\VulkanRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

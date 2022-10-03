@@ -293,18 +293,6 @@ namespace kbb::renderer
 		vkDestroyInstance(m_instance, nullptr);
 	}
 
-	void VulkanContext::setClearColor(float r, float g, float b, float a) const
-	{
-	}
-
-	void VulkanContext::beginFrame() const
-	{
-	}
-
-	void VulkanContext::endFrame() const
-	{
-	}
-
 	uint32_t VulkanContext::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties)
 	{
 		VkPhysicalDeviceMemoryProperties memProperties;

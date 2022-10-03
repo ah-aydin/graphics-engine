@@ -34,19 +34,4 @@ namespace kbb::renderer
 	{
 
 	}
-
-	void OpenGLContext::setClearColor(float r, float g, float b, float a) const
-	{
-		glClearColor(r, g, b, a);
-	}
-
-	void OpenGLContext::beginFrame() const
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	}
-
-	void OpenGLContext::endFrame() const
-	{
-
-	}
 }

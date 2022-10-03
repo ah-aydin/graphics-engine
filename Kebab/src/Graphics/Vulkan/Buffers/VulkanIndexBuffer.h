@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Kebab/Renderer/IndexBuffer.h>
+#include <Kebab/Renderer/Buffers/IndexBuffer.h>
 
 namespace kbb::renderer
 {

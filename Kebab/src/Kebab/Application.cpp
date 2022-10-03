@@ -3,8 +3,7 @@
 
 #include "Input.h"
 
-#include "Renderer/GraphicsContext.h"
-#include "Renderer/VertexArray.h"
+#include "Renderer/Renderer.h"
 #include <Graphics/OpenGL/Shaders/OpenGLProgram.h>
 
 namespace kbb
@@ -18,6 +17,9 @@ namespace kbb
 #endif
 		m_window = std::unique_ptr<Window>(Window::create(windowProps));
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
+
+		renderer::Renderer::Create();
+		renderer::Renderer::SetClearColor(1.f, 0.f, 1.f, 0.f);
 	}
 
 	Application::~Application()
@@ -33,9 +35,9 @@ namespace kbb
 				shutdown();
 			}
 
-			renderer::GraphicsContext::BeginFrame();
+			renderer::Renderer::BeginFrame();
 			
-			renderer::GraphicsContext::EndFrame();
+			renderer::Renderer::EndFrame();
 
 			m_window->update();
 		}

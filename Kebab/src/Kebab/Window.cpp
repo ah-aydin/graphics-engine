@@ -85,7 +85,6 @@ namespace kbb
 
 		renderer::GraphicsContext::Create(m_window);
 		renderer::GraphicsContext::Init();
-		renderer::GraphicsContext::SetClearColor(0.1f, 0.1f, 0.1f, 1);
 
 		glfwSetWindowUserPointer(m_window, &m_data);
 
