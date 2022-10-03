@@ -1,7 +1,8 @@
 #include "kbbpch.h"
 #include "OpenGLContext.h"
 
-#include <glad/glad.h>
+#include "OpenGLCore.h"
+
 #include <GLFW/glfw3.h>
 
 namespace kbb::renderer
@@ -23,6 +24,9 @@ namespace kbb::renderer
 		KBB_CORE_INFO("\tOpenGL vendor: {0}", (const char*) glGetString(GL_VENDOR));
 		KBB_CORE_INFO("\tOpenGL renderer: {0}", (const char*) glGetString(GL_RENDERER));
 		KBB_CORE_INFO("\tOpenGL version: {0}", (const char*) glGetString(GL_VERSION));
+
+		KBB_GL_CALL(glEnable(GL_DEPTH_TEST));
+		KBB_GL_CALL(glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS));
 	}
 
 	void OpenGLContext::swapBuffers() const

@@ -78,22 +78,21 @@ namespace kbb::renderer
 	OpenGLShader::OpenGLShader(GLenum type, const char* text, const char* debugFileName)
 		: m_type(type), m_handle(glCreateShader(type))
 	{
-		glShaderSource(m_handle, 1, &text, nullptr);
-		glCompileShader(m_handle);
+		KBB_GL_CALL(glShaderSource(m_handle, 1, &text, nullptr));
+		KBB_GL_CALL(glCompileShader(m_handle));
 
 		char buffer[512];
 		GLsizei length = 0;
-		glGetShaderInfoLog(m_handle, sizeof(buffer), &length, buffer);
+		KBB_GL_CALL(glGetShaderInfoLog(m_handle, sizeof(buffer), &length, buffer));
 
 		if (length)
 		{
-			KBB_CORE_ERROR("Shader compilation error {0} (File: {1})", buffer, debugFileName);
-			assert(false);
+			KBB_CORE_ASSERTION(false, "Shader compilation error {0} (File: {1})", buffer, debugFileName);
 		}
 	}
 
 	OpenGLShader::~OpenGLShader()
 	{
-		glDeleteShader(m_handle);
+		KBB_GL_CALL(glDeleteShader(m_handle));
 	}
 }

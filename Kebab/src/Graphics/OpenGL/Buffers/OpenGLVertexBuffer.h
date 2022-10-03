@@ -2,7 +2,7 @@
 
 #include <Kebab/Renderer/Buffers/VertexBuffer.h>
 
-#include <glad/glad.h>
+#include <Graphics/OpenGL/OpenGLCore.h>
 
 namespace kbb::renderer
 {

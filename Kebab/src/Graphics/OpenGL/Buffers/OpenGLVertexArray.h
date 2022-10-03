@@ -2,7 +2,7 @@
 
 #include <Kebab/Renderer/Buffers/VertexArray.h>
 
-#include <glad/glad.h>
+#include <Graphics/OpenGL/OpenGLCore.h>
 
 #include "OpenGLVertexBuffer.h"
 #include "OpenGLIndexBuffer.h"

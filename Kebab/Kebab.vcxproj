@@ -224,6 +224,7 @@
     <ClCompile Include="src\Graphics\Vulkan\VulkanRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLCore.h" />
     <ClInclude Include="src\Graphics\OpenGL\OpenGLRenderer.h" />
     <ClInclude Include="src\Kebab\Renderer\Renderer.h" />
     <ClInclude Include="src\Graphics\OpenGL\Buffers\OpenGLVertexArray.h" />

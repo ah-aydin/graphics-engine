@@ -23,7 +23,7 @@ namespace kbb::renderer
 		: m_handle(glCreateProgram())
 	{
 		attachShader(s1); attachShader(s2); 
-		glLinkProgram(m_handle);
+		KBB_GL_CALL(glLinkProgram(m_handle));
 		printProgramInfoLog();
 		detachShader(s1); detachShader(s2);
 	}
@@ -32,7 +32,7 @@ namespace kbb::renderer
 		: m_handle(glCreateProgram())
 	{
 		attachShader(s1); attachShader(s2); attachShader(s3);
-		glLinkProgram(m_handle);
+		KBB_GL_CALL(glLinkProgram(m_handle));
 		printProgramInfoLog();
 		detachShader(s1); detachShader(s2); attachShader(s3);
 	}
@@ -41,7 +41,7 @@ namespace kbb::renderer
 		: m_handle(glCreateProgram())
 	{
 		attachShader(s1); attachShader(s2); attachShader(s3); attachShader(s4);
-		glLinkProgram(m_handle);
+		KBB_GL_CALL(glLinkProgram(m_handle));
 		printProgramInfoLog();
 		detachShader(s1); detachShader(s2); attachShader(s3); detachShader(s4);
 	}
@@ -50,35 +50,34 @@ namespace kbb::renderer
 		: m_handle(glCreateProgram())
 	{
 		attachShader(s1); attachShader(s2); attachShader(s3); attachShader(s4); attachShader(s5);
-		glLinkProgram(m_handle);
+		KBB_GL_CALL(glLinkProgram(m_handle));
 		printProgramInfoLog();
 		detachShader(s1); detachShader(s2); attachShader(s3); detachShader(s4); attachShader(s5);
 	}
 
 	void OpenGLProgram::use() const
 	{
-		glUseProgram(m_handle);
+		KBB_GL_CALL(glUseProgram(m_handle));
 	}
 	
 	void OpenGLProgram::attachShader(const OpenGLShader& shader)
 	{
-		glAttachShader(m_handle, shader.getHandle());
+		KBB_GL_CALL(glAttachShader(m_handle, shader.getHandle()));
 	}
 
 	void OpenGLProgram::detachShader(const OpenGLShader& shader)
 	{
-		glAttachShader(m_handle, shader.getHandle());
+		KBB_GL_CALL(glAttachShader(m_handle, shader.getHandle()));
 	}
 
 	void OpenGLProgram::printProgramInfoLog()
 	{
 		char buffer[8192];
 		GLsizei length = 0;
-		glGetProgramInfoLog(m_handle, sizeof(buffer), &length, buffer);
+		KBB_GL_CALL(glGetProgramInfoLog(m_handle, sizeof(buffer), &length, buffer));
 		if (length)
 		{
-			KBB_CORE_ERROR("Shader program linking: {0}", buffer);
-			assert(false);
+			KBB_CORE_ASSERTION(false, "Shader program linking: {0}", buffer);
 		}
 	}
 }

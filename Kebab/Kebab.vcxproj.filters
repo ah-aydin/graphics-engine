@@ -173,5 +173,8 @@
     <ClInclude Include="src\Graphics\Vulkan\VulkanRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Graphics\OpenGL\OpenGLCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
